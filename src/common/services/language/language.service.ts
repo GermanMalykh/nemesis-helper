@@ -1,6 +1,7 @@
 import { registerLocaleData } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import localePL from '@angular/common/locales/pl';
+import localeRU from '@angular/common/locales/ru';
 import { inject, Injectable, signal, Signal, WritableSignal } from '@angular/core';
 import { Translations } from '@common/interfaces/translations.interface';
 import { GlobalLoaderService } from '@common/services/global-loader/global-loader.service';
@@ -22,13 +23,16 @@ export class LanguageService {
     private readonly loadedLanguages: Record<LanguageCode, boolean> = {
         en: false,
         pl: false,
+        ru: false,
     };
 
     public constructor() {
         registerLocaleData(localePL);
+        registerLocaleData(localeRU);
         const defaultLang: LanguageCode = StorageManager.loadConfig()?.language || this.translateService.getDefaultLang() as LanguageCode;
         this.currentLanguageWritable = signal(defaultLang);
         this.currentLanguage = this.currentLanguageWritable.asReadonly();
+        this.translateService.addLangs(['en', 'pl', 'ru']);
     }
 
     public initTranslations(): Observable<void> {
@@ -36,8 +40,10 @@ export class LanguageService {
     }
 
     public toggleLanguage(): Observable<LanguageCode> {
-        const lang: LanguageCode = this.translateService.currentLang === 'en' ? 'pl' : 'en';
-        return this.changeLanguage(lang).pipe(map(() => lang));
+        const languages: LanguageCode[] = ['en', 'pl', 'ru'];
+        const currentIndex = languages.indexOf(this.currentLanguageWritable());
+        const nextIndex = (currentIndex + 1) % languages.length;
+        return this.changeLanguage(languages[nextIndex]).pipe(map(() => languages[nextIndex]));
     }
 
     public changeLanguage(languageCode: LanguageCode): Observable<void> {
@@ -46,6 +52,7 @@ export class LanguageService {
             tap(() => {
                 this.translateService.use(languageCode);
                 this.currentLanguageWritable.set(languageCode);
+                StorageManager.saveConfig({ language: languageCode });
                 this.globalLoader.isLoading.set(false);
             }),
             catchError(err => {
