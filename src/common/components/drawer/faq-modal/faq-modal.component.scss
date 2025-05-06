@@ -17,3 +17,17 @@
         font-weight: 600;
     }
 }
+
+.search-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: var(--sizing-20) 0;
+
+    .search-inner {
+        width: min(100%, 500px);
+    }
+
+    mat-form-field {
+        width: 100%;
+    }
+}
