@@ -1,7 +1,8 @@
 <div class="modal-wrapper">
+
     <div class="modal-header">{{ 'tk.id_short.faq-modal.title' | gameIdTk: this.data.gameId | translate }}</div>
     <div class="group-links font-20-600">
-        @for (faqGroup of data.faqGroups; track $index) {
+        @for (faqGroup of filteredGroups(); track $index) {
             <span
                 (click)="scrollInto($index)"
                 class="group-link"
@@ -12,8 +13,19 @@
             }
         }
     </div>
+    <div class="search-wrapper">
+        <div class="search-inner">
+            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                <mat-label>{{ 'tk.faq-modal.label.find-rules' | translate }}</mat-label>
+                <input
+                    type="text"
+                    matInput
+                    [formControl]="searchControl" />
+            </mat-form-field>
+        </div>
+    </div>
     <div class="modal-content guidebook-styles">
-        @for (faqGroup of data.faqGroups; track $index) {
+        @for (faqGroup of filteredGroups(); track $index) {
             @if (faqGroup.name | translate; as faqGroupNameTranslated) {
                 <div
                     class="group-label"
