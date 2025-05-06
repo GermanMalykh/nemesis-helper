@@ -50,10 +50,10 @@ Available games in the App:
 - retreat token: possibility to "retreat" chosen intruder which moves it back to bag pool
 
 **Drawer:**
-- 2 languages: English, Polish (logs only available in english)
+- 3 languages: Russian, English, Polish (logs only available in english)
 - light and dark mode
 - search room modal (room descriptions with search by name)
-- FAQ with answers (can use browser's search or jump to FAQ section)
+- FAQ with answers (with search)
 - critical gameplay moments
 - game logs (purely to see what has happened before for reminding or debugging purposes)
 - about application with useful usage information
@@ -73,6 +73,7 @@ Game saves are stored locally in the Browser, application do not use any server 
 Tablet and bigger in landscape mode (right now I did not really support phone resolutions because I think it is not App which is useful on small devices such as phone).
 
 #### Supported languages
+- Russian
 - English
 - Polish
 
