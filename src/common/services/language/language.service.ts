@@ -14,7 +14,6 @@ import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
     providedIn: 'root',
 })
 export class LanguageService {
-
     public readonly currentLanguage: Signal<LanguageCode>;
     private readonly currentLanguageWritable: WritableSignal<LanguageCode>;
     private readonly httpClient: HttpClient = inject(HttpClient);
@@ -29,7 +28,7 @@ export class LanguageService {
     public constructor() {
         registerLocaleData(localePL);
         registerLocaleData(localeRU);
-        const defaultLang: LanguageCode = StorageManager.loadConfig()?.language || this.translateService.getDefaultLang() as LanguageCode;
+        const defaultLang: LanguageCode = StorageManager.loadConfig()?.language || (this.translateService.getDefaultLang() as LanguageCode);
         this.currentLanguageWritable = signal(defaultLang);
         this.currentLanguage = this.currentLanguageWritable.asReadonly();
         this.translateService.addLangs(['en', 'pl', 'ru']);
@@ -55,7 +54,7 @@ export class LanguageService {
                 StorageManager.saveConfig({ language: languageCode });
                 this.globalLoader.isLoading.set(false);
             }),
-            catchError(err => {
+            catchError((err) => {
                 this.globalLoader.isLoading.set(false);
                 return throwError(() => err);
             }),
@@ -64,12 +63,14 @@ export class LanguageService {
 
     private loadTranslations(languageCode: LanguageCode): Observable<void> {
         const isLanguageLoaded: boolean = this.loadedLanguages[languageCode];
-        return isLanguageLoaded ? of(undefined) : this.httpClient.get<Translations>(`assets/i18n/${ languageCode }.json`).pipe(
-            tap(translations => {
-                this.translateService.setTranslation(languageCode, translations);
-                this.loadedLanguages[languageCode] = true;
-            }),
-            map(() => undefined),
-        );
+        return isLanguageLoaded
+            ? of(undefined)
+            : this.httpClient.get<Translations>(`assets/i18n/${languageCode}.json`).pipe(
+                  tap((translations) => {
+                      this.translateService.setTranslation(languageCode, translations);
+                      this.loadedLanguages[languageCode] = true;
+                  }),
+                  map(() => undefined),
+              );
     }
 }

@@ -3,7 +3,6 @@ import { PlayerActionsDisablePipe } from '@common/pipes/player-actions-disable/p
 type Stage = 'player_action1' | 'player_action2' | 'event_action1' | 'event_action2' | 'event_action3';
 
 describe('PlayerActionsDisablePipe', () => {
-
     let pipe: PlayerActionsDisablePipe;
 
     const allowedStages: Stage[] = ['player_action1', 'player_action2'];
@@ -45,5 +44,4 @@ describe('PlayerActionsDisablePipe', () => {
             expect(pipe.transform<Stage>('event_action3', allowedStages)).toEqual(true);
         });
     });
-
 });

@@ -13,10 +13,7 @@ export interface KeyMomentsModalData {
 @Component({
     selector: 'app-key-moments-modal',
     standalone: true,
-    imports: [
-        TranslateModule,
-        GameIdTkPipe,
-    ],
+    imports: [TranslateModule, GameIdTkPipe],
     templateUrl: './key-moments-modal.component.html',
     styleUrl: './key-moments-modal.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -11,4 +11,4 @@ const gameModesConfig: GameModeConfig[] = [
     { id: GameMode.FULL_COOP, translationKey: 'tk.config.label.game-mode.full-co-op' },
 ];
 
-export const getGameModesConfig: () => GameModeConfig[] = () => gameModesConfig.map(config => ({ ...config }));
+export const getGameModesConfig: () => GameModeConfig[] = () => gameModesConfig.map((config) => ({ ...config }));

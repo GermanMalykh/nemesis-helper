@@ -1,7 +1,6 @@
 import { MsToDurationPipe } from './ms-to-duration.pipe';
 
 describe('MsToDurationPipe', () => {
-
     let pipe: MsToDurationPipe;
 
     beforeEach(() => {
@@ -73,5 +72,4 @@ describe('MsToDurationPipe', () => {
             expect(pipe.transform(-363599999)).toEqual('100:59:59');
         });
     });
-
 });

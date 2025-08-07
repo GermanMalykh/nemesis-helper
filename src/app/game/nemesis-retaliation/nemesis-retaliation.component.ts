@@ -8,6 +8,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrl: './nemesis-retaliation.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NemesisRetaliationComponent {
-
-}
+export class NemesisRetaliationComponent {}

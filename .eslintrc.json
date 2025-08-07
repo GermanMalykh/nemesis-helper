@@ -1,25 +1,11 @@
 {
     "root": true,
-    "ignorePatterns": [
-        "projects/**/*"
-    ],
+    "ignorePatterns": ["projects/**/*"],
     "overrides": [
         {
-            "files": [
-                "*.ts"
-            ],
-            "extends": [
-                "eslint:recommended",
-                "plugin:@typescript-eslint/recommended",
-                "plugin:@angular-eslint/recommended",
-                "plugin:@angular-eslint/template/process-inline-templates"
-            ],
-            "plugins": [
-                "@angular-eslint",
-                "eslint-plugin-import",
-                "eslint-plugin-prefer-arrow",
-                "eslint-plugin-unicorn"
-            ],
+            "files": ["*.ts"],
+            "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:@angular-eslint/recommended", "plugin:@angular-eslint/template/process-inline-templates"],
+            "plugins": ["@angular-eslint", "eslint-plugin-import", "eslint-plugin-prefer-arrow", "eslint-plugin-unicorn"],
             "rules": {
                 "@angular-eslint/directive-selector": [
                     "error",
@@ -63,10 +49,7 @@
                         "allowConciseArrowFunctionExpressionsStartingWithVoid": false
                     }
                 ],
-                "@typescript-eslint/indent": [
-                    "error",
-                    4
-                ],
+                "@typescript-eslint/indent": ["error", 4],
                 "@typescript-eslint/member-delimiter-style": [
                     "error",
                     {
@@ -84,45 +67,31 @@
                     "error",
                     {
                         "selector": "enum",
-                        "format": [
-                            "PascalCase"
-                        ]
+                        "format": ["PascalCase"]
                     },
                     {
                         "selector": "enumMember",
-                        "format": [
-                            "UPPER_CASE"
-                        ]
+                        "format": ["UPPER_CASE"]
                     },
                     {
                         "selector": "variable",
-                        "format": [
-                            "camelCase"
-                        ]
+                        "format": ["camelCase"]
                     },
                     {
                         "selector": "interface",
-                        "format": [
-                            "PascalCase"
-                        ]
+                        "format": ["PascalCase"]
                     },
                     {
                         "selector": "class",
-                        "format": [
-                            "PascalCase"
-                        ]
+                        "format": ["PascalCase"]
                     },
                     {
                         "selector": "classMethod",
-                        "format": [
-                            "camelCase"
-                        ]
+                        "format": ["camelCase"]
                     },
                     {
                         "selector": "classProperty",
-                        "format": [
-                            "camelCase"
-                        ]
+                        "format": ["camelCase"]
                     }
                 ],
                 "@typescript-eslint/no-empty-function": "error",
@@ -141,31 +110,16 @@
                 "@typescript-eslint/no-unused-expressions": "error",
                 "@typescript-eslint/no-var-requires": "error",
                 "@typescript-eslint/prefer-function-type": "error",
-                "@typescript-eslint/quotes": [
-                    "error",
-                    "single"
-                ],
-                "@typescript-eslint/semi": [
-                    "error",
-                    "always"
-                ],
+                "@typescript-eslint/quotes": ["error", "single"],
+                "@typescript-eslint/semi": ["error", "always"],
                 "@typescript-eslint/triple-slash-reference": "error",
                 "@typescript-eslint/type-annotation-spacing": "error",
                 "@typescript-eslint/unified-signatures": "error",
                 "arrow-body-style": "error",
-                "arrow-parens": [
-                    "error",
-                    "as-needed"
-                ],
-                "brace-style": [
-                    "error",
-                    "1tbs"
-                ],
+                "arrow-parens": ["error", "as-needed"],
+                "brace-style": ["error", "1tbs"],
                 "class-methods-use-this": "off",
-                "comma-dangle": [
-                    "error",
-                    "always-multiline"
-                ],
+                "comma-dangle": ["error", "always-multiline"],
                 "complexity": [
                     "warn",
                     {
@@ -177,44 +131,21 @@
                 "default-case": "error",
                 "dot-notation": "error",
                 "eol-last": "error",
-                "eqeqeq": [
-                    "error",
-                    "always"
-                ],
+                "eqeqeq": ["error", "always"],
                 "guard-for-in": "error",
-                "id-denylist": [
-                    "error",
-                    "any",
-                    "Number",
-                    "number",
-                    "String",
-                    "string",
-                    "Boolean",
-                    "boolean",
-                    "Undefined",
-                    "undefined"
-                ],
+                "id-denylist": ["error", "any", "Number", "number", "String", "string", "Boolean", "boolean", "Undefined", "undefined"],
                 "id-match": "error",
                 "import/no-deprecated": "warn",
                 "import/no-extraneous-dependencies": [
                     "error",
                     {
-                        "devDependencies": [
-                            "**/*test-setup.ts"
-                        ]
+                        "devDependencies": ["**/*test-setup.ts"]
                     }
                 ],
                 "import/no-internal-modules": [
                     "error",
                     {
-                        "allow": [
-                            "@angular/**",
-                            "core-js/*",
-                            "zone.js/*",
-                            "rxjs/operators",
-                            "jest-preset-angular/*",
-                            "angular-calendar/date-adapters/*"
-                        ]
+                        "allow": ["@angular/**", "core-js/*", "zone.js/*", "rxjs/operators", "jest-preset-angular/*", "angular-calendar/date-adapters/*"]
                     }
                 ],
                 "import/order": "error",
@@ -225,22 +156,10 @@
                         "code": 140
                     }
                 ],
-                "max-lines": [
-                    "error",
-                    500
-                ],
-                "max-statements": [
-                    "error",
-                    16
-                ],
-                "max-nested-callbacks": [
-                    "error",
-                    3
-                ],
-                "max-depth": [
-                    "error",
-                    4
-                ],
+                "max-lines": ["error", 500],
+                "max-statements": ["error", 16],
+                "max-nested-callbacks": ["error", 3],
+                "max-depth": ["error", 4],
                 "max-lines-per-function": [
                     "warn",
                     {
@@ -255,25 +174,7 @@
                 "no-console": [
                     "error",
                     {
-                        "allow": [
-                            "warn",
-                            "dir",
-                            "timeLog",
-                            "assert",
-                            "clear",
-                            "count",
-                            "countReset",
-                            "group",
-                            "groupEnd",
-                            "table",
-                            "dirxml",
-                            "groupCollapsed",
-                            "Console",
-                            "profile",
-                            "profileEnd",
-                            "timeStamp",
-                            "context"
-                        ]
+                        "allow": ["warn", "dir", "timeLog", "assert", "clear", "count", "countReset", "group", "groupEnd", "table", "dirxml", "groupCollapsed", "Console", "profile", "profileEnd", "timeStamp", "context"]
                     }
                 ],
                 "no-debugger": "error",
@@ -283,9 +184,7 @@
                 "no-empty-function": [
                     "error",
                     {
-                        "allow": [
-                            "constructors"
-                        ]
+                        "allow": ["constructors"]
                     }
                 ],
                 "no-eval": "error",
@@ -296,12 +195,7 @@
                     "error",
                     {
                         "ignoreDefaultValues": true,
-                        "ignore": [
-                            -1,
-                            0,
-                            1,
-                            2
-                        ]
+                        "ignore": [-1, 0, 1, 2]
                     }
                 ],
                 "no-multiple-empty-lines": [
@@ -316,13 +210,8 @@
                 "no-restricted-imports": [
                     "error",
                     {
-                        "paths": [
-                            "luxon",
-                            "rxjs/Rx"
-                        ],
-                        "patterns": [
-                            "luxon/*"
-                        ]
+                        "paths": ["luxon", "rxjs/Rx"],
+                        "patterns": ["luxon/*"]
                     }
                 ],
                 "no-return-await": "error",
@@ -339,17 +228,11 @@
                 "no-var": "error",
                 "no-void": "error",
                 "object-shorthand": "error",
-                "one-var": [
-                    "error",
-                    "never"
-                ],
+                "one-var": ["error", "never"],
                 "prefer-arrow/prefer-arrow-functions": "error",
                 "prefer-const": "error",
                 "prefer-template": "error",
-                "quote-props": [
-                    "error",
-                    "as-needed"
-                ],
+                "quote-props": ["error", "as-needed"],
                 "quotes": [
                     "error",
                     "single",
@@ -363,9 +246,7 @@
                     "error",
                     "always",
                     {
-                        "markers": [
-                            "/"
-                        ]
+                        "markers": ["/"]
                     }
                 ],
                 "unicorn/prefer-switch": [
@@ -386,18 +267,9 @@
                             "public-static-field",
                             "protected-static-field",
                             "private-static-field",
-                            [
-                                "public-decorated-field",
-                                "public-decorated-set"
-                            ],
-                            [
-                                "protected-decorated-field",
-                                "protected-decorated-set"
-                            ],
-                            [
-                                "private-decorated-field",
-                                "private-decorated-set"
-                            ],
+                            ["public-decorated-field", "public-decorated-set"],
+                            ["protected-decorated-field", "protected-decorated-set"],
+                            ["private-decorated-field", "private-decorated-set"],
                             "public-instance-field",
                             "protected-instance-field",
                             "private-instance-field",
@@ -409,10 +281,7 @@
                             "static-field",
                             "instance-field",
                             "abstract-field",
-                            [
-                                "decorated-field",
-                                "field"
-                            ],
+                            ["decorated-field", "field"],
                             "static-initialization",
                             "public-constructor",
                             "protected-constructor",
@@ -455,18 +324,9 @@
                             "public-static-method",
                             "protected-static-method",
                             "private-static-method",
-                            [
-                                "public-decorated-method",
-                                "public-instance-method"
-                            ],
-                            [
-                                "protected-decorated-method",
-                                "protected-instance-method"
-                            ],
-                            [
-                                "private-decorated-method",
-                                "private-instance-method"
-                            ],
+                            ["public-decorated-method", "public-instance-method"],
+                            ["protected-decorated-method", "protected-instance-method"],
+                            ["private-decorated-method", "private-instance-method"],
                             "public-abstract-method",
                             "protected-abstract-method"
                         ]
@@ -490,37 +350,26 @@
             }
         },
         {
-            "files": [
-                "*.html"
-            ],
-            "extends": [
-                "plugin:@angular-eslint/template/recommended"
-            ],
+            "files": ["*.html"],
+            "extends": ["plugin:@angular-eslint/template/recommended"],
             "rules": {
                 "max-len": "off"
             }
         },
         {
-            "files": [
-                "main.ts"
-            ],
+            "files": ["main.ts"],
             "rules": {
                 "no-console": "off"
             }
         },
         {
-            "files": [
-                "*.config.ts",
-                "*.spec.ts"
-            ],
+            "files": ["*.config.ts", "*.spec.ts"],
             "rules": {
                 "no-magic-numbers": "off"
             }
         },
         {
-            "files": [
-                "*.spec.ts"
-            ],
+            "files": ["*.spec.ts"],
             "rules": {
                 "max-lines-per-function": "off",
                 "max-nested-callbacks": "off",
@@ -529,25 +378,19 @@
             }
         },
         {
-            "files": [
-                "*.token.ts"
-            ],
+            "files": ["*.token.ts"],
             "rules": {
                 "@typescript-eslint/naming-convention": [
                     "error",
                     {
                         "selector": "variable",
-                        "format": [
-                            "UPPER_CASE"
-                        ]
+                        "format": ["UPPER_CASE"]
                     }
                 ]
             }
         },
         {
-            "files": [
-                "environment.interface.ts"
-            ],
+            "files": ["environment.interface.ts"],
             "rules": {
                 "import/no-extraneous-dependencies": "off"
             }

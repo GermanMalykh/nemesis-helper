@@ -7,11 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
     selector: 'app-about-modal',
     standalone: true,
-    imports: [
-        MatButton,
-        NonFocusableDirective,
-        TranslateModule,
-    ],
+    imports: [MatButton, NonFocusableDirective, TranslateModule],
     templateUrl: './about-modal.component.html',
     styleUrl: './about-modal.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,

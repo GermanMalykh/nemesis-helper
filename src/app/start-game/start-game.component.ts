@@ -14,19 +14,12 @@ import { filter } from 'rxjs';
 @Component({
     selector: 'app-start-game',
     standalone: true,
-    imports: [
-        SelectGameComponent,
-        SelectedGameSetupComponent,
-        MatDrawer,
-        MatDrawerContainer,
-        DrawerContentComponent,
-    ],
+    imports: [SelectGameComponent, SelectedGameSetupComponent, MatDrawer, MatDrawerContainer, DrawerContentComponent],
     templateUrl: './start-game.component.html',
     styleUrl: './start-game.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StartGameComponent {
-
     protected readonly selectedGame: WritableSignal<GameData | undefined> = signal(undefined);
     protected readonly showNewGameForm: WritableSignal<boolean> = signal(false);
     protected readonly games: GameData[] = Object.values(gameConfigs).map((config: GameConfig) => ({
@@ -46,14 +39,18 @@ export class StartGameComponent {
             return;
         }
         if (selectedGame.saveState) {
-            this.matDialog.open(SaveWarningModalComponent, {
-                data: selectedGame.config,
-                closeOnNavigation: true,
-                hasBackdrop: true,
-                panelClass: 'small-modal',
-            }).afterClosed().pipe(filter(result => result)).subscribe(() => {
-                this.showNewGameForm.set(true);
-            });
+            this.matDialog
+                .open(SaveWarningModalComponent, {
+                    data: selectedGame.config,
+                    closeOnNavigation: true,
+                    hasBackdrop: true,
+                    panelClass: 'small-modal',
+                })
+                .afterClosed()
+                .pipe(filter((result) => result))
+                .subscribe(() => {
+                    this.showNewGameForm.set(true);
+                });
         } else {
             this.showNewGameForm.set(true);
         }
@@ -83,8 +80,7 @@ export class StartGameComponent {
     private navigateToSelectedGame(): void {
         const selectedGame: GameData | undefined = this.selectedGame();
         if (selectedGame) {
-            this.router.navigate([`game/${ selectedGame.config.path }`]);
+            this.router.navigate([`game/${selectedGame.config.path}`]);
         }
     }
-
 }

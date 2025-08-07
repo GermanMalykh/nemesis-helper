@@ -11,10 +11,12 @@ export const appConfig: ApplicationConfig = {
     providers: [
         provideRouter(appRoutes, withPreloading(NoPreloading)),
         provideAnimations(),
-        importProvidersFrom(TranslateModule.forRoot({
-            missingTranslationHandler: { provide: MissingTranslationHandler, useClass: AppMissingTranslationHandler },
-            defaultLanguage: 'en',
-        })),
+        importProvidersFrom(
+            TranslateModule.forRoot({
+                missingTranslationHandler: { provide: MissingTranslationHandler, useClass: AppMissingTranslationHandler },
+                defaultLanguage: 'en',
+            }),
+        ),
         importProvidersFrom(HttpClientModule),
         provideServiceWorker('ngsw-worker.js', {
             enabled: !isDevMode(),

@@ -2,7 +2,6 @@ import { GameMode } from '@common/enums/game-mode.enum';
 import { GameModeTkPipe } from './game-mode-tk.pipe';
 
 describe('GameModeTkPipe', () => {
-
     let pipe: GameModeTkPipe;
 
     beforeEach(() => {
@@ -18,5 +17,4 @@ describe('GameModeTkPipe', () => {
             expect(pipe.transform(GameMode.FULL_COOP)).toEqual('tk.config.label.game-mode.full-co-op');
         });
     });
-
 });

@@ -4,13 +4,9 @@ import { RouterOutlet } from '@angular/router';
 @Component({
     selector: 'app-game',
     standalone: true,
-    imports: [
-        RouterOutlet,
-    ],
+    imports: [RouterOutlet],
     templateUrl: './game.component.html',
     styleUrl: './game.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GameComponent {
-
-}
+export class GameComponent {}

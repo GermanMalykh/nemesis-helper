@@ -5,24 +5,22 @@ import { StorageManager } from '@common/utils/storage-manager.util';
     providedIn: 'root',
 })
 export class UiModeService {
-
     public readonly isDarkMode: Signal<boolean>;
-    private readonly rendererFactory2: RendererFactory2  = inject(RendererFactory2);
+    private readonly rendererFactory2: RendererFactory2 = inject(RendererFactory2);
     private readonly renderer2: Renderer2;
     private readonly darkMode: WritableSignal<boolean>;
 
     public constructor() {
         this.renderer2 = this.rendererFactory2.createRenderer(window.document, null);
         const savedDarkModeState: boolean | undefined = StorageManager.loadConfig()?.uiDarkMode;
-        const defaultDarkMode: boolean = savedDarkModeState !== undefined && savedDarkModeState !== null ?
-            savedDarkModeState : this.isPreferredDarkColorScheme();
+        const defaultDarkMode: boolean = savedDarkModeState !== undefined && savedDarkModeState !== null ? savedDarkModeState : this.isPreferredDarkColorScheme();
         this.darkMode = signal(defaultDarkMode);
         this.isDarkMode = this.darkMode.asReadonly();
         this.refreshDarkModeClass();
     }
 
     public toggleUiMode(): void {
-        this.darkMode.update(mode => !mode);
+        this.darkMode.update((mode) => !mode);
         this.refreshDarkModeClass();
     }
 
@@ -48,5 +46,4 @@ export class UiModeService {
             return true;
         }
     }
-
 }

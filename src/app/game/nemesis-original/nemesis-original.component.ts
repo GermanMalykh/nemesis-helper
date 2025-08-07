@@ -10,9 +10,7 @@ import { SummarySectionComponent } from '@common/components/common-game-sections
 import { DrawerContentComponent } from '@common/components/drawer/drawer-content/drawer-content.component';
 import { SectionWrapperComponent } from '@common/components/general/section-wrapper/section-wrapper.component';
 import { NogRoundItem } from '@common/components/nog-specific/nog-round-item/nog-round-item.interface';
-import {
-    NogRoundTrackerSectionComponent,
-} from '@common/components/nog-specific/nog-round-tracker-section/nog-round-tracker-section.component';
+import { NogRoundTrackerSectionComponent } from '@common/components/nog-specific/nog-round-tracker-section/nog-round-tracker-section.component';
 import { MonsterType } from '@common/enums/monster-types.enum';
 import { Autodestruction } from '@common/interfaces/autodestruction.interface';
 import { ContentItem } from '@common/interfaces/content-item.interface';
@@ -41,17 +39,7 @@ const hibernationChambersOpeningRoundNum: number = 8;
 @Component({
     selector: 'app-nemesis-original',
     standalone: true,
-    imports: [
-        DrawerContentComponent,
-        PhasesSectionComponent,
-        PlayersSectionComponent,
-        SummarySectionComponent,
-        MatDrawer,
-        MatDrawerContainer,
-        MonstersSectionComponent,
-        NogRoundTrackerSectionComponent,
-        SectionWrapperComponent,
-    ],
+    imports: [DrawerContentComponent, PhasesSectionComponent, PlayersSectionComponent, SummarySectionComponent, MatDrawer, MatDrawerContainer, MonstersSectionComponent, NogRoundTrackerSectionComponent, SectionWrapperComponent],
     providers: [
         NemesisOriginalLoggerService,
         NemesisOriginalModalService,
@@ -65,7 +53,6 @@ const hibernationChambersOpeningRoundNum: number = 8;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NemesisOriginalComponent {
-
     protected readonly nemesisOriginalModalService: NemesisOriginalModalService = inject(NemesisOriginalModalService);
     protected readonly nemesisOriginalLoggerService: NemesisOriginalLoggerService = inject(NemesisOriginalLoggerService);
     protected readonly monsterBagService: MonsterTokensService<MonsterTokenConfig> = inject(MonsterTokensService);
@@ -80,31 +67,21 @@ export class NemesisOriginalComponent {
     protected readonly monstersEnabled: boolean = !this.gameSetupData?.monstersDisabled;
     protected readonly phasesConfig: WritableSignal<PhaseConfig<Stage>[]> = signal(getPhasesConfig());
     protected readonly rounds: WritableSignal<NogRoundItem[]> = signal(this.stateData?.rounds || this.getInitialRounds());
-    protected readonly endRoundNum: WritableSignal<number> = signal(
-        numberOrFallback(this.stateData?.endRoundNum, this.rounds()[this.rounds().length - 1].num),
-    );
-    protected readonly activeRoundNum: WritableSignal<number> = signal(
-        numberOrFallback(this.stateData?.activeRoundNum, this.rounds()[0].num),
-    );
+    protected readonly endRoundNum: WritableSignal<number> = signal(numberOrFallback(this.stateData?.endRoundNum, this.rounds()[this.rounds().length - 1].num));
+    protected readonly activeRoundNum: WritableSignal<number> = signal(numberOrFallback(this.stateData?.activeRoundNum, this.rounds()[0].num));
     protected readonly activeStage: WritableSignal<PhaseStage<Stage>['stageId']> = signal(this.stateData?.activeStage || initialStage);
     protected readonly activeMonsters: Signal<MonsterTokenConfig[]> = this.monsterBagService.activeMonsters;
     protected readonly availableMonsters: Signal<MonsterTokenConfig[]> = this.monsterBagService.availableMonsters;
     protected readonly bagMonsters: Signal<MonsterTokenConfig[]> = this.monsterBagService.bagMonsters;
     protected readonly autodestruction: WritableSignal<Autodestruction | undefined> = signal(this.stateData?.autodestruction || undefined);
-    protected readonly monsterEncounterHappenedRoundNum: WritableSignal<number | undefined> =
-        signal(this.stateData?.monsterEncounterHappenedRoundNum);
+    protected readonly monsterEncounterHappenedRoundNum: WritableSignal<number | undefined> = signal(this.stateData?.monsterEncounterHappenedRoundNum);
     protected readonly summaryData: Signal<ContentItem> = computed(() => stagesSummaryConfig[this.activeStage()]);
-
 
     public constructor() {
         if (this.stateData) {
             this.monsterBagService.loadBags(this.stateData);
         } else {
-            this.monsterBagService.initMonsters(
-                defaultMonsterBagConfig,
-                getMonsterTokensConfig(),
-                this.gameSetupData?.players.length || 0,
-            );
+            this.monsterBagService.initMonsters(defaultMonsterBagConfig, getMonsterTokensConfig(), this.gameSetupData?.players.length || 0);
         }
         this.nemesisOriginalLoggerService.init(this.loadLogs(), () => this.activeRoundNum());
     }
@@ -186,17 +163,23 @@ export class NemesisOriginalComponent {
     }
 
     protected killMonster(monster: MonsterTokenBase): void {
-        this.nemesisOriginalModalService.openKillMonsterWarning(monster).pipe(filter(result => !!result)).subscribe(() => {
-            this.nemesisOriginalLoggerService.logMonsterKill(monster);
-            this.monsterBagService.killMonster(monster.id);
-        });
+        this.nemesisOriginalModalService
+            .openKillMonsterWarning(monster)
+            .pipe(filter((result) => !!result))
+            .subscribe(() => {
+                this.nemesisOriginalLoggerService.logMonsterKill(monster);
+                this.monsterBagService.killMonster(monster.id);
+            });
     }
 
     protected retreatMonster(monster: MonsterTokenBase): void {
-        this.nemesisOriginalModalService.openRetreatMonsterWarning(monster).pipe(filter(result => !!result)).subscribe(() => {
-            this.nemesisOriginalLoggerService.logMonsterRetreat(monster);
-            this.monsterBagService.putMonsterBackToBag(monster.id);
-        });
+        this.nemesisOriginalModalService
+            .openRetreatMonsterWarning(monster)
+            .pipe(filter((result) => !!result))
+            .subscribe(() => {
+                this.nemesisOriginalLoggerService.logMonsterRetreat(monster);
+                this.monsterBagService.putMonsterBackToBag(monster.id);
+            });
     }
 
     protected handleFirstMonsterEncounter(): void {
@@ -207,10 +190,7 @@ export class NemesisOriginalComponent {
     protected showGameEndModal(): void {
         const gameState: GameSetupDataOriginal | undefined = StorageManager.loadGameSetupData(this.gameId) || this.gameSetupData;
         if (gameState) {
-            this.nemesisOriginalModalService.openGameEndSummary(
-                gameState,
-                !!this.autodestruction(),
-            ).subscribe(() => {
+            this.nemesisOriginalModalService.openGameEndSummary(gameState, !!this.autodestruction()).subscribe(() => {
                 StorageManager.clearAllGameData(this.gameId);
                 this.goToLandingPage();
             });
@@ -234,7 +214,7 @@ export class NemesisOriginalComponent {
     }
 
     protected openReloadGameModal(): void {
-        this.nemesisOriginalModalService.openReload(this.nemesisOriginalLoggerService.logs()).subscribe(result => {
+        this.nemesisOriginalModalService.openReload(this.nemesisOriginalLoggerService.logs()).subscribe((result) => {
             if (result) {
                 window.location.reload();
             }
@@ -242,7 +222,7 @@ export class NemesisOriginalComponent {
     }
 
     protected goToLandingPage(): void {
-        this.nemesisOriginalModalService.openExitWarning().subscribe(result => {
+        this.nemesisOriginalModalService.openExitWarning().subscribe((result) => {
             if (result) {
                 this.router.navigate(['/']);
             }
@@ -258,8 +238,7 @@ export class NemesisOriginalComponent {
         const nextRoundNum: number = activeRoundNum - 1;
         const wasLastRound: boolean = nextRoundNum <= this.endRoundNum();
         const autodestruction: Autodestruction | undefined = this.autodestruction();
-        const baseExploded: boolean | undefined = autodestruction ?
-            nextRoundNum <= autodestruction.roundNum && autodestruction.state === 'red' : false;
+        const baseExploded: boolean | undefined = autodestruction ? nextRoundNum <= autodestruction.roundNum && autodestruction.state === 'red' : false;
         this.nemesisOriginalLoggerService.logRoundChange(nextRoundNum);
 
         if (wasLastRound || baseExploded) {
@@ -280,7 +259,7 @@ export class NemesisOriginalComponent {
     private triggerMonsterDevelopment(): void {
         const developmentResult: MonsterDevelopmentResult<MonsterTokenConfig> = this.monsterBagService.triggerMonsterDevelopment();
         this.nemesisOriginalLoggerService.logMonsterDevelopment(developmentResult);
-        this.nemesisOriginalModalService.openMonsterDevelopmentResult(developmentResult).subscribe(queenInNestConfirmed => {
+        this.nemesisOriginalModalService.openMonsterDevelopmentResult(developmentResult).subscribe((queenInNestConfirmed) => {
             if (queenInNestConfirmed) {
                 this.monsterEncounterHappenedRoundNum.set(this.activeRoundNum());
                 this.monsterBagService.summonQueenInNest();
@@ -324,7 +303,7 @@ export class NemesisOriginalComponent {
 
     private saveGameState(): void {
         StorageManager.saveGameState<NemesisOriginalState>(this.gameId, {
-            dateIso: (new Date()).toISOString(),
+            dateIso: new Date().toISOString(),
             rounds: this.rounds(),
             endRoundNum: this.endRoundNum(),
             activeRoundNum: this.activeRoundNum(),
@@ -359,5 +338,4 @@ export class NemesisOriginalComponent {
         this.saveLogs();
         this.notifyAboutSave();
     }
-
 }

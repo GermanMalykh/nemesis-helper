@@ -13,16 +13,10 @@ import { ScreenWakeLockerService } from '@common/services/screen-wake-locker/scr
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [
-        RouterOutlet,
-        HttpClientModule,
-        AppLoaderComponent,
-        AppInitErrorComponent,
-    ],
+    imports: [RouterOutlet, HttpClientModule, AppLoaderComponent, AppInitErrorComponent],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
-
     protected readonly appInitializerService: AppInitializerService = inject(AppInitializerService);
     protected readonly iconRegistryService: IconRegistryService = inject(IconRegistryService);
     protected readonly screenWakeLockerService: ScreenWakeLockerService = inject(ScreenWakeLockerService);
@@ -37,5 +31,4 @@ export class AppComponent implements OnInit {
     public ngOnInit(): void {
         this.pwaUpdateService.update();
     }
-
 }

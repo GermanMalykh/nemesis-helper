@@ -8,7 +8,6 @@ import { PowerSupplyState } from '@configs/nld-specific/power-supply.config';
 
 @Injectable()
 export class NemesisLockdownLoggerService {
-
     public readonly logs: Signal<LogItem[]>;
     private readonly logger: Logger = new Logger();
 
@@ -21,43 +20,31 @@ export class NemesisLockdownLoggerService {
     }
 
     public logMonsterDevelopment(developmentResult: MonsterDevelopmentResult<MonsterTokenBase>): void {
-        this.logger.addRecord(
-            `Monster development with ${ developmentResult.success ? 'success' : 'failure' } (${ developmentResult.token.id })`,
-            'monster',
-        );
+        this.logger.addRecord(`Monster development with ${developmentResult.success ? 'success' : 'failure'} (${developmentResult.token.id})`, 'monster');
     }
 
     public logMonsterEncounter(monster: MonsterTokenBase): void {
-        this.logger.addRecord(`Monster encounter (${ monster.id })`, 'monster');
+        this.logger.addRecord(`Monster encounter (${monster.id})`, 'monster');
     }
 
     public logMonsterAdd(monster: MonsterTokenBase): void {
-        this.logger.addRecord(`Monster add (${ monster.id })`, 'monster');
+        this.logger.addRecord(`Monster add (${monster.id})`, 'monster');
     }
 
     public logMonsterKill(monster: MonsterTokenBase): void {
-        this.logger.addRecord(`Monster kill (${ monster.id })`, 'monster');
+        this.logger.addRecord(`Monster kill (${monster.id})`, 'monster');
     }
 
     public logMonsterRetreat(monster: MonsterTokenBase): void {
-        this.logger.addRecord(`Monster retreat (${ monster.id })`, 'monster');
+        this.logger.addRecord(`Monster retreat (${monster.id})`, 'monster');
     }
 
     public logPowerStateChange(stateFrom: PowerSupplyState, stateTo: PowerSupplyState): void {
-        this.logger.addRecord(
-            `Power state change (${ stateFrom ? 'Active' : 'Inactive' } => ${ stateTo ? 'Active' : 'Inactive' })`,
-            'tracker',
-        );
+        this.logger.addRecord(`Power state change (${stateFrom ? 'Active' : 'Inactive'} => ${stateTo ? 'Active' : 'Inactive'})`, 'tracker');
     }
 
-    public logAutodestructionStateChange(
-        stateFrom: Autodestruction['state'] | undefined,
-        stateTo: Autodestruction['state'] | undefined,
-    ): void {
-        this.logger.addRecord(
-            `Autodestruction state change (${ stateFrom || 'inactive' } => ${ stateTo || 'inactive' })`,
-            'tracker',
-        );
+    public logAutodestructionStateChange(stateFrom: Autodestruction['state'] | undefined, stateTo: Autodestruction['state'] | undefined): void {
+        this.logger.addRecord(`Autodestruction state change (${stateFrom || 'inactive'} => ${stateTo || 'inactive'})`, 'tracker');
     }
 
     public logAlertProcedureActivated(): void {
@@ -65,10 +52,7 @@ export class NemesisLockdownLoggerService {
     }
 
     public logCssMove(cssMove: CssMoveEvent, roundNumMovedTo: number): void {
-        this.logger.addRecord(
-            `CSS${ cssMove.roundConfig.css?.slotNum || '' } moved ${ cssMove.side } to round ${ roundNumMovedTo }`,
-            'tracker',
-        );
+        this.logger.addRecord(`CSS${cssMove.roundConfig.css?.slotNum || ''} moved ${cssMove.side} to round ${roundNumMovedTo}`, 'tracker');
     }
 
     public logRoundChange(nextRoundNum: number): void {
@@ -90,5 +74,4 @@ export class NemesisLockdownLoggerService {
     public logPowerDrop(powerState: PowerSupplyState): void {
         this.logger.addRecord(`Power dropped with backup power ${powerState ? 'Active' : 'Inactive'}`, 'event');
     }
-
 }

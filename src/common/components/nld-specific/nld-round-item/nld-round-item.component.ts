@@ -13,25 +13,13 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
     selector: 'app-nld-round-item',
     standalone: true,
-    imports: [
-        MatMenu,
-        MatMenuItem,
-        MatMenuTrigger,
-        TranslateModule,
-        NgClass,
-        AutodestructionDisableRoundPipe,
-        MatIcon,
-    ],
+    imports: [MatMenu, MatMenuItem, MatMenuTrigger, TranslateModule, NgClass, AutodestructionDisableRoundPipe, MatIcon],
     templateUrl: './nld-round-item.component.html',
     styleUrl: './nld-round-item.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [
-        verticalShakeAnimation('launch', '1.5s'),
-        backgroundColorAnimation('activePower', '1.5s', 'var(--inactive-power-color)', 'var(--active-power-color)'),
-    ],
+    animations: [verticalShakeAnimation('launch', '1.5s'), backgroundColorAnimation('activePower', '1.5s', 'var(--inactive-power-color)', 'var(--active-power-color)')],
 })
 export class NldRoundItemComponent {
-
     @Input({ required: true }) public roundConfig: NldRoundItem | undefined;
     @Input({ required: true }) public activeRoundNum: number | undefined;
     @Input({ required: true }) public activePower: boolean = false;
@@ -52,5 +40,4 @@ export class NldRoundItemComponent {
     public emitMoveCssRight(): void {
         this.cssMove.emit('right');
     }
-
 }

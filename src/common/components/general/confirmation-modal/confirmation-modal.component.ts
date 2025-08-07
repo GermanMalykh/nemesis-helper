@@ -15,25 +15,16 @@ export interface ConfirmationModalData {
 @Component({
     selector: 'app-confirmation-modal',
     standalone: true,
-    imports: [
-        TranslateModule,
-        MatButton,
-        MatDialogActions,
-        MatDialogTitle,
-        MatDialogContent,
-        NonFocusableDirective,
-    ],
+    imports: [TranslateModule, MatButton, MatDialogActions, MatDialogTitle, MatDialogContent, NonFocusableDirective],
     templateUrl: './confirmation-modal.component.html',
     styleUrl: './confirmation-modal.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfirmationModalComponent {
-
     protected readonly data: ConfirmationModalData = inject(MAT_DIALOG_DATA);
     private readonly matDialogRef: MatDialogRef<ConfirmationModalComponent> = inject(MatDialogRef);
 
     public onClick(result: boolean): void {
         this.matDialogRef.close(result);
     }
-
 }

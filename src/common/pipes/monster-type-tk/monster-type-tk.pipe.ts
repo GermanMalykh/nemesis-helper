@@ -7,7 +7,6 @@ import { TranslationKey } from '@common/types/translation-key.type';
     standalone: true,
 })
 export class MonsterTypeTkPipe implements PipeTransform {
-
     public transform(monsterType: MonsterType): TranslationKey {
         switch (monsterType) {
             case MonsterType.QUEEN:
@@ -26,5 +25,4 @@ export class MonsterTypeTkPipe implements PipeTransform {
                 return '';
         }
     }
-
 }

@@ -19,22 +19,12 @@ interface MonsterToken extends MonsterTokenBase {
 @Component({
     selector: 'app-monster-item',
     standalone: true,
-    imports: [
-        NgOptimizedImage,
-        MonsterTypeTkPipe,
-        TranslateModule,
-        ImageUrlPipe,
-        MatMenu,
-        MatMenuItem,
-        MatMenuTrigger,
-        MatIcon,
-    ],
+    imports: [NgOptimizedImage, MonsterTypeTkPipe, TranslateModule, ImageUrlPipe, MatMenu, MatMenuItem, MatMenuTrigger, MatIcon],
     templateUrl: './monster-item.component.html',
     styleUrl: './monster-item.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MonsterItemComponent {
-
     @Input({ required: true }) public monster: MonsterToken | undefined;
     @Input({ required: false }) public showName: boolean = true;
     @Input({ required: false }) public showMenu: boolean = false;
@@ -68,5 +58,4 @@ export class MonsterItemComponent {
         clearTimeout(this.timeoutRef);
         this.timeoutRef = undefined;
     }
-
 }

@@ -29,21 +29,12 @@ interface SummaryConfigItem {
 @Component({
     selector: 'app-monster-summary-modal',
     standalone: true,
-    imports: [
-        MatButton,
-        MonsterTypeTkPipe,
-        NonFocusableDirective,
-        TranslateModule,
-        MatDialogClose,
-        MonsterCountPipe,
-        GameIdTkPipe,
-    ],
+    imports: [MatButton, MonsterTypeTkPipe, NonFocusableDirective, TranslateModule, MatDialogClose, MonsterCountPipe, GameIdTkPipe],
     templateUrl: './monster-summary-modal.component.html',
     styleUrl: './monster-summary-modal.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MonsterSummaryModalComponent {
-
     protected readonly data: MonsterSummaryModalData = inject(MAT_DIALOG_DATA);
     protected readonly monstersTypes: MonsterType[] = getMonstersTypes();
     protected readonly summaryConfig: SummaryConfigItem[] = [
@@ -66,5 +57,4 @@ export class MonsterSummaryModalComponent {
             uncovered: signal(false),
         },
     ];
-
 }

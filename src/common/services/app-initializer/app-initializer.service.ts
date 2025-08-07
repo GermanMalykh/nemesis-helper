@@ -8,21 +8,22 @@ type AppInitState = 'init' | 'loading' | 'finished' | 'error';
     providedIn: 'root',
 })
 export class AppInitializerService {
-
     public readonly initFinished: Signal<boolean> = computed(() => this.initState() === 'finished');
     public readonly initFailure: Signal<boolean> = computed(() => this.initState() === 'error');
     private readonly initState: WritableSignal<AppInitState> = signal('init');
     private readonly languageService: LanguageService = inject(LanguageService);
 
     public init(): void {
-        this.languageService.initTranslations().pipe(
-            catchError(() => {
-                this.initState.set('error');
-                return throwError(() => 'Application initialization failed');
-            }),
-        ).subscribe(() => {
-            this.initState.set('finished');
-        });
+        this.languageService
+            .initTranslations()
+            .pipe(
+                catchError(() => {
+                    this.initState.set('error');
+                    return throwError(() => 'Application initialization failed');
+                }),
+            )
+            .subscribe(() => {
+                this.initState.set('finished');
+            });
     }
-
 }

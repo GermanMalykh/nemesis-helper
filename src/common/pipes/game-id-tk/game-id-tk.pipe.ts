@@ -7,9 +7,7 @@ import { gameConfigs, GameKey } from '@configs/games.config';
     standalone: true,
 })
 export class GameIdTkPipe implements PipeTransform {
-
     public transform(key: TranslationKey, gameId: GameKey): TranslationKey {
         return key.replace('id_short', gameConfigs[gameId].idShort);
     }
-
 }

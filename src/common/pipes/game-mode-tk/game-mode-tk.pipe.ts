@@ -8,9 +8,7 @@ import { getGameModesConfig } from '@configs/game-modes.config';
     standalone: true,
 })
 export class GameModeTkPipe implements PipeTransform {
-
     public transform(gameMode: GameMode): TranslationKey {
-        return getGameModesConfig().find(config => config.id === gameMode)?.translationKey || '';
+        return getGameModesConfig().find((config) => config.id === gameMode)?.translationKey || '';
     }
-
 }

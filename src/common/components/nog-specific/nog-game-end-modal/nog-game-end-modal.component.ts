@@ -15,25 +15,15 @@ export interface NoGameEndModalData extends GameSetupDataOriginal {
 @Component({
     selector: 'app-nog-game-end-modal',
     standalone: true,
-    imports: [
-        TranslateModule,
-        MatButton,
-        NonFocusableDirective,
-        MatDialogClose,
-        MsToDurationPipe,
-        MatCheckbox,
-        FormsModule,
-    ],
+    imports: [TranslateModule, MatButton, NonFocusableDirective, MatDialogClose, MsToDurationPipe, MatCheckbox, FormsModule],
     templateUrl: './nog-game-end-modal.component.html',
     styleUrl: './nog-game-end-modal.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NogGameEndModalComponent {
-
     public agreeToFinish: boolean = false;
 
     protected readonly data: NoGameEndModalData = inject(MAT_DIALOG_DATA);
     protected gameEndDate: Date = new Date();
-    protected duration: number = this.gameEndDate.getTime() - (new Date(this.data.createdDate)).getTime();
-
+    protected duration: number = this.gameEndDate.getTime() - new Date(this.data.createdDate).getTime();
 }

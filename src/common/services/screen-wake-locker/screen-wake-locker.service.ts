@@ -5,7 +5,6 @@ import { fromEvent, Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class ScreenWakeLockerService {
-
     private readonly visibilityChange$: Observable<unknown> = fromEvent(document, 'visibilitychange');
     private screenLockSentinel: WakeLockSentinel | undefined;
 
@@ -24,10 +23,9 @@ export class ScreenWakeLockerService {
         if (document.visibilityState !== 'visible') {
             return;
         }
-        navigator.wakeLock.request('screen')
-            .then(screenLockSentinel => {
-                this.screenLockSentinel = screenLockSentinel;
-            });
+        navigator.wakeLock.request('screen').then((screenLockSentinel) => {
+            this.screenLockSentinel = screenLockSentinel;
+        });
     }
 
     private releaseLock(): void {
@@ -35,5 +33,4 @@ export class ScreenWakeLockerService {
             this.screenLockSentinel = undefined;
         });
     }
-
 }

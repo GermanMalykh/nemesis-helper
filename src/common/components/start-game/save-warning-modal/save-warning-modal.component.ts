@@ -8,20 +8,12 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
     selector: 'app-save-warning-modal',
     standalone: true,
-    imports: [
-        MatDialogTitle,
-        MatDialogContent,
-        MatDialogActions,
-        MatButton,
-        TranslateModule,
-        NonFocusableDirective,
-    ],
+    imports: [MatDialogTitle, MatDialogContent, MatDialogActions, MatButton, TranslateModule, NonFocusableDirective],
     templateUrl: './save-warning-modal.component.html',
     styleUrl: './save-warning-modal.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SaveWarningModalComponent {
-
     protected readonly data: GameConfig = inject(MAT_DIALOG_DATA);
     private readonly matDialogRef: MatDialogRef<SaveWarningModalComponent> = inject(MatDialogRef);
 
@@ -32,5 +24,4 @@ export class SaveWarningModalComponent {
     protected onCancel(): void {
         this.matDialogRef.close(false);
     }
-
 }

@@ -10,7 +10,6 @@ const two: number = 2;
     standalone: true,
 })
 export class MsToDurationPipe implements PipeTransform {
-
     public transform(value: number): string {
         let seconds: number = Math.floor(Math.abs(value) / millisecInSecond);
         let minutes: number = Math.floor(seconds / sixty);
@@ -19,13 +18,6 @@ export class MsToDurationPipe implements PipeTransform {
         seconds = seconds % sixty;
         minutes = minutes % sixty;
 
-        return `${
-            hours.toString(ten).padStart(two, '0')
-        }:${
-            minutes.toString(ten).padStart(two, '0')
-        }:${
-            seconds.toString(ten).padStart(two, '0')
-        }`;
+        return `${hours.toString(ten).padStart(two, '0')}:${minutes.toString(ten).padStart(two, '0')}:${seconds.toString(ten).padStart(two, '0')}`;
     }
-
 }

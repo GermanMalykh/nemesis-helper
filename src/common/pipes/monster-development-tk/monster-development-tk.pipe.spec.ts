@@ -3,7 +3,6 @@ import { MonsterDevelopmentConfig } from '@common/types/monster-development-conf
 import { MonsterDevelopmentTkPipe } from './monster-development-tk.pipe';
 
 describe('MonsterDevelopmentTkPipe', () => {
-
     let pipe: MonsterDevelopmentTkPipe;
     const monsterDevelopmentConfigMock: MonsterDevelopmentConfig = Object.freeze({
         Q: Object.freeze({
@@ -91,5 +90,4 @@ describe('MonsterDevelopmentTkPipe', () => {
             expect(result).toEqual(true);
         });
     });
-
 });

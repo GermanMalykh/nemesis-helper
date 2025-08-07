@@ -1,17 +1,7 @@
 import { ContentItem } from '@common/interfaces/content-item.interface';
 import { PhaseConfig } from '@common/interfaces/phase-config.interface';
 
-export type Stage =
-    'draw_cards'
-    | 'first_player_transfer'
-    | 'player_actions'
-    | 'launch_css'
-    | 'round_tracker_update'
-    | 'noise_markers_removal'
-    | 'monster_attack'
-    | 'monster_fire_damage'
-    | 'resolve_event_card'
-    | 'monster_development';
+export type Stage = 'draw_cards' | 'first_player_transfer' | 'player_actions' | 'launch_css' | 'round_tracker_update' | 'noise_markers_removal' | 'monster_attack' | 'monster_fire_damage' | 'resolve_event_card' | 'monster_development';
 
 export const stagesSummaryConfig: Record<Stage, Readonly<ContentItem>> = Object.freeze({
     draw_cards: {
@@ -81,4 +71,4 @@ const phasesConfig: PhaseConfig<Stage>[] = [
     },
 ];
 
-export const getPhasesConfig: () => PhaseConfig<Stage>[] = () => phasesConfig.map(config => ({ ...config }));
+export const getPhasesConfig: () => PhaseConfig<Stage>[] = () => phasesConfig.map((config) => ({ ...config }));

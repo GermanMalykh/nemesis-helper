@@ -79,4 +79,4 @@ const monsterTokensConfig: MonsterTokenConfig[] = [
     { id: 'BLANK1', type: MonsterType.BLANK, powerActive: 0, powerInactive: 0 },
 ];
 
-export const getMonsterTokensConfig: () => MonsterTokenConfig[] = () => monsterTokensConfig.map(config => ({ ...config }));
+export const getMonsterTokensConfig: () => MonsterTokenConfig[] = () => monsterTokensConfig.map((config) => ({ ...config }));

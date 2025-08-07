@@ -21,19 +21,12 @@ export interface MonsterWarningModalData {
 @Component({
     selector: 'app-monster-warning-modal',
     standalone: true,
-    imports: [
-        TranslateModule,
-        MatButton,
-        MonsterItemComponent,
-        NonFocusableDirective,
-        MonsterTypeTkPipe,
-    ],
+    imports: [TranslateModule, MatButton, MonsterItemComponent, NonFocusableDirective, MonsterTypeTkPipe],
     templateUrl: './monster-warning-modal.component.html',
     styleUrl: './monster-warning-modal.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MonsterWarningModalComponent {
-
     protected readonly monsterType: typeof MonsterType = MonsterType;
     protected readonly data: MonsterWarningModalData = inject(MAT_DIALOG_DATA);
     private readonly matDialogRef: MatDialogRef<MonsterWarningModalComponent> = inject(MatDialogRef);
@@ -41,5 +34,4 @@ export class MonsterWarningModalComponent {
     public onClick(result: boolean): void {
         this.matDialogRef.close(result);
     }
-
 }

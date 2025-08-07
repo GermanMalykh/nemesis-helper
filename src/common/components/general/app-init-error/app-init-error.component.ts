@@ -8,6 +8,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrl: './app-init-error.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppInitErrorComponent {
-
-}
+export class AppInitErrorComponent {}

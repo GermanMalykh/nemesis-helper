@@ -8,12 +8,7 @@ import { TranslationKey } from '@common/types/translation-key.type';
     standalone: true,
 })
 export class MonsterDevelopmentTkPipe implements PipeTransform {
-
-    public transform(
-        monsterType: MonsterType,
-        monsterDevelopmentConfig: MonsterDevelopmentConfig,
-    ): TranslationKey {
+    public transform(monsterType: MonsterType, monsterDevelopmentConfig: MonsterDevelopmentConfig): TranslationKey {
         return monsterDevelopmentConfig[monsterType].labelKey;
     }
-
 }

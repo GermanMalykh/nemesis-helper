@@ -11,13 +11,8 @@ import { SummarySectionComponent } from '@common/components/common-game-sections
 import { DrawerContentComponent } from '@common/components/drawer/drawer-content/drawer-content.component';
 import { SectionWrapperComponent } from '@common/components/general/section-wrapper/section-wrapper.component';
 import { NldRoundItem } from '@common/components/nld-specific/nld-round-item/nld-round-item.interface';
-import {
-    CssMoveEvent,
-    NldRoundTrackerSectionComponent,
-} from '@common/components/nld-specific/nld-round-tracker-section/nld-round-tracker-section.component';
-import {
-    NogRoundTrackerSectionComponent,
-} from '@common/components/nog-specific/nog-round-tracker-section/nog-round-tracker-section.component';
+import { CssMoveEvent, NldRoundTrackerSectionComponent } from '@common/components/nld-specific/nld-round-tracker-section/nld-round-tracker-section.component';
+import { NogRoundTrackerSectionComponent } from '@common/components/nog-specific/nog-round-tracker-section/nog-round-tracker-section.component';
 import { MonsterType } from '@common/enums/monster-types.enum';
 import { Autodestruction } from '@common/interfaces/autodestruction.interface';
 import { ContentItem } from '@common/interfaces/content-item.interface';
@@ -75,7 +70,6 @@ const isolationRoomOpeningRoundNum: number = 8;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NemesisLockdownComponent {
-
     protected readonly nemesisLockdownModalService: NemesisLockdownModalService = inject(NemesisLockdownModalService);
     protected readonly nemesisLockdownLoggerService: NemesisLockdownLoggerService = inject(NemesisLockdownLoggerService);
     protected readonly monsterBagService: MonsterTokensService<MonsterTokenConfig> = inject(MonsterTokensService);
@@ -90,43 +84,31 @@ export class NemesisLockdownComponent {
     protected readonly monstersEnabled: boolean = !this.gameSetupData?.monstersDisabled;
     protected readonly phasesConfig: WritableSignal<PhaseConfig<Stage>[]> = signal(getPhasesConfig());
     protected readonly rounds: WritableSignal<NldRoundItem[]> = signal(this.stateData?.rounds || this.getInitialRounds());
-    protected readonly endRoundNum: WritableSignal<number> = signal(
-        numberOrFallback(this.stateData?.endRoundNum, this.rounds()[this.rounds().length - 1].num),
-    );
-    protected readonly activeRoundNum: WritableSignal<number> = signal(
-        numberOrFallback(this.stateData?.activeRoundNum, this.rounds()[0].num),
-    );
+    protected readonly endRoundNum: WritableSignal<number> = signal(numberOrFallback(this.stateData?.endRoundNum, this.rounds()[this.rounds().length - 1].num));
+    protected readonly activeRoundNum: WritableSignal<number> = signal(numberOrFallback(this.stateData?.activeRoundNum, this.rounds()[0].num));
     protected readonly activeStage: WritableSignal<PhaseStage<Stage>['stageId']> = signal(this.stateData?.activeStage || initialStage);
     protected readonly activeMonsters: Signal<MonsterTokenConfig[]> = this.monsterBagService.activeMonsters;
     protected readonly availableMonsters: Signal<MonsterTokenConfig[]> = this.monsterBagService.availableMonsters;
     protected readonly bagMonsters: Signal<MonsterTokenConfig[]> = this.monsterBagService.bagMonsters;
     protected readonly powerState: WritableSignal<PowerSupplyState> = signal(this.stateData?.powerState || PowerSupplyState.INACTIVE);
     protected readonly autodestruction: WritableSignal<Autodestruction | undefined> = signal(this.stateData?.autodestruction || undefined);
-    protected readonly alertProcedureActivatedRoundNum: WritableSignal<number | undefined> = signal(
-        numberOrFallback(this.stateData?.alertProcedureActivatedRoundNum, undefined),
-    );
-    protected readonly monsterEncounterHappenedRoundNum: WritableSignal<number | undefined> =
-        signal(this.stateData?.monsterEncounterHappenedRoundNum);
+    protected readonly alertProcedureActivatedRoundNum: WritableSignal<number | undefined> = signal(numberOrFallback(this.stateData?.alertProcedureActivatedRoundNum, undefined));
+    protected readonly monsterEncounterHappenedRoundNum: WritableSignal<number | undefined> = signal(this.stateData?.monsterEncounterHappenedRoundNum);
     protected readonly summaryData: Signal<ContentItem> = computed(() => stagesSummaryConfig[this.activeStage()]);
 
     public constructor() {
         if (this.stateData) {
             this.monsterBagService.loadBags(this.stateData);
         } else {
-            this.monsterBagService.initMonsters(
-                defaultMonsterBagConfig,
-                getMonsterTokensConfig(),
-                this.gameSetupData?.players.length || 0,
-            );
+            this.monsterBagService.initMonsters(defaultMonsterBagConfig, getMonsterTokensConfig(), this.gameSetupData?.players.length || 0);
         }
         this.nemesisLockdownLoggerService.init(this.loadLogs(), () => this.activeRoundNum());
     }
 
-
     protected onCssMoveEvent(event: CssMoveEvent): void {
         if (event) {
             const rounds: NldRoundItem[] = this.rounds();
-            const eventRoundIndex: number = rounds.findIndex(round => round.num === event.roundConfig.num);
+            const eventRoundIndex: number = rounds.findIndex((round) => round.num === event.roundConfig.num);
             const moveIndex: number = (event.side === 'right' ? 1 : -1) + eventRoundIndex;
             if (eventRoundIndex >= 0 && moveIndex > 0 && moveIndex < rounds.length - 1) {
                 this.nemesisLockdownLoggerService.logCssMove(event, rounds[moveIndex].num);
@@ -227,17 +209,23 @@ export class NemesisLockdownComponent {
     }
 
     protected killMonster(monster: MonsterTokenBase): void {
-        this.nemesisLockdownModalService.openKillMonsterWarning(monster).pipe(filter(result => !!result)).subscribe(() => {
-            this.nemesisLockdownLoggerService.logMonsterKill(monster);
-            this.monsterBagService.killMonster(monster.id);
-        });
+        this.nemesisLockdownModalService
+            .openKillMonsterWarning(monster)
+            .pipe(filter((result) => !!result))
+            .subscribe(() => {
+                this.nemesisLockdownLoggerService.logMonsterKill(monster);
+                this.monsterBagService.killMonster(monster.id);
+            });
     }
 
     protected retreatMonster(monster: MonsterTokenBase): void {
-        this.nemesisLockdownModalService.openRetreatMonsterWarning(monster).pipe(filter(result => !!result)).subscribe(() => {
-            this.nemesisLockdownLoggerService.logMonsterRetreat(monster);
-            this.monsterBagService.putMonsterBackToBag(monster.id);
-        });
+        this.nemesisLockdownModalService
+            .openRetreatMonsterWarning(monster)
+            .pipe(filter((result) => !!result))
+            .subscribe(() => {
+                this.nemesisLockdownLoggerService.logMonsterRetreat(monster);
+                this.monsterBagService.putMonsterBackToBag(monster.id);
+            });
     }
 
     protected handleFirstMonsterEncounter(): void {
@@ -248,11 +236,7 @@ export class NemesisLockdownComponent {
     protected showGameEndModal(): void {
         const gameState: GameSetupDataLockdown | undefined = StorageManager.loadGameSetupData(this.gameId) || this.gameSetupData;
         if (gameState) {
-            this.nemesisLockdownModalService.openGameEndSummary(
-                gameState,
-                !!this.autodestruction(),
-                !!this.alertProcedureActivatedRoundNum(),
-            ).subscribe(() => {
+            this.nemesisLockdownModalService.openGameEndSummary(gameState, !!this.autodestruction(), !!this.alertProcedureActivatedRoundNum()).subscribe(() => {
                 StorageManager.clearAllGameData(this.gameId);
                 this.goToLandingPage();
             });
@@ -276,7 +260,7 @@ export class NemesisLockdownComponent {
     }
 
     protected openReloadGameModal(): void {
-        this.nemesisLockdownModalService.openReload(this.nemesisLockdownLoggerService.logs()).subscribe(result => {
+        this.nemesisLockdownModalService.openReload(this.nemesisLockdownLoggerService.logs()).subscribe((result) => {
             if (result) {
                 window.location.reload();
             }
@@ -284,7 +268,7 @@ export class NemesisLockdownComponent {
     }
 
     protected goToLandingPage(): void {
-        this.nemesisLockdownModalService.openExitWarning().subscribe(result => {
+        this.nemesisLockdownModalService.openExitWarning().subscribe((result) => {
             if (result) {
                 this.router.navigate(['/']);
             }
@@ -292,7 +276,7 @@ export class NemesisLockdownComponent {
     }
 
     private getInitialRounds(): NldRoundItem[] {
-        return getRoundConfigs().map(config => ({
+        return getRoundConfigs().map((config) => ({
             num: config.num,
             powerActive: config.powerActive,
             powerInactive: config.powerInactive,
@@ -314,11 +298,8 @@ export class NemesisLockdownComponent {
             this.showGameEndModal();
             return;
         }
-        const nextRound: NldRoundItem | undefined = this.rounds().find(round => round.num === nextRoundNum);
-        if (
-            (this.powerState() === PowerSupplyState.INACTIVE && nextRound?.powerInactive) ||
-            (this.powerState() === PowerSupplyState.ACTIVE && nextRound?.powerActive)
-        ) {
+        const nextRound: NldRoundItem | undefined = this.rounds().find((round) => round.num === nextRoundNum);
+        if ((this.powerState() === PowerSupplyState.INACTIVE && nextRound?.powerInactive) || (this.powerState() === PowerSupplyState.ACTIVE && nextRound?.powerActive)) {
             this.nemesisLockdownModalService.openPowerDropWarning();
             this.nemesisLockdownLoggerService.logPowerDrop(this.powerState());
         }
@@ -335,7 +316,7 @@ export class NemesisLockdownComponent {
     private launchCssIfAvailable(): void {
         const activeRound: number = this.activeRoundNum();
         const rounds: NldRoundItem[] = this.rounds();
-        const activeRoundIndex: number = rounds.findIndex(round => round.num === activeRound);
+        const activeRoundIndex: number = rounds.findIndex((round) => round.num === activeRound);
         const activeRoundItem: NldRoundItem | undefined = rounds[activeRoundIndex];
         if (activeRoundItem?.css) {
             const slotNum: number = activeRoundItem.css.slotNum;
@@ -348,7 +329,7 @@ export class NemesisLockdownComponent {
     private triggerMonsterDevelopment(): void {
         const developmentResult: MonsterDevelopmentResult<MonsterTokenConfig> = this.monsterBagService.triggerMonsterDevelopment();
         this.nemesisLockdownLoggerService.logMonsterDevelopment(developmentResult);
-        this.nemesisLockdownModalService.openMonsterDevelopmentResult(developmentResult).subscribe(queenInNestConfirmed => {
+        this.nemesisLockdownModalService.openMonsterDevelopmentResult(developmentResult).subscribe((queenInNestConfirmed) => {
             if (queenInNestConfirmed) {
                 this.monsterEncounterHappenedRoundNum.set(this.activeRoundNum());
                 this.monsterBagService.summonQueenInNest();
@@ -409,7 +390,7 @@ export class NemesisLockdownComponent {
 
     private saveGameState(): void {
         StorageManager.saveGameState<NemesisLockdownState>(this.gameId, {
-            dateIso: (new Date()).toISOString(),
+            dateIso: new Date().toISOString(),
             rounds: this.rounds(),
             endRoundNum: this.endRoundNum(),
             activeRoundNum: this.activeRoundNum(),
@@ -446,5 +427,4 @@ export class NemesisLockdownComponent {
         this.saveLogs();
         this.notifyAboutSave();
     }
-
 }

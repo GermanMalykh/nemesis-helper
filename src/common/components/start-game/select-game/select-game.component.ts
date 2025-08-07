@@ -12,17 +12,12 @@ export interface GameData {
 @Component({
     selector: 'app-select-game',
     standalone: true,
-    imports: [
-        SelectGameTileComponent,
-        TranslateModule,
-        MatButton,
-    ],
+    imports: [SelectGameTileComponent, TranslateModule, MatButton],
     templateUrl: './select-game.component.html',
     styleUrl: './select-game.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectGameComponent {
-
     @Input({ required: true }) public games: GameData[] = [];
     @Input({ required: false }) public selectedGame: GameData | undefined = undefined;
     @Output() public readonly gameSelect: EventEmitter<GameData> = new EventEmitter<GameData>();
@@ -40,5 +35,4 @@ export class SelectGameComponent {
     protected loadSavedGame(): void {
         this.loadGame.emit();
     }
-
 }

@@ -15,13 +15,7 @@ export interface ReloadModalData {
 @Component({
     selector: 'app-reload-modal',
     standalone: true,
-    imports: [
-        MatButton,
-        NonFocusableDirective,
-        TranslateModule,
-        DatePipe,
-        NgClass,
-    ],
+    imports: [MatButton, NonFocusableDirective, TranslateModule, DatePipe, NgClass],
     templateUrl: './reload-modal.component.html',
     styleUrl: './reload-modal.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,7 +28,7 @@ export class ReloadModalComponent {
 
     public constructor() {
         const reversedLogs: LogItem[] = [...this.data.logs].reverse();
-        const firstDataSaveLogIndex: number = reversedLogs.findIndex(logItem => logItem.text.includes(gameSavedLogText));
+        const firstDataSaveLogIndex: number = reversedLogs.findIndex((logItem) => logItem.text.includes(gameSavedLogText));
         this.saveGameLog = reversedLogs[firstDataSaveLogIndex] || reversedLogs[0];
         this.logs = firstDataSaveLogIndex > -1 ? reversedLogs.slice(0, firstDataSaveLogIndex) : reversedLogs;
     }

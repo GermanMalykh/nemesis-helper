@@ -14,12 +14,7 @@ import { Observable } from 'rxjs';
 @Component({
     selector: 'app-drawer-content',
     standalone: true,
-    imports: [
-        MatButton,
-        MatIcon,
-        MatTooltip,
-        TranslateModule,
-    ],
+    imports: [MatButton, MatIcon, MatTooltip, TranslateModule],
     templateUrl: './drawer-content.component.html',
     styleUrl: './drawer-content.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -38,11 +33,9 @@ export class DrawerContentComponent {
     private readonly modalService: ModalService = inject(ModalService);
 
     protected changeLanguage(): void {
-        this.languageService.toggleLanguage().subscribe(language => {
+        this.languageService.toggleLanguage().subscribe((language) => {
             const savedConfig: AppConfig | undefined = StorageManager.loadConfig();
-            StorageManager.saveConfig(
-                savedConfig ? { ...savedConfig, language } : { language },
-            );
+            StorageManager.saveConfig(savedConfig ? { ...savedConfig, language } : { language });
         });
     }
 
@@ -50,9 +43,7 @@ export class DrawerContentComponent {
         this.uiModeService.toggleUiMode();
         const uiDarkMode: boolean = this.uiModeService.isDarkMode();
         const savedConfig: AppConfig | undefined = StorageManager.loadConfig();
-        StorageManager.saveConfig(
-            savedConfig ? { ...savedConfig, uiDarkMode } : { uiDarkMode },
-        );
+        StorageManager.saveConfig(savedConfig ? { ...savedConfig, uiDarkMode } : { uiDarkMode });
     }
 
     protected openAboutModal(): Observable<boolean | undefined> {
@@ -63,5 +54,4 @@ export class DrawerContentComponent {
             panelClass: 'medium-modal',
         });
     }
-
 }

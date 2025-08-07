@@ -16,22 +16,12 @@ const searchDebounceTimeMs: number = 200;
 @Component({
     selector: 'app-rooms-modal',
     standalone: true,
-    imports: [
-        MatDialogContent,
-        TranslateModule,
-        MatInput,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormField,
-        MatLabel,
-        NgOptimizedImage,
-    ],
+    imports: [MatDialogContent, TranslateModule, MatInput, FormsModule, ReactiveFormsModule, MatFormField, MatLabel, NgOptimizedImage],
     templateUrl: './rooms-modal.component.html',
     styleUrl: './rooms-modal.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RoomsModalComponent implements OnInit {
-
     protected roomData: WritableSignal<ContentGroup[]> = signal([]);
     protected searchControl: FormControl<string> = new FormControl<string>('', { nonNullable: true });
     private readonly data: RoomsModalData = inject(MAT_DIALOG_DATA);
@@ -39,22 +29,21 @@ export class RoomsModalComponent implements OnInit {
     private translatedRoomData: ContentGroup[] = [];
 
     public ngOnInit(): void {
-        this.translatedRoomData = this.data.roomGroups.map(roomGroup => ({
+        this.translatedRoomData = this.data.roomGroups.map((roomGroup) => ({
             name: this.translateService.instant(roomGroup.name),
-            items: roomGroup.items.map(room => ({
+            items: roomGroup.items.map((room) => ({
                 name: this.translateService.instant(room.name),
                 content: this.translateService.instant(room.content),
             })),
         }));
         this.roomData.set(this.translatedRoomData);
-        this.searchControl.valueChanges.pipe(debounceTime(searchDebounceTimeMs)).subscribe(search => {
-            this.roomData.set(this.translatedRoomData.map(
-                roomGroup => ({
+        this.searchControl.valueChanges.pipe(debounceTime(searchDebounceTimeMs)).subscribe((search) => {
+            this.roomData.set(
+                this.translatedRoomData.map((roomGroup) => ({
                     ...roomGroup,
-                    items: roomGroup.items.filter(room => search === '' || room.name.toLowerCase().includes(search.toLowerCase())),
-                }),
-            ));
+                    items: roomGroup.items.filter((room) => search === '' || room.name.toLowerCase().includes(search.toLowerCase())),
+                })),
+            );
         });
     }
-
 }

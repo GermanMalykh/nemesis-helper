@@ -2,11 +2,7 @@
     "hosting": {
         "site": "nemesis-helper-bg",
         "public": "dist/nemesis/browser",
-        "ignore": [
-            "firebase.json",
-            "**/.*",
-            "**/node_modules/**"
-        ],
+        "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
         "rewrites": [
             {
                 "source": "**",

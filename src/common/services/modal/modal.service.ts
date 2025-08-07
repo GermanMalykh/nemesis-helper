@@ -1,10 +1,7 @@
 import { ComponentType } from '@angular/cdk/overlay';
 import { inject, Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import {
-    ConfirmationModalComponent,
-    ConfirmationModalData,
-} from '@common/components/general/confirmation-modal/confirmation-modal.component';
+import { ConfirmationModalComponent, ConfirmationModalData } from '@common/components/general/confirmation-modal/confirmation-modal.component';
 import { TranslationKey } from '@common/types/translation-key.type';
 import { BehaviorSubject, first, Observable } from 'rxjs';
 
@@ -35,7 +32,6 @@ export const optionalActionModalConfig: DefaultModalConfig = {
     providedIn: 'root',
 })
 export class ModalService {
-
     public readonly anyDialogOpened$$: BehaviorSubject<boolean>;
     private readonly matDialog: MatDialog = inject(MatDialog);
 
@@ -50,24 +46,23 @@ export class ModalService {
     }
 
     public openConfirmation(config: ConfirmationModalConfig): Observable<boolean> {
-        return this.matDialog.open(ConfirmationModalComponent, {
-            disableClose: true,
-            closeOnNavigation: true,
-            hasBackdrop: true,
-            panelClass: 'small-modal',
-            data: {
-                noButtonKey: 'tk.general.label.button.cancel',
-                yesButtonKey: 'tk.general.label.button.yes',
-                ...config,
-            },
-        }).afterClosed().pipe(first());
+        return this.matDialog
+            .open(ConfirmationModalComponent, {
+                disableClose: true,
+                closeOnNavigation: true,
+                hasBackdrop: true,
+                panelClass: 'small-modal',
+                data: {
+                    noButtonKey: 'tk.general.label.button.cancel',
+                    yesButtonKey: 'tk.general.label.button.yes',
+                    ...config,
+                },
+            })
+            .afterClosed()
+            .pipe(first());
     }
 
-    public openComponent<Component, Data>(
-        component: ComponentType<Component>,
-        config?: MatDialogConfig<Data>,
-    ): Observable<boolean | undefined> {
+    public openComponent<Component, Data>(component: ComponentType<Component>, config?: MatDialogConfig<Data>): Observable<boolean | undefined> {
         return this.matDialog.open<Component, Data>(component, config).afterClosed().pipe(first());
     }
-
 }

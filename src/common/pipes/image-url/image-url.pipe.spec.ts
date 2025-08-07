@@ -1,7 +1,6 @@
 import { ImageUrlPipe } from './image-url.pipe';
 
 describe('ImageUrlPipe', () => {
-
     let pipe: ImageUrlPipe;
 
     beforeEach(() => {
@@ -37,5 +36,4 @@ describe('ImageUrlPipe', () => {
             expect(pipe.transform('', '', '')).toEqual('assets/images/INVALID_IMAGE_NAME.jpg');
         });
     });
-
 });

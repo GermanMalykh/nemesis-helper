@@ -14,12 +14,9 @@ import { TranslateModule } from '@ngx-translate/core';
     templateUrl: './select-game-tile.component.html',
     styleUrl: './select-game-tile.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [
-        backgroundColorAnimation('selectedTile', '300ms', 'rgba(var(--select-game-tile-overlay-color), 0.5)', 'var(--transparent)'),
-    ],
+    animations: [backgroundColorAnimation('selectedTile', '300ms', 'rgba(var(--select-game-tile-overlay-color), 0.5)', 'var(--transparent)')],
 })
 export class SelectGameTileComponent {
-
     @Input({ required: true }) public gameData: GameData | undefined;
     @Input({ required: false }) public isSelected: boolean = false;
     @Output() public readonly selected: EventEmitter<GameData> = new EventEmitter<GameData>();
@@ -32,5 +29,4 @@ export class SelectGameTileComponent {
         }
         this.selected.emit(this.gameData);
     }
-
 }

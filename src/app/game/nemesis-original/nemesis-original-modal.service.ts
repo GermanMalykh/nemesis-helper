@@ -5,22 +5,10 @@ import { KeyMomentsModalComponent, KeyMomentsModalData } from '@common/component
 import { LogsModalComponent, LogsModalData } from '@common/components/drawer/logs-modal/logs-modal.component';
 import { ReloadModalComponent, ReloadModalData } from '@common/components/drawer/reload-modal/reload-modal.component';
 import { RoomsModalComponent, RoomsModalData } from '@common/components/drawer/rooms-modal/rooms-modal.component';
-import {
-    MonsterDevelopmentModalComponent,
-    MonsterDevelopmentModalData,
-} from '@common/components/monsters/monster-development-modal/monster-development-modal.component';
-import {
-    MonsterSummaryModalComponent,
-    MonsterSummaryModalData,
-} from '@common/components/monsters/monster-summary/monster-summary-modal.component';
-import {
-    MonsterWarningModalComponent,
-    MonsterWarningModalData,
-} from '@common/components/monsters/monster-warning-modal/monster-warning-modal.component';
-import {
-    NoGameEndModalData,
-    NogGameEndModalComponent,
-} from '@common/components/nog-specific/nog-game-end-modal/nog-game-end-modal.component';
+import { MonsterDevelopmentModalComponent, MonsterDevelopmentModalData } from '@common/components/monsters/monster-development-modal/monster-development-modal.component';
+import { MonsterSummaryModalComponent, MonsterSummaryModalData } from '@common/components/monsters/monster-summary/monster-summary-modal.component';
+import { MonsterWarningModalComponent, MonsterWarningModalData } from '@common/components/monsters/monster-warning-modal/monster-warning-modal.component';
+import { NoGameEndModalData, NogGameEndModalComponent } from '@common/components/nog-specific/nog-game-end-modal/nog-game-end-modal.component';
 import { MonsterDevelopmentResult } from '@common/interfaces/monster-development-result.interface';
 import { MonsterTokenBase } from '@common/interfaces/monster-token-base.interface';
 import { ModalService, optionalActionModalConfig, requiredActionModalConfig } from '@common/services/modal/modal.service';
@@ -34,7 +22,6 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class NemesisOriginalModalService {
-
     protected readonly modalService: ModalService = inject(ModalService);
     protected readonly gameId: GameKey = inject(GAME_ID);
 
@@ -74,11 +61,7 @@ export class NemesisOriginalModalService {
         });
     }
 
-    public openMonsterDetails(monsters: {
-        activeMonsters: MonsterTokenBase[];
-        availableMonsters: MonsterTokenBase[];
-        bagMonsters: MonsterTokenBase[];
-    }): Observable<boolean | undefined> {
+    public openMonsterDetails(monsters: { activeMonsters: MonsterTokenBase[]; availableMonsters: MonsterTokenBase[]; bagMonsters: MonsterTokenBase[] }): Observable<boolean | undefined> {
         return this.modalService.openComponent<MonsterSummaryModalComponent, MonsterSummaryModalData>(MonsterSummaryModalComponent, {
             ...optionalActionModalConfig,
             panelClass: 'medium-modal',
@@ -119,7 +102,6 @@ export class NemesisOriginalModalService {
         });
     }
 
-
     public openHibernationChambersOpeningWarning(): Observable<boolean | undefined> {
         return this.modalService.openConfirmation({
             titleKey: 'tk.nog.config.label.key-moment.hibernation-chambers-opening.title',
@@ -138,10 +120,7 @@ export class NemesisOriginalModalService {
         });
     }
 
-    public openGameEndSummary(
-        gameState: GameSetupDataOriginal,
-        autodestructionHappened: boolean,
-    ): Observable<boolean | undefined> {
+    public openGameEndSummary(gameState: GameSetupDataOriginal, autodestructionHappened: boolean): Observable<boolean | undefined> {
         return this.modalService.openComponent<NogGameEndModalComponent, NoGameEndModalData>(NogGameEndModalComponent, {
             ...requiredActionModalConfig,
             panelClass: 'medium-modal',
@@ -207,18 +186,15 @@ export class NemesisOriginalModalService {
     }
 
     public openMonsterDevelopmentResult(developmentResult: MonsterDevelopmentResult<MonsterTokenBase>): Observable<boolean | undefined> {
-        return this.modalService.openComponent<MonsterDevelopmentModalComponent, MonsterDevelopmentModalData>(
-            MonsterDevelopmentModalComponent,
-            {
-                ...requiredActionModalConfig,
-                panelClass: 'small-modal',
-                data: {
-                    gameId: this.gameId,
-                    developmentResult,
-                    monsterDevelopmentConfig,
-                },
+        return this.modalService.openComponent<MonsterDevelopmentModalComponent, MonsterDevelopmentModalData>(MonsterDevelopmentModalComponent, {
+            ...requiredActionModalConfig,
+            panelClass: 'small-modal',
+            data: {
+                gameId: this.gameId,
+                developmentResult,
+                monsterDevelopmentConfig,
             },
-        );
+        });
     }
 
     public openExitWarning(): Observable<boolean | undefined> {
@@ -229,5 +205,4 @@ export class NemesisOriginalModalService {
             noButtonKey: 'tk.general.label.button.back',
         });
     }
-
 }

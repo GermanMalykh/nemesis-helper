@@ -7,7 +7,6 @@ const saveDataKeySuffix: string = '_state_data';
 const logsDataKeySuffix: string = '_logs_data';
 
 export class StorageManager {
-
     public static loadConfig(): AppConfig | undefined {
         return StorageManager.loadData<AppConfig>('app_config');
     }
@@ -17,39 +16,39 @@ export class StorageManager {
     }
 
     public static loadGameSetupData<SetupData extends GameSetupData>(gameKey: GameKey): SetupData | undefined {
-        return StorageManager.loadData(`${ gameKey }${ setupDataKeySuffix }`);
+        return StorageManager.loadData(`${gameKey}${setupDataKeySuffix}`);
     }
 
     public static saveGameSetupData(gameKey: GameKey, saveState: GameSetupData): void {
-        StorageManager.saveData(`${ gameKey }${ setupDataKeySuffix }`, saveState);
+        StorageManager.saveData(`${gameKey}${setupDataKeySuffix}`, saveState);
     }
 
     public static clearGameSetupData(gameKey: GameKey): void {
-        StorageManager.clearData(`${ gameKey }${ setupDataKeySuffix }`);
+        StorageManager.clearData(`${gameKey}${setupDataKeySuffix}`);
     }
 
     public static loadGameState<StateData>(gameKey: GameKey): StateData | undefined {
-        return StorageManager.loadData(`${ gameKey }${ saveDataKeySuffix }`);
+        return StorageManager.loadData(`${gameKey}${saveDataKeySuffix}`);
     }
 
     public static saveGameState<StateData>(gameKey: GameKey, stateData: StateData): void {
-        StorageManager.saveData(`${ gameKey }${ saveDataKeySuffix }`, stateData);
+        StorageManager.saveData(`${gameKey}${saveDataKeySuffix}`, stateData);
     }
 
     public static clearGameState(gameKey: GameKey): void {
-        StorageManager.clearData(`${ gameKey }${ saveDataKeySuffix }`);
+        StorageManager.clearData(`${gameKey}${saveDataKeySuffix}`);
     }
 
     public static loadGameLogs(gameKey: GameKey): LogItem[] | undefined {
-        return StorageManager.loadData(`${ gameKey }${ logsDataKeySuffix }`);
+        return StorageManager.loadData(`${gameKey}${logsDataKeySuffix}`);
     }
 
     public static saveGameLogs(gameKey: GameKey, stateData: LogItem[]): void {
-        StorageManager.saveData(`${ gameKey }${ logsDataKeySuffix }`, stateData);
+        StorageManager.saveData(`${gameKey}${logsDataKeySuffix}`, stateData);
     }
 
     public static clearGameLogs(gameKey: GameKey): void {
-        StorageManager.clearData(`${ gameKey }${ logsDataKeySuffix }`);
+        StorageManager.clearData(`${gameKey}${logsDataKeySuffix}`);
     }
 
     public static clearAllGameData(gameKey: GameKey): void {
@@ -70,5 +69,4 @@ export class StorageManager {
     private static clearData(key: string): void {
         window.localStorage.removeItem(key);
     }
-
 }

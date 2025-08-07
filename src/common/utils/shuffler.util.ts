@@ -1,6 +1,5 @@
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 export class Shuffler {
-
     public static multipleShuffle<T>(array: T[], times: number): T[] {
         let resultArray: T[] = [];
         for (let i: number = 0; i < times; i++) {
@@ -22,9 +21,8 @@ export class Shuffler {
     // https://en.wikipedia.org/wiki/Schwartzian_transform
     public static schwartzianShuffle<T>(array: T[]): T[] {
         return array
-            .map(value => ({ value, sort: Math.random() }))
+            .map((value) => ({ value, sort: Math.random() }))
             .sort((a, b) => a.sort - b.sort)
             .map(({ value }) => value);
     }
-
 }

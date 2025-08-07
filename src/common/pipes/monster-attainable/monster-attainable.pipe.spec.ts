@@ -3,7 +3,6 @@ import { MonsterTokenBase } from '@common/interfaces/monster-token-base.interfac
 import { MonsterAttainablePipe } from './monster-attainable.pipe';
 
 describe('MonsterAttainablePipe', () => {
-
     let pipe: MonsterAttainablePipe;
 
     beforeEach(() => {

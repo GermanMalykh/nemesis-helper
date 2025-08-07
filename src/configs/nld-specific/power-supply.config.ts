@@ -31,4 +31,4 @@ const powerSupplyStatesConfig: PowerSupplyStateConfig[] = [
     { num: 4, initState: PowerSupplyState.INACTIVE },
 ];
 
-export const getPowerSupplyStatesConfig: () => PowerSupplyStateConfig[] = () => powerSupplyStatesConfig.map(config => ({ ...config }));
+export const getPowerSupplyStatesConfig: () => PowerSupplyStateConfig[] = () => powerSupplyStatesConfig.map((config) => ({ ...config }));

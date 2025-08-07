@@ -5,7 +5,6 @@ import { GameSetupData } from '@configs/games.config';
 import { gameGuard } from './game.guard';
 
 describe('gameGuard', () => {
-
     let routerMock: Router;
 
     beforeEach(() => {
@@ -17,10 +16,7 @@ describe('gameGuard', () => {
     it('should call createUrlTree with proper param when url path is not found', () => {
         const createUrlTreeSpy: jasmine.Spy = spyOn(routerMock, 'createUrlTree');
 
-        TestBed.runInInjectionContext(() => gameGuard(
-            { url: [{ path: 'somePath' }] } as unknown as ActivatedRouteSnapshot,
-            { url: 'someUrl2' } as unknown as RouterStateSnapshot,
-        ));
+        TestBed.runInInjectionContext(() => gameGuard({ url: [{ path: 'somePath' }] } as unknown as ActivatedRouteSnapshot, { url: 'someUrl2' } as unknown as RouterStateSnapshot));
 
         expect(createUrlTreeSpy).toHaveBeenCalledWith(['/']);
     });
@@ -28,10 +24,7 @@ describe('gameGuard', () => {
     it('should return proper value when url path is not found', () => {
         spyOn(routerMock, 'createUrlTree').and.returnValue('/urlTree' as unknown as UrlTree);
 
-        const result: string = TestBed.runInInjectionContext(() => gameGuard(
-            { url: [{ path: 'somePath' }] } as unknown as ActivatedRouteSnapshot,
-            { url: 'someUrl2' } as unknown as RouterStateSnapshot,
-        )) as unknown as string;
+        const result: string = TestBed.runInInjectionContext(() => gameGuard({ url: [{ path: 'somePath' }] } as unknown as ActivatedRouteSnapshot, { url: 'someUrl2' } as unknown as RouterStateSnapshot)) as unknown as string;
 
         expect(result).toEqual('/urlTree');
     });
@@ -40,10 +33,7 @@ describe('gameGuard', () => {
         const createUrlTreeSpy: jasmine.Spy = spyOn(routerMock, 'createUrlTree').and.returnValue('/urlTree' as unknown as UrlTree);
         const loadGameSetupDataSpy: jasmine.Spy = spyOn(StorageManager, 'loadGameSetupData').and.returnValue({} as GameSetupData);
 
-        const result: MaybeAsync<GuardResult> = TestBed.runInInjectionContext(() => gameGuard(
-            { url: [{ path: 'nemesis-lockdown' }] } as unknown as ActivatedRouteSnapshot,
-            { url: 'someUrl2' } as unknown as RouterStateSnapshot,
-        ));
+        const result: MaybeAsync<GuardResult> = TestBed.runInInjectionContext(() => gameGuard({ url: [{ path: 'nemesis-lockdown' }] } as unknown as ActivatedRouteSnapshot, { url: 'someUrl2' } as unknown as RouterStateSnapshot));
 
         expect(createUrlTreeSpy).not.toHaveBeenCalled();
         expect(loadGameSetupDataSpy).toHaveBeenCalledWith('nemesisLockdown');
@@ -54,14 +44,10 @@ describe('gameGuard', () => {
         const createUrlTreeSpy: jasmine.Spy = spyOn(routerMock, 'createUrlTree').and.returnValue('/urlTree' as unknown as UrlTree);
         const loadGameSetupDataSpy: jasmine.Spy = spyOn(StorageManager, 'loadGameSetupData').and.returnValue(undefined);
 
-        const result: string = TestBed.runInInjectionContext(() => gameGuard(
-            { url: [{ path: 'nemesis-lockdown' }] } as unknown as ActivatedRouteSnapshot,
-            { url: 'someUrl2' } as unknown as RouterStateSnapshot,
-        )) as unknown as string;
+        const result: string = TestBed.runInInjectionContext(() => gameGuard({ url: [{ path: 'nemesis-lockdown' }] } as unknown as ActivatedRouteSnapshot, { url: 'someUrl2' } as unknown as RouterStateSnapshot)) as unknown as string;
 
         expect(createUrlTreeSpy).toHaveBeenCalledWith(['/']);
         expect(loadGameSetupDataSpy).toHaveBeenCalledWith('nemesisLockdown');
         expect(result).toEqual('/urlTree');
     });
-
 });

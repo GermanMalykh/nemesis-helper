@@ -10,15 +10,8 @@ import { TranslationKey } from '@common/types/translation-key.type';
     standalone: true,
 })
 export class MonsterDevelopmentResultTkPipe implements PipeTransform {
-
-    public transform(
-        developmentResultData: MonsterDevelopmentResult<MonsterTokenBase>,
-        monsterDevelopmentConfig: MonsterDevelopmentConfig,
-    ): TranslationKey {
+    public transform(developmentResultData: MonsterDevelopmentResult<MonsterTokenBase>, monsterDevelopmentConfig: MonsterDevelopmentConfig): TranslationKey {
         const monsterType: MonsterType = developmentResultData.token.type;
-        return developmentResultData.success ?
-            monsterDevelopmentConfig[monsterType].successResultKey :
-            monsterDevelopmentConfig[monsterType].failureResultKey;
+        return developmentResultData.success ? monsterDevelopmentConfig[monsterType].successResultKey : monsterDevelopmentConfig[monsterType].failureResultKey;
     }
-
 }

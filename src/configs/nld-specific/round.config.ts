@@ -1,10 +1,4 @@
-export type RoundTrackerEvent =
-    'power_turn_on'
-    | 'power_turn_off'
-    | 'autodestruction_start'
-    | 'autodestruction_stop'
-    | 'alert_procedure_trigger'
-    | 'end_the_game';
+export type RoundTrackerEvent = 'power_turn_on' | 'power_turn_off' | 'autodestruction_start' | 'autodestruction_stop' | 'alert_procedure_trigger' | 'end_the_game';
 
 export interface RoundConfig {
     num: number;
@@ -32,4 +26,4 @@ const roundConfigs: RoundConfig[] = [
     { num: 0, powerActive: false, powerInactive: false },
 ];
 
-export const getRoundConfigs: () => RoundConfig[] = () => roundConfigs.map(config => ({ ...config }));
+export const getRoundConfigs: () => RoundConfig[] = () => roundConfigs.map((config) => ({ ...config }));

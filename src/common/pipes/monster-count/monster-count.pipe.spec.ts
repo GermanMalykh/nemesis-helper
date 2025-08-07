@@ -4,7 +4,6 @@ import { MonsterTokenConfig } from '@configs/nld-specific/monster-token.config';
 import { MonsterCountPipe } from './monster-count.pipe';
 
 describe('MonsterCountPipe', () => {
-
     let pipe: MonsterCountPipe;
 
     beforeEach(() => {

@@ -29,25 +29,12 @@ interface GameSetupForm {
 @Component({
     selector: 'app-selected-game-setup',
     standalone: true,
-    imports: [
-        MatRadioGroup,
-        MatRadioButton,
-        ReactiveFormsModule,
-        MatCheckbox,
-        TranslateModule,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        MatButton,
-        NonFocusableDirective,
-        InfoTooltipComponent,
-    ],
+    imports: [MatRadioGroup, MatRadioButton, ReactiveFormsModule, MatCheckbox, TranslateModule, MatFormField, MatInput, MatLabel, MatButton, NonFocusableDirective, InfoTooltipComponent],
     templateUrl: './selected-game-setup.component.html',
     styleUrl: './selected-game-setup.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectedGameSetupComponent implements OnInit, OnDestroy {
-
     @Input({ required: true }) public selectedGame: GameData | undefined;
     @Output() public readonly startGame: EventEmitter<GameSetupData> = new EventEmitter<GameSetupData>();
     @Output() public readonly goBack: EventEmitter<void> = new EventEmitter<void>();
@@ -55,13 +42,10 @@ export class SelectedGameSetupComponent implements OnInit, OnDestroy {
     protected readonly showError: WritableSignal<boolean> = signal(false);
     protected readonly gameMode: typeof GameMode = GameMode;
     protected readonly form: FormGroup<GameSetupForm> = new FormGroup<GameSetupForm>({
-        players: new FormArray<FormControl<string>>([
-            new FormControl<string>('', { nonNullable: true }),
-            new FormControl<string>('', { nonNullable: true }),
-            new FormControl<string>('', { nonNullable: true }),
-            new FormControl<string>('', { nonNullable: true }),
-            new FormControl<string>('', { nonNullable: true }),
-        ], { validators: [Validators.required] }),
+        players: new FormArray<FormControl<string>>(
+            [new FormControl<string>('', { nonNullable: true }), new FormControl<string>('', { nonNullable: true }), new FormControl<string>('', { nonNullable: true }), new FormControl<string>('', { nonNullable: true }), new FormControl<string>('', { nonNullable: true })],
+            { validators: [Validators.required] },
+        ),
         gameMode: new FormControl<GameMode>(GameMode.SEMI_COOP, { nonNullable: true }),
         randomizePlayerNum: new FormControl<boolean>(true, { nonNullable: true }),
         timerEnabled: new FormControl<boolean>(false, { nonNullable: true }),
@@ -70,11 +54,11 @@ export class SelectedGameSetupComponent implements OnInit, OnDestroy {
     private readonly subSink: Subscription = new Subscription();
 
     public ngOnInit(): void {
-        this.subSink.add(this.form.controls.players.valueChanges.pipe(
-            filter(() => this.showError()),
-        ).subscribe(() => {
-            this.showError.set(false);
-        }));
+        this.subSink.add(
+            this.form.controls.players.valueChanges.pipe(filter(() => this.showError())).subscribe(() => {
+                this.showError.set(false);
+            }),
+        );
     }
 
     public ngOnDestroy(): void {
@@ -83,7 +67,7 @@ export class SelectedGameSetupComponent implements OnInit, OnDestroy {
 
     protected onStartGameClick(): void {
         const formValue: FormValuer<GameSetupForm> = this.form.getRawValue();
-        const players: string[] = formValue.players.filter(player => !!player);
+        const players: string[] = formValue.players.filter((player) => !!player);
         const isEnoughPlayers: boolean = players.length > 0;
 
         if (isEnoughPlayers) {
@@ -104,7 +88,7 @@ export class SelectedGameSetupComponent implements OnInit, OnDestroy {
             gameMode: formValue.gameMode,
             timerEnabled: formValue.timerEnabled,
             monstersDisabled: formValue.monstersDisabled,
-            createdDate: (new Date()).toISOString(),
+            createdDate: new Date().toISOString(),
         };
         switch (gameId) {
             case 'nemesisOriginal':
@@ -149,12 +133,14 @@ export class SelectedGameSetupComponent implements OnInit, OnDestroy {
 
     private generateSupplyOrder(): NldPowerSupplyData {
         const randomizedPowerSupplies: PowerSupplyStateConfig[] = Shuffler.shuffle(getPowerSupplyStatesConfig());
-        return Object.keys(powerSupplySections).reduce((sections, key, index) => ({
-            ...sections,
-            [key]: {
-                ...randomizedPowerSupplies[index],
-            },
-        }), {} as NldPowerSupplyData);
+        return Object.keys(powerSupplySections).reduce(
+            (sections, key, index) => ({
+                ...sections,
+                [key]: {
+                    ...randomizedPowerSupplies[index],
+                },
+            }),
+            {} as NldPowerSupplyData,
+        );
     }
-
 }

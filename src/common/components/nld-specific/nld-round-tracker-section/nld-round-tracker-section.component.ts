@@ -19,21 +19,12 @@ export interface CssMoveEvent {
 @Component({
     selector: 'app-nld-round-tracker-section',
     standalone: true,
-    imports: [
-        NldRoundItemComponent,
-        MatMenuTrigger,
-        MatMenu,
-        MatMenuItem,
-        MatButton,
-        TranslateModule,
-        PlayerActionsDisablePipe,
-    ],
+    imports: [NldRoundItemComponent, MatMenuTrigger, MatMenu, MatMenuItem, MatButton, TranslateModule, PlayerActionsDisablePipe],
     templateUrl: './nld-round-tracker-section.component.html',
     styleUrl: './nld-round-tracker-section.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NldRoundTrackerSectionComponent {
-
     @Input({ required: true }) public rounds: NldRoundItem[] = [];
     @Input({ required: true }) public activeStage: Stage | undefined;
     @Input({ required: true }) public activeRoundNum: number | undefined;
@@ -60,7 +51,7 @@ export class NldRoundTrackerSectionComponent {
         if (roundIndex >= lastRoundIndex || roundIndex < 1 || !this.activeRoundNum) {
             return false;
         }
-        return !this.rounds[roundIndex - 1].css && (round.num + 1 < this.activeRoundNum);
+        return !this.rounds[roundIndex - 1].css && round.num + 1 < this.activeRoundNum;
     }
 
     protected canMoveCssRight(roundIndex: number, round: NldRoundItem): boolean {
@@ -71,7 +62,7 @@ export class NldRoundTrackerSectionComponent {
         if (roundIndex >= lastRoundIndex || roundIndex < 1 || !this.activeRoundNum || round.num >= this.activeRoundNum) {
             return false;
         }
-        return !this.rounds[roundIndex + 1].css && (roundIndex < lastRoundIndex - 1);
+        return !this.rounds[roundIndex + 1].css && roundIndex < lastRoundIndex - 1;
     }
 
     protected onCssMoveEvent(side: CssMoveSide, roundConfig: NldRoundItem): void {
@@ -81,28 +72,31 @@ export class NldRoundTrackerSectionComponent {
     protected onRoundTrackerEvent(event: RoundTrackerEvent): void {
         switch (event) {
             case 'end_the_game':
-                this.modalService.openConfirmation({
-                    titleKey: 'tk.round.label.event.end-the-game.warning-title',
-                    messageKey: 'tk.round.label.event.end-the-game.warning-message',
-                }).subscribe(result => {
-                    if (result) {
-                        this.roundTrackerEvent.emit(event);
-                    }
-                });
+                this.modalService
+                    .openConfirmation({
+                        titleKey: 'tk.round.label.event.end-the-game.warning-title',
+                        messageKey: 'tk.round.label.event.end-the-game.warning-message',
+                    })
+                    .subscribe((result) => {
+                        if (result) {
+                            this.roundTrackerEvent.emit(event);
+                        }
+                    });
                 break;
             case 'alert_procedure_trigger':
-                this.modalService.openConfirmation({
-                    titleKey: 'tk.nld.round.label.event.alert-procedure.warning-title',
-                    messageKey: 'tk.nld.round.label.event.alert-procedure.warning-message',
-                }).subscribe(result => {
-                    if (result) {
-                        this.roundTrackerEvent.emit(event);
-                    }
-                });
+                this.modalService
+                    .openConfirmation({
+                        titleKey: 'tk.nld.round.label.event.alert-procedure.warning-title',
+                        messageKey: 'tk.nld.round.label.event.alert-procedure.warning-message',
+                    })
+                    .subscribe((result) => {
+                        if (result) {
+                            this.roundTrackerEvent.emit(event);
+                        }
+                    });
                 break;
             default:
                 this.roundTrackerEvent.emit(event);
         }
     }
-
 }

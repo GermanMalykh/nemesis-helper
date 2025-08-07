@@ -6,16 +6,11 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
     selector: 'app-summary-section',
     standalone: true,
-    imports: [
-        TranslateModule,
-        NgClass,
-    ],
+    imports: [TranslateModule, NgClass],
     templateUrl: './summary-section.component.html',
     styleUrl: './summary-section.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SummarySectionComponent {
-
     @Input({ required: true }) public summary: ContentItem | undefined;
-
 }

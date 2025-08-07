@@ -11,17 +11,12 @@ import { filter, Subscription } from 'rxjs';
 @Component({
     selector: 'app-phases-section',
     standalone: true,
-    imports: [
-        TranslateModule,
-        MatButton,
-        NonFocusableDirective,
-    ],
+    imports: [TranslateModule, MatButton, NonFocusableDirective],
     templateUrl: './phases-section.component.html',
     styleUrl: './phases-section.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PhasesSectionComponent<StageType extends string> implements OnInit, OnDestroy {
-
     @Input({ required: true }) public phasesConfig: PhaseConfig<StageType>[] = [];
     @Input({ required: true }) public activeStage: PhaseStage<StageType>['stageId'] | undefined;
 
@@ -39,18 +34,19 @@ export class PhasesSectionComponent<StageType extends string> implements OnInit,
     }
 
     protected nextStage(): void {
-        const stages: PhaseStage<StageType>[] = this.phasesConfig.flatMap(phaseConfig => phaseConfig.stages);
-        const activeIndex: number = stages.findIndex(stage => stage.stageId === this.activeStage);
+        const stages: PhaseStage<StageType>[] = this.phasesConfig.flatMap((phaseConfig) => phaseConfig.stages);
+        const activeIndex: number = stages.findIndex((stage) => stage.stageId === this.activeStage);
         const nextStageIndex: number = activeIndex === stages.length - 1 ? 0 : activeIndex + 1;
         this.stage.emit(stages[nextStageIndex].stageId);
     }
 
     private registerKeyboardListener(): void {
-        this.subSink.add(KeyboardUtil.getKeyboardEvent(['.'])
-            .pipe(filter(() => !this.modalService.anyDialogOpened$$.value))
-            .subscribe(() => {
-                this.nextStage();
-            }),
+        this.subSink.add(
+            KeyboardUtil.getKeyboardEvent(['.'])
+                .pipe(filter(() => !this.modalService.anyDialogOpened$$.value))
+                .subscribe(() => {
+                    this.nextStage();
+                }),
         );
     }
 }

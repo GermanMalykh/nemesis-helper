@@ -14,24 +14,12 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
     selector: 'app-monsters-section',
     standalone: true,
-    imports: [
-        TranslateModule,
-        MatButton,
-        MonsterItemComponent,
-        MatMenu,
-        MatMenuItem,
-        MatMenuTrigger,
-        MonsterTypeTkPipe,
-        MonsterAttainablePipe,
-        NonFocusableDirective,
-        MatIcon,
-    ],
+    imports: [TranslateModule, MatButton, MonsterItemComponent, MatMenu, MatMenuItem, MatMenuTrigger, MonsterTypeTkPipe, MonsterAttainablePipe, NonFocusableDirective, MatIcon],
     templateUrl: './monsters-section.component.html',
     styleUrl: './monsters-section.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MonstersSectionComponent {
-
     @Input({ required: true }) public activeMonsters: MonsterTokenBase[] = [];
     @Input({ required: true }) public availableMonsters: MonsterTokenBase[] = [];
     @Input({ required: true }) public bagMonsters: MonsterTokenBase[] = [];
@@ -51,5 +39,4 @@ export class MonstersSectionComponent {
     public onMonsterRetreat(monster: MonsterTokenBase): void {
         this.monsterRetreat.emit(monster);
     }
-
 }

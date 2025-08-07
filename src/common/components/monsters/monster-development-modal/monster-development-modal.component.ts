@@ -23,22 +23,12 @@ export interface MonsterDevelopmentModalData {
 @Component({
     selector: 'app-monster-development-modal',
     standalone: true,
-    imports: [
-        TranslateModule,
-        MonsterTypeTkPipe,
-        MonsterItemComponent,
-        MatButton,
-        NonFocusableDirective,
-        MonsterDevelopmentTkPipe,
-        MonsterDevelopmentResultTkPipe,
-        GameIdTkPipe,
-    ],
+    imports: [TranslateModule, MonsterTypeTkPipe, MonsterItemComponent, MatButton, NonFocusableDirective, MonsterDevelopmentTkPipe, MonsterDevelopmentResultTkPipe, GameIdTkPipe],
     templateUrl: './monster-development-modal.component.html',
     styleUrl: './monster-development-modal.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MonsterDevelopmentModalComponent {
-
     protected readonly monsterType: typeof MonsterType = MonsterType;
     protected readonly data: MonsterDevelopmentModalData = inject(MAT_DIALOG_DATA);
     private readonly matDialogRef: MatDialogRef<MonsterDevelopmentModalComponent> = inject(MatDialogRef);
@@ -46,5 +36,4 @@ export class MonsterDevelopmentModalComponent {
     public onClick(result: boolean): void {
         this.matDialogRef.close(result);
     }
-
 }

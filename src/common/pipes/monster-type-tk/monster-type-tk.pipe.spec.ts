@@ -2,7 +2,6 @@ import { MonsterType } from '@common/enums/monster-types.enum';
 import { MonsterTypeTkPipe } from './monster-type-tk.pipe';
 
 describe('MonsterTypeTkPipe', () => {
-
     let pipe: MonsterTypeTkPipe;
 
     beforeEach(() => {

@@ -11,20 +11,12 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
     selector: 'app-nog-round-tracker-section',
     standalone: true,
-    imports: [
-        NogRoundItemComponent,
-        MatMenuTrigger,
-        MatMenu,
-        MatMenuItem,
-        MatButton,
-        TranslateModule,
-    ],
+    imports: [NogRoundItemComponent, MatMenuTrigger, MatMenu, MatMenuItem, MatButton, TranslateModule],
     templateUrl: './nog-round-tracker-section.component.html',
     styleUrl: './nog-round-tracker-section.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NogRoundTrackerSectionComponent {
-
     @Input({ required: true }) public rounds: NogRoundItem[] = [];
     @Input({ required: true }) public activeRoundNum: number | undefined;
     @Input({ required: true }) public endRoundNum: number = 0;
@@ -41,18 +33,19 @@ export class NogRoundTrackerSectionComponent {
     protected onRoundTrackerEvent(event: RoundTrackerEvent): void {
         switch (event) {
             case 'end_the_game':
-                this.modalService.openConfirmation({
-                    titleKey: 'tk.round.label.event.end-the-game.warning-title',
-                    messageKey: 'tk.round.label.event.end-the-game.warning-message',
-                }).subscribe(result => {
-                    if (result) {
-                        this.roundTrackerEvent.emit(event);
-                    }
-                });
+                this.modalService
+                    .openConfirmation({
+                        titleKey: 'tk.round.label.event.end-the-game.warning-title',
+                        messageKey: 'tk.round.label.event.end-the-game.warning-message',
+                    })
+                    .subscribe((result) => {
+                        if (result) {
+                            this.roundTrackerEvent.emit(event);
+                        }
+                    });
                 break;
             default:
                 this.roundTrackerEvent.emit(event);
         }
     }
-
 }

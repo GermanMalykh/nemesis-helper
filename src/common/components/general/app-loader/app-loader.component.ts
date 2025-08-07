@@ -5,9 +5,7 @@ import { GlobalLoaderService } from '@common/services/global-loader/global-loade
 @Component({
     selector: 'app-app-loader',
     standalone: true,
-    imports: [
-        MatProgressSpinner,
-    ],
+    imports: [MatProgressSpinner],
     templateUrl: './app-loader.component.html',
     styleUrl: './app-loader.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
