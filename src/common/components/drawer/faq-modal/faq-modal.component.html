@@ -1,5 +1,4 @@
 <div class="modal-wrapper">
-
     <div class="modal-header">{{ 'tk.id_short.faq-modal.title' | gameIdTk: this.data.gameId | translate }}</div>
     <div class="group-links font-20-600">
         @for (faqGroup of filteredGroups(); track $index) {
@@ -15,7 +14,9 @@
     </div>
     <div class="search-wrapper">
         <div class="search-inner">
-            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+            <mat-form-field
+                appearance="outline"
+                subscriptSizing="dynamic">
                 <mat-label>{{ 'tk.faq-modal.label.find-rules' | translate }}</mat-label>
                 <input
                     type="text"
