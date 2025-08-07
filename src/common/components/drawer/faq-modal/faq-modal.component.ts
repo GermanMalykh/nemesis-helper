@@ -49,7 +49,7 @@ export class FaqModalComponent {
                     items: group.items.filter(item => {
                         const translated = this.translate.instant(item);
                         return query === '' || translated.toLowerCase().includes(query);
-                    })
+                    }),
                 }))
                 .filter(group => group.items.length > 0);
             this.filteredGroups.set(result);
