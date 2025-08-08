@@ -1,27 +1,76 @@
 $button-size: 44px;
+$round-item-size: 40px;
 
 :host {
     overflow: auto;
     width: 100%;
     height: 100%;
 
-    > div {
+    .round-tracker-desktop {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
         padding: var(--sizing-20);
         min-width: 868px;
+
+        app-nog-round-item {
+            margin-bottom: 10px;
+        }
+
+        button {
+            max-height: $button-size;
+            height: $button-size;
+            min-width: $button-size;
+            min-height: $button-size;
+            margin-left: var(--sizing-20);
+        }
     }
 
-    app-nog-round-item {
-        margin-bottom: 10px;
+    .round-tracker-mobile {
+        display: none;
     }
+}
 
-    button {
-        max-height: $button-size;
-        height: $button-size;
-        min-width: $button-size;
-        min-height: $button-size;
-        margin-left: var(--sizing-20);
+/* Mobile simplified view */
+@media (max-width: 600px) {
+    :host {
+        .round-tracker-desktop {
+            display: none;
+        }
+        .round-tracker-mobile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--sizing-20);
+            padding: var(--sizing-20);
+            /* Дополнительный отступ сверху, чтобы не перекрывало заголовок */
+            margin-top: var(--sizing-10);
+        }
+        .mobile-round {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .mobile-round .round {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: $round-item-size * 1.2;
+            height: $round-item-size * 1.2;
+            border: solid 2px var(--round-border-color);
+            border-radius: 10%;
+        }
+        .mobile-round .round > div {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button[mat-flat-button] {
+            width: 100%;
+            max-width: 420px;
+        }
     }
 }

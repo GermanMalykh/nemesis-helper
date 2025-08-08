@@ -1,4 +1,4 @@
-<div>
+<div class="round-tracker-desktop">
     @for (round of rounds; let index = $index; track round.num) {
         <app-nog-round-item
             [roundConfig]="round"
@@ -15,6 +15,50 @@
         <span>{{ 'tk.round.button.actions' | translate }}</span>
     </button>
     <mat-menu #tokenMenu="matMenu">
+        @if (enableMonsterEncounterAction) {
+            <button
+                mat-menu-item
+                [disabled]="monsterEncounterHappenedRoundNum !== undefined"
+                (click)="monsterEncounter.emit()">
+                {{ 'tk.nog.round.label.event.first-encounter' | translate }}
+            </button>
+        }
+        @if (autodestruction) {
+            <button
+                mat-menu-item
+                [disabled]="autodestruction.state === 'red'"
+                (click)="onRoundTrackerEvent('autodestruction_stop')">
+                {{ 'tk.nog.round.label.event.autodestruction.stop' | translate }}
+            </button>
+        } @else {
+            <button
+                mat-menu-item
+                (click)="onRoundTrackerEvent('autodestruction_start')">
+                {{ 'tk.nog.round.label.event.autodestruction.start' | translate }}
+            </button>
+        }
+        <button
+            mat-menu-item
+            (click)="onRoundTrackerEvent('end_the_game')">
+            {{ 'tk.round.label.event.end-the-game.trigger' | translate }}
+        </button>
+    </mat-menu>
+</div>
+
+<!-- Mobile simplified view -->
+<div class="round-tracker-mobile">
+    <div class="mobile-round">
+        <div class="round font-16-600">
+            <div>{{ activeRoundNum }}</div>
+        </div>
+    </div>
+    <button
+        mat-flat-button
+        color="primary"
+        [matMenuTriggerFor]="tokenMenuMobile">
+        <span>{{ 'tk.round.button.actions' | translate }}</span>
+    </button>
+    <mat-menu #tokenMenuMobile="matMenu">
         @if (enableMonsterEncounterAction) {
             <button
                 mat-menu-item

@@ -5,6 +5,8 @@
     border: 2px solid var(--sections-color);
     border-radius: 8px;
     position: relative;
+    /* Отступ сверху, чтобы заголовок не перекрывал контент */
+    padding-top: var(--sizing-20);
 
     > div {
         position: absolute;
