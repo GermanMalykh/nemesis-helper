@@ -29,19 +29,19 @@ export class RoomsModalComponent implements OnInit {
     private translatedRoomData: ContentGroup[] = [];
 
     public ngOnInit(): void {
-        this.translatedRoomData = this.data.roomGroups.map((roomGroup) => ({
+        this.translatedRoomData = this.data.roomGroups.map(roomGroup => ({
             name: this.translateService.instant(roomGroup.name),
-            items: roomGroup.items.map((room) => ({
+            items: roomGroup.items.map(room => ({
                 name: this.translateService.instant(room.name),
                 content: this.translateService.instant(room.content),
             })),
         }));
         this.roomData.set(this.translatedRoomData);
-        this.searchControl.valueChanges.pipe(debounceTime(searchDebounceTimeMs)).subscribe((search) => {
+        this.searchControl.valueChanges.pipe(debounceTime(searchDebounceTimeMs)).subscribe(search => {
             this.roomData.set(
-                this.translatedRoomData.map((roomGroup) => ({
+                this.translatedRoomData.map(roomGroup => ({
                     ...roomGroup,
-                    items: roomGroup.items.filter((room) => search === '' || room.name.toLowerCase().includes(search.toLowerCase())),
+                    items: roomGroup.items.filter(room => search === '' || room.name.toLowerCase().includes(search.toLowerCase())),
                 })),
             );
         });

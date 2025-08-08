@@ -34,8 +34,8 @@ export class MonsterTokensService<MonsterTokenType extends MonsterTokenBase> {
             ...this.generateMonsterTypeArray(defaultMonsterBagConfig, MonsterType.QUEEN),
         ];
         const drawnMonsters: MonsterTokenType[] = [];
-        initialSetup.forEach((type) => {
-            const monsterIndex: number = availableMonsters.findIndex((monster) => monster.type === type);
+        initialSetup.forEach(type => {
+            const monsterIndex: number = availableMonsters.findIndex(monster => monster.type === type);
             if (monsterIndex !== -1) {
                 drawnMonsters.push(availableMonsters[monsterIndex]);
                 availableMonsters.splice(monsterIndex, 1);
@@ -53,7 +53,7 @@ export class MonsterTokensService<MonsterTokenType extends MonsterTokenBase> {
     }
 
     public addMonsterToBag(type: MonsterTokenType['type']): MonsterTokenType | undefined {
-        return this.transferMonster('available', 'bag', (monster) => monster.type === type);
+        return this.transferMonster('available', 'bag', monster => monster.type === type);
     }
 
     public getMonsterEncounterFromBag(type: MonsterTokenType['type'] | null): MonsterTokenType | undefined {
@@ -64,20 +64,20 @@ export class MonsterTokensService<MonsterTokenType extends MonsterTokenBase> {
 
         // Not random encounter (monster was manually chosen)
         if (type !== null) {
-            return this.transferMonster('bag', 'active', (monster) => monster.type === type);
+            return this.transferMonster('bag', 'active', monster => monster.type === type);
         }
 
         const transferIndex: number = 0;
         const encounterToken: MonsterTokenType = bagMonsters[transferIndex];
         if (encounterToken.type === 'BLANK') {
             if (bagMonsters.length === 1) {
-                this.transferMonster('available', 'bag', (monster) => monster.type === MonsterType.ADULT);
+                this.transferMonster('available', 'bag', monster => monster.type === MonsterType.ADULT);
             }
-            this.bagMonstersWritable.update((monsters) => this.shuffle(monsters));
+            this.bagMonstersWritable.update(monsters => this.shuffle(monsters));
             return encounterToken;
         }
-        this.activeMonstersWritable.update((monsters) => [...monsters, encounterToken]);
-        this.bagMonstersWritable.update((monsters) => {
+        this.activeMonstersWritable.update(monsters => [...monsters, encounterToken]);
+        this.bagMonstersWritable.update(monsters => {
             monsters.splice(transferIndex, 1);
             return this.shuffle(monsters);
         });
@@ -98,7 +98,7 @@ export class MonsterTokensService<MonsterTokenType extends MonsterTokenBase> {
             case MonsterType.ADULT:
             case MonsterType.BREEDER:
             case MonsterType.QUEEN:
-                this.bagMonstersWritable.update((monsters) => this.shuffle(monsters));
+                this.bagMonstersWritable.update(monsters => this.shuffle(monsters));
                 return { token, success: true };
             default:
                 return { token, success: false };
@@ -106,32 +106,32 @@ export class MonsterTokensService<MonsterTokenType extends MonsterTokenBase> {
     }
 
     public killMonster(monsterId: MonsterTokenType['id']): MonsterTokenType | undefined {
-        return this.transferMonster('active', 'available', (monster) => monster.id === monsterId);
+        return this.transferMonster('active', 'available', monster => monster.id === monsterId);
     }
 
     public putMonsterBackToBag(monsterId: MonsterTokenType['id']): MonsterTokenType | undefined {
-        return this.transferMonster('active', 'bag', (monster) => monster.id === monsterId);
+        return this.transferMonster('active', 'bag', monster => monster.id === monsterId);
     }
 
     public summonQueenInNest(): MonsterTokenType | undefined {
-        return this.transferMonster('bag', 'active', (monster) => monster.type === MonsterType.QUEEN);
+        return this.transferMonster('bag', 'active', monster => monster.type === MonsterType.QUEEN);
     }
 
     private triggerBlankDevelopment(): boolean {
-        return !!this.transferMonster('available', 'bag', (monster) => monster.type === MonsterType.ADULT);
+        return !!this.transferMonster('available', 'bag', monster => monster.type === MonsterType.ADULT);
     }
 
     private triggerLarvaDevelopment(larvaId: string): boolean {
-        if (this.transferMonster('available', 'bag', (monster) => monster.type === MonsterType.ADULT)) {
-            this.transferMonster('bag', 'available', (monster) => monster.id === larvaId);
+        if (this.transferMonster('available', 'bag', monster => monster.type === MonsterType.ADULT)) {
+            this.transferMonster('bag', 'available', monster => monster.id === larvaId);
             return true;
         }
         return false;
     }
 
     private triggerCreeperDevelopment(creeperId: string): boolean {
-        if (this.transferMonster('available', 'bag', (monster) => monster.type === MonsterType.BREEDER)) {
-            this.transferMonster('bag', 'available', (monster) => monster.id === creeperId);
+        if (this.transferMonster('available', 'bag', monster => monster.type === MonsterType.BREEDER)) {
+            this.transferMonster('bag', 'available', monster => monster.id === creeperId);
             return true;
         }
         return false;
@@ -151,8 +151,8 @@ export class MonsterTokensService<MonsterTokenType extends MonsterTokenBase> {
         if (!monsterToTransfer) {
             return undefined;
         }
-        toArr.update((items) => this.shuffleArrayIfCertainType([...items, fromMonsters[transferIndex]], to));
-        fromArr.update((items) => {
+        toArr.update(items => this.shuffleArrayIfCertainType([...items, fromMonsters[transferIndex]], to));
+        fromArr.update(items => {
             items.splice(transferIndex, 1);
             return this.shuffleArrayIfCertainType([...items], from);
         });

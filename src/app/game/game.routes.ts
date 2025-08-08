@@ -16,7 +16,7 @@ export const gameRoutes: Routes = [
             },
             {
                 path: gameConfigs.nemesisOriginal.path,
-                loadComponent: () => import('./nemesis-original/nemesis-original.component').then((component) => component.NemesisOriginalComponent),
+                loadComponent: () => import('./nemesis-original/nemesis-original.component').then(component => component.NemesisOriginalComponent),
             },
         ],
     },

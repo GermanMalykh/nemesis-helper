@@ -27,7 +27,7 @@ export class IconRegistryService {
     ];
 
     public initIcons(): void {
-        this.iconsToRegister.forEach((iconData) => {
+        this.iconsToRegister.forEach(iconData => {
             this.matIconRegistry.addSvgIcon(iconData.iconName, this.domSanitizer.bypassSecurityTrustResourceUrl(iconData.assetPath));
         });
     }

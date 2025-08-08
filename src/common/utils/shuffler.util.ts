@@ -21,7 +21,7 @@ export class Shuffler {
     // https://en.wikipedia.org/wiki/Schwartzian_transform
     public static schwartzianShuffle<T>(array: T[]): T[] {
         return array
-            .map((value) => ({ value, sort: Math.random() }))
+            .map(value => ({ value, sort: Math.random() }))
             .sort((a, b) => a.sort - b.sort)
             .map(({ value }) => value);
     }

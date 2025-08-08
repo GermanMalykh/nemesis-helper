@@ -34,8 +34,8 @@ export class PhasesSectionComponent<StageType extends string> implements OnInit,
     }
 
     protected nextStage(): void {
-        const stages: PhaseStage<StageType>[] = this.phasesConfig.flatMap((phaseConfig) => phaseConfig.stages);
-        const activeIndex: number = stages.findIndex((stage) => stage.stageId === this.activeStage);
+        const stages: PhaseStage<StageType>[] = this.phasesConfig.flatMap(phaseConfig => phaseConfig.stages);
+        const activeIndex: number = stages.findIndex(stage => stage.stageId === this.activeStage);
         const nextStageIndex: number = activeIndex === stages.length - 1 ? 0 : activeIndex + 1;
         this.stage.emit(stages[nextStageIndex].stageId);
     }

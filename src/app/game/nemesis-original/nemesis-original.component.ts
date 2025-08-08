@@ -165,7 +165,7 @@ export class NemesisOriginalComponent {
     protected killMonster(monster: MonsterTokenBase): void {
         this.nemesisOriginalModalService
             .openKillMonsterWarning(monster)
-            .pipe(filter((result) => !!result))
+            .pipe(filter(result => !!result))
             .subscribe(() => {
                 this.nemesisOriginalLoggerService.logMonsterKill(monster);
                 this.monsterBagService.killMonster(monster.id);
@@ -175,7 +175,7 @@ export class NemesisOriginalComponent {
     protected retreatMonster(monster: MonsterTokenBase): void {
         this.nemesisOriginalModalService
             .openRetreatMonsterWarning(monster)
-            .pipe(filter((result) => !!result))
+            .pipe(filter(result => !!result))
             .subscribe(() => {
                 this.nemesisOriginalLoggerService.logMonsterRetreat(monster);
                 this.monsterBagService.putMonsterBackToBag(monster.id);
@@ -214,7 +214,7 @@ export class NemesisOriginalComponent {
     }
 
     protected openReloadGameModal(): void {
-        this.nemesisOriginalModalService.openReload(this.nemesisOriginalLoggerService.logs()).subscribe((result) => {
+        this.nemesisOriginalModalService.openReload(this.nemesisOriginalLoggerService.logs()).subscribe(result => {
             if (result) {
                 window.location.reload();
             }
@@ -222,7 +222,7 @@ export class NemesisOriginalComponent {
     }
 
     protected goToLandingPage(): void {
-        this.nemesisOriginalModalService.openExitWarning().subscribe((result) => {
+        this.nemesisOriginalModalService.openExitWarning().subscribe(result => {
             if (result) {
                 this.router.navigate(['/']);
             }
@@ -259,7 +259,7 @@ export class NemesisOriginalComponent {
     private triggerMonsterDevelopment(): void {
         const developmentResult: MonsterDevelopmentResult<MonsterTokenConfig> = this.monsterBagService.triggerMonsterDevelopment();
         this.nemesisOriginalLoggerService.logMonsterDevelopment(developmentResult);
-        this.nemesisOriginalModalService.openMonsterDevelopmentResult(developmentResult).subscribe((queenInNestConfirmed) => {
+        this.nemesisOriginalModalService.openMonsterDevelopmentResult(developmentResult).subscribe(queenInNestConfirmed => {
             if (queenInNestConfirmed) {
                 this.monsterEncounterHappenedRoundNum.set(this.activeRoundNum());
                 this.monsterBagService.summonQueenInNest();

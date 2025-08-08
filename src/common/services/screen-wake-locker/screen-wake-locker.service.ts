@@ -23,7 +23,7 @@ export class ScreenWakeLockerService {
         if (document.visibilityState !== 'visible') {
             return;
         }
-        navigator.wakeLock.request('screen').then((screenLockSentinel) => {
+        navigator.wakeLock.request('screen').then(screenLockSentinel => {
             this.screenLockSentinel = screenLockSentinel;
         });
     }

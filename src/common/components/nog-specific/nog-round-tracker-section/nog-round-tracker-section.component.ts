@@ -38,7 +38,7 @@ export class NogRoundTrackerSectionComponent {
                         titleKey: 'tk.round.label.event.end-the-game.warning-title',
                         messageKey: 'tk.round.label.event.end-the-game.warning-message',
                     })
-                    .subscribe((result) => {
+                    .subscribe(result => {
                         if (result) {
                             this.roundTrackerEvent.emit(event);
                         }

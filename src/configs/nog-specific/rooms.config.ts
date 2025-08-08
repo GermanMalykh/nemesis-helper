@@ -41,4 +41,4 @@ const roomsConfig: ContentGroup[] = [
     },
 ];
 
-export const getRoomsConfig: () => ContentGroup[] = () => roomsConfig.map((config) => ({ ...config }));
+export const getRoomsConfig: () => ContentGroup[] = () => roomsConfig.map(config => ({ ...config }));

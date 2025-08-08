@@ -33,17 +33,17 @@ export class FaqModalComponent {
         document.querySelector(`#group${index}`)?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
     }
     public constructor() {
-        this.searchControl.valueChanges.pipe(debounceTime(200)).subscribe((search) => {
+        this.searchControl.valueChanges.pipe(debounceTime(200)).subscribe(search => {
             const query = search.toLowerCase().trim();
             const result = this.originalData
-                .map((group) => ({
+                .map(group => ({
                     ...group,
-                    items: group.items.filter((item) => {
+                    items: group.items.filter(item => {
                         const translated = this.translate.instant(item);
                         return query === '' || translated.toLowerCase().includes(query);
                     }),
                 }))
-                .filter((group) => group.items.length > 0);
+                .filter(group => group.items.length > 0);
             this.filteredGroups.set(result);
         });
     }

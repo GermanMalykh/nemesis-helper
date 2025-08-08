@@ -20,7 +20,7 @@ export class UiModeService {
     }
 
     public toggleUiMode(): void {
-        this.darkMode.update((mode) => !mode);
+        this.darkMode.update(mode => !mode);
         this.refreshDarkModeClass();
     }
 

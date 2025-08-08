@@ -33,7 +33,7 @@ export class DrawerContentComponent {
     private readonly modalService: ModalService = inject(ModalService);
 
     protected changeLanguage(): void {
-        this.languageService.toggleLanguage().subscribe((language) => {
+        this.languageService.toggleLanguage().subscribe(language => {
             const savedConfig: AppConfig | undefined = StorageManager.loadConfig();
             StorageManager.saveConfig(savedConfig ? { ...savedConfig, language } : { language });
         });

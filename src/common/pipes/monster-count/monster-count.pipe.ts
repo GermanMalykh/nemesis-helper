@@ -8,6 +8,6 @@ import { MonsterTokenBase } from '@common/interfaces/monster-token-base.interfac
 })
 export class MonsterCountPipe implements PipeTransform {
     public transform(monsters: MonsterTokenBase[], type: MonsterType): number {
-        return monsters.filter((monster) => type === monster.type).length;
+        return monsters.filter(monster => type === monster.type).length;
     }
 }

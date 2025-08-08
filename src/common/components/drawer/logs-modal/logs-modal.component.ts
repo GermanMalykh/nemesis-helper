@@ -40,8 +40,8 @@ export class LogsModalComponent implements OnInit, OnDestroy {
 
     public ngOnInit(): void {
         this.subSink.add(
-            this.filters.valueChanges.subscribe((filters) => {
-                this.logs.set(this.data.logs.filter((log) => filters[log.type]));
+            this.filters.valueChanges.subscribe(filters => {
+                this.logs.set(this.data.logs.filter(log => filters[log.type]));
             }),
         );
     }

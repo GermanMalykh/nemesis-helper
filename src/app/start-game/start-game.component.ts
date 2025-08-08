@@ -47,7 +47,7 @@ export class StartGameComponent {
                     panelClass: 'small-modal',
                 })
                 .afterClosed()
-                .pipe(filter((result) => result))
+                .pipe(filter(result => result))
                 .subscribe(() => {
                     this.showNewGameForm.set(true);
                 });

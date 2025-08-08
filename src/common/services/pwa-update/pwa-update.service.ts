@@ -14,7 +14,7 @@ export class PwaUpdateService {
     public update(): void {
         window.setTimeout(() => {
             if (this.swUpdate.isEnabled) {
-                this.swUpdate.checkForUpdate().then((newVerAvailable) => {
+                this.swUpdate.checkForUpdate().then(newVerAvailable => {
                     if (!newVerAvailable) {
                         return;
                     }
@@ -23,7 +23,7 @@ export class PwaUpdateService {
                             titleKey: 'tk.app.title.new-version-available',
                             messageKey: 'tk.app.message.new-version-available',
                         })
-                        .subscribe((confirmed) => {
+                        .subscribe(confirmed => {
                             if (confirmed) {
                                 window.location.reload();
                             }

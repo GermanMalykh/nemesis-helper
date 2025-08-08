@@ -29,7 +29,7 @@ export class Logger {
 
     public addRecord(text: string, type: LogItem['type']): void {
         const record: LogItem = { dateIso: new Date().toISOString(), text, type, roundNum: this.getRoundNum() };
-        this.logsSignal.update((logs) => [...logs, record]);
+        this.logsSignal.update(logs => [...logs, record]);
     }
 
     public getRoundNum(): string {

@@ -59,12 +59,12 @@ describe('MonsterTokensService', () => {
         it('should be initialized with proper monster data for 4 players', () => {
             service.initMonsters(defaultMonsterBagConfigMock, [...availableMonstersMock], 4);
 
-            const availableMonstersQueenCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.QUEEN).length;
-            const availableMonstersBreederCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.BREEDER).length;
-            const availableMonstersAdultCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.ADULT).length;
-            const availableMonstersCreeperCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.CREEPER).length;
-            const availableMonstersLarvaCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.LARVA).length;
-            const availableMonstersBlankCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.BLANK).length;
+            const availableMonstersQueenCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.QUEEN).length;
+            const availableMonstersBreederCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.BREEDER).length;
+            const availableMonstersAdultCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.ADULT).length;
+            const availableMonstersCreeperCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.CREEPER).length;
+            const availableMonstersLarvaCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.LARVA).length;
+            const availableMonstersBlankCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.BLANK).length;
 
             expect(availableMonstersQueenCount).toEqual(0);
             expect(availableMonstersBreederCount).toEqual(2);
@@ -73,12 +73,12 @@ describe('MonsterTokensService', () => {
             expect(availableMonstersLarvaCount).toEqual(4);
             expect(availableMonstersBlankCount).toEqual(0);
 
-            const bagMonstersQueenCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.QUEEN).length;
-            const bagMonstersBreederCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.BREEDER).length;
-            const bagMonstersAdultCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.ADULT).length;
-            const bagMonstersCreeperCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.CREEPER).length;
-            const bagMonstersLarvaCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.LARVA).length;
-            const bagMonstersBlankCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.BLANK).length;
+            const bagMonstersQueenCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.QUEEN).length;
+            const bagMonstersBreederCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.BREEDER).length;
+            const bagMonstersAdultCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.ADULT).length;
+            const bagMonstersCreeperCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.CREEPER).length;
+            const bagMonstersLarvaCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.LARVA).length;
+            const bagMonstersBlankCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.BLANK).length;
 
             expect(bagMonstersQueenCount).toEqual(1);
             expect(bagMonstersBreederCount).toEqual(0);
@@ -93,12 +93,12 @@ describe('MonsterTokensService', () => {
         it('should be initialized with proper monster data for 1 player', () => {
             service.initMonsters(defaultMonsterBagConfigMock, [...availableMonstersMock], 1);
 
-            const availableMonstersQueenCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.QUEEN).length;
-            const availableMonstersBreederCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.BREEDER).length;
-            const availableMonstersAdultCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.ADULT).length;
-            const availableMonstersCreeperCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.CREEPER).length;
-            const availableMonstersLarvaCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.LARVA).length;
-            const availableMonstersBlankCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.BLANK).length;
+            const availableMonstersQueenCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.QUEEN).length;
+            const availableMonstersBreederCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.BREEDER).length;
+            const availableMonstersAdultCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.ADULT).length;
+            const availableMonstersCreeperCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.CREEPER).length;
+            const availableMonstersLarvaCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.LARVA).length;
+            const availableMonstersBlankCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.BLANK).length;
 
             expect(availableMonstersQueenCount).toEqual(0);
             expect(availableMonstersBreederCount).toEqual(2);
@@ -107,12 +107,12 @@ describe('MonsterTokensService', () => {
             expect(availableMonstersLarvaCount).toEqual(4);
             expect(availableMonstersBlankCount).toEqual(0);
 
-            const bagMonstersQueenCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.QUEEN).length;
-            const bagMonstersBreederCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.BREEDER).length;
-            const bagMonstersAdultCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.ADULT).length;
-            const bagMonstersCreeperCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.CREEPER).length;
-            const bagMonstersLarvaCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.LARVA).length;
-            const bagMonstersBlankCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.BLANK).length;
+            const bagMonstersQueenCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.QUEEN).length;
+            const bagMonstersBreederCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.BREEDER).length;
+            const bagMonstersAdultCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.ADULT).length;
+            const bagMonstersCreeperCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.CREEPER).length;
+            const bagMonstersLarvaCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.LARVA).length;
+            const bagMonstersBlankCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.BLANK).length;
 
             expect(bagMonstersQueenCount).toEqual(1);
             expect(bagMonstersBreederCount).toEqual(0);
@@ -127,12 +127,12 @@ describe('MonsterTokensService', () => {
         it('should be initialized with proper monster data for 20 players', () => {
             service.initMonsters(defaultMonsterBagConfigMock, [...availableMonstersMock], 20);
 
-            const availableMonstersQueenCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.QUEEN).length;
-            const availableMonstersBreederCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.BREEDER).length;
-            const availableMonstersAdultCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.ADULT).length;
-            const availableMonstersCreeperCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.CREEPER).length;
-            const availableMonstersLarvaCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.LARVA).length;
-            const availableMonstersBlankCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.BLANK).length;
+            const availableMonstersQueenCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.QUEEN).length;
+            const availableMonstersBreederCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.BREEDER).length;
+            const availableMonstersAdultCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.ADULT).length;
+            const availableMonstersCreeperCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.CREEPER).length;
+            const availableMonstersLarvaCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.LARVA).length;
+            const availableMonstersBlankCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.BLANK).length;
 
             expect(availableMonstersQueenCount).toEqual(0);
             expect(availableMonstersBreederCount).toEqual(2);
@@ -141,12 +141,12 @@ describe('MonsterTokensService', () => {
             expect(availableMonstersLarvaCount).toEqual(4);
             expect(availableMonstersBlankCount).toEqual(0);
 
-            const bagMonstersQueenCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.QUEEN).length;
-            const bagMonstersBreederCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.BREEDER).length;
-            const bagMonstersAdultCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.ADULT).length;
-            const bagMonstersCreeperCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.CREEPER).length;
-            const bagMonstersLarvaCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.LARVA).length;
-            const bagMonstersBlankCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.BLANK).length;
+            const bagMonstersQueenCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.QUEEN).length;
+            const bagMonstersBreederCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.BREEDER).length;
+            const bagMonstersAdultCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.ADULT).length;
+            const bagMonstersCreeperCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.CREEPER).length;
+            const bagMonstersLarvaCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.LARVA).length;
+            const bagMonstersBlankCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.BLANK).length;
 
             expect(bagMonstersQueenCount).toEqual(1);
             expect(bagMonstersBreederCount).toEqual(0);
@@ -195,9 +195,9 @@ describe('MonsterTokensService', () => {
                 bagMonsters: bagMonstersShortMock,
             });
 
-            expect(service.availableMonsters().every((monster) => availableMonstersShortMock.find((initialMonster) => monster.id === initialMonster.id))).toEqual(true);
-            expect(service.bagMonsters().every((monster) => bagMonstersShortMock.find((initialMonster) => monster.id === initialMonster.id))).toEqual(true);
-            expect(service.activeMonsters().every((monster) => activeMonstersShortMock.find((initialMonster) => monster.id === initialMonster.id))).toEqual(true);
+            expect(service.availableMonsters().every(monster => availableMonstersShortMock.find(initialMonster => monster.id === initialMonster.id))).toEqual(true);
+            expect(service.bagMonsters().every(monster => bagMonstersShortMock.find(initialMonster => monster.id === initialMonster.id))).toEqual(true);
+            expect(service.activeMonsters().every(monster => activeMonstersShortMock.find(initialMonster => monster.id === initialMonster.id))).toEqual(true);
         });
     });
 
@@ -220,12 +220,12 @@ describe('MonsterTokensService', () => {
             service.addMonsterToBag(MonsterType.BREEDER);
             service.addMonsterToBag(MonsterType.BREEDER);
 
-            const availableMonstersQueenCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.QUEEN).length;
-            const availableMonstersBreederCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.BREEDER).length;
-            const availableMonstersAdultCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.ADULT).length;
-            const availableMonstersCreeperCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.CREEPER).length;
-            const availableMonstersLarvaCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.LARVA).length;
-            const availableMonstersBlankCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.BLANK).length;
+            const availableMonstersQueenCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.QUEEN).length;
+            const availableMonstersBreederCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.BREEDER).length;
+            const availableMonstersAdultCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.ADULT).length;
+            const availableMonstersCreeperCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.CREEPER).length;
+            const availableMonstersLarvaCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.LARVA).length;
+            const availableMonstersBlankCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.BLANK).length;
 
             expect(availableMonstersQueenCount).toEqual(0);
             expect(availableMonstersBreederCount).toEqual(0);
@@ -234,12 +234,12 @@ describe('MonsterTokensService', () => {
             expect(availableMonstersLarvaCount).toEqual(4);
             expect(availableMonstersBlankCount).toEqual(0);
 
-            const bagMonstersQueenCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.QUEEN).length;
-            const bagMonstersBreederCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.BREEDER).length;
-            const bagMonstersAdultCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.ADULT).length;
-            const bagMonstersCreeperCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.CREEPER).length;
-            const bagMonstersLarvaCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.LARVA).length;
-            const bagMonstersBlankCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.BLANK).length;
+            const bagMonstersQueenCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.QUEEN).length;
+            const bagMonstersBreederCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.BREEDER).length;
+            const bagMonstersAdultCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.ADULT).length;
+            const bagMonstersCreeperCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.CREEPER).length;
+            const bagMonstersLarvaCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.LARVA).length;
+            const bagMonstersBlankCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.BLANK).length;
 
             expect(bagMonstersQueenCount).toEqual(1);
             expect(bagMonstersBreederCount).toEqual(2);
@@ -259,12 +259,12 @@ describe('MonsterTokensService', () => {
             service.addMonsterToBag(MonsterType.BREEDER);
             service.addMonsterToBag(MonsterType.BREEDER);
 
-            const availableMonstersQueenCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.QUEEN).length;
-            const availableMonstersBreederCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.BREEDER).length;
-            const availableMonstersAdultCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.ADULT).length;
-            const availableMonstersCreeperCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.CREEPER).length;
-            const availableMonstersLarvaCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.LARVA).length;
-            const availableMonstersBlankCount: number = service.availableMonsters().filter((monster) => monster.type === MonsterType.BLANK).length;
+            const availableMonstersQueenCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.QUEEN).length;
+            const availableMonstersBreederCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.BREEDER).length;
+            const availableMonstersAdultCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.ADULT).length;
+            const availableMonstersCreeperCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.CREEPER).length;
+            const availableMonstersLarvaCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.LARVA).length;
+            const availableMonstersBlankCount: number = service.availableMonsters().filter(monster => monster.type === MonsterType.BLANK).length;
 
             expect(availableMonstersQueenCount).toEqual(0);
             expect(availableMonstersBreederCount).toEqual(0);
@@ -273,12 +273,12 @@ describe('MonsterTokensService', () => {
             expect(availableMonstersLarvaCount).toEqual(4);
             expect(availableMonstersBlankCount).toEqual(0);
 
-            const bagMonstersQueenCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.QUEEN).length;
-            const bagMonstersBreederCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.BREEDER).length;
-            const bagMonstersAdultCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.ADULT).length;
-            const bagMonstersCreeperCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.CREEPER).length;
-            const bagMonstersLarvaCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.LARVA).length;
-            const bagMonstersBlankCount: number = service.bagMonsters().filter((monster) => monster.type === MonsterType.BLANK).length;
+            const bagMonstersQueenCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.QUEEN).length;
+            const bagMonstersBreederCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.BREEDER).length;
+            const bagMonstersAdultCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.ADULT).length;
+            const bagMonstersCreeperCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.CREEPER).length;
+            const bagMonstersLarvaCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.LARVA).length;
+            const bagMonstersBlankCount: number = service.bagMonsters().filter(monster => monster.type === MonsterType.BLANK).length;
 
             expect(bagMonstersQueenCount).toEqual(1);
             expect(bagMonstersBreederCount).toEqual(2);
@@ -315,9 +315,9 @@ describe('MonsterTokensService', () => {
 
                 expect(monsterEncounter).toEqual(undefined);
 
-                expect(service.availableMonsters().every((monster) => ['A1', 'A2', 'A3'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.availableMonsters().every(monster => ['A1', 'A2', 'A3'].find(id => id === monster.id))).toEqual(true);
                 expect(service.availableMonsters().length).toEqual(3);
-                expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
                 expect(service.activeMonsters().length).toEqual(3);
 
                 expect(service.bagMonsters().length).toEqual(0);
@@ -345,9 +345,9 @@ describe('MonsterTokensService', () => {
 
                 expect(monsterEncounter).toEqual({ type: MonsterType.ADULT, id: 'A5' });
 
-                expect(service.availableMonsters().every((monster) => ['A1', 'A2', 'A3'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.availableMonsters().every(monster => ['A1', 'A2', 'A3'].find(id => id === monster.id))).toEqual(true);
                 expect(service.availableMonsters().length).toEqual(3);
-                expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3', 'A5'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3', 'A5'].find(id => id === monster.id))).toEqual(true);
                 expect(service.activeMonsters().length).toEqual(4);
 
                 expect(service.bagMonsters().length).toEqual(0);
@@ -373,10 +373,10 @@ describe('MonsterTokensService', () => {
 
                 expect(service.availableMonsters().length).toEqual(0);
 
-                expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
                 expect(service.activeMonsters().length).toEqual(3);
 
-                expect(service.bagMonsters().every((monster) => ['BLANK1', 'A1'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.bagMonsters().every(monster => ['BLANK1', 'A1'].find(id => id === monster.id))).toEqual(true);
                 expect(service.bagMonsters().length).toEqual(2);
             });
 
@@ -402,13 +402,13 @@ describe('MonsterTokensService', () => {
 
                 expect(monsterEncounter).toEqual({ type: MonsterType.BLANK, id: 'BLANK1' });
 
-                expect(service.availableMonsters().every((monster) => ['A1'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.availableMonsters().every(monster => ['A1'].find(id => id === monster.id))).toEqual(true);
                 expect(service.availableMonsters().length).toEqual(1);
 
-                expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
                 expect(service.activeMonsters().length).toEqual(3);
 
-                expect(service.bagMonsters().every((monster) => ['BLANK1', 'Q1'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.bagMonsters().every(monster => ['BLANK1', 'Q1'].find(id => id === monster.id))).toEqual(true);
                 expect(service.bagMonsters().length).toEqual(2);
             });
 
@@ -433,13 +433,13 @@ describe('MonsterTokensService', () => {
 
                 expect(monsterEncounter).toEqual({ type: MonsterType.BLANK, id: 'BLANK1' });
 
-                expect(service.availableMonsters().every((monster) => ['L1', 'L2'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.availableMonsters().every(monster => ['L1', 'L2'].find(id => id === monster.id))).toEqual(true);
                 expect(service.availableMonsters().length).toEqual(2);
 
-                expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
                 expect(service.activeMonsters().length).toEqual(3);
 
-                expect(service.bagMonsters().every((monster) => ['BLANK1'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.bagMonsters().every(monster => ['BLANK1'].find(id => id === monster.id))).toEqual(true);
                 expect(service.bagMonsters().length).toEqual(1);
             });
         });
@@ -467,9 +467,9 @@ describe('MonsterTokensService', () => {
 
                 expect(monsterEncounter).toEqual(undefined);
 
-                expect(service.availableMonsters().every((monster) => ['A1', 'A2', 'A3'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.availableMonsters().every(monster => ['A1', 'A2', 'A3'].find(id => id === monster.id))).toEqual(true);
                 expect(service.availableMonsters().length).toEqual(3);
-                expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
                 expect(service.activeMonsters().length).toEqual(3);
 
                 expect(service.bagMonsters().length).toEqual(0);
@@ -501,11 +501,11 @@ describe('MonsterTokensService', () => {
 
                 expect(monsterEncounter?.type).toEqual(undefined);
 
-                expect(service.availableMonsters().every((monster) => ['A1', 'A2', 'A3'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.availableMonsters().every(monster => ['A1', 'A2', 'A3'].find(id => id === monster.id))).toEqual(true);
                 expect(service.availableMonsters().length).toEqual(3);
-                expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
                 expect(service.activeMonsters().length).toEqual(3);
-                expect(service.bagMonsters().every((monster) => ['A4', 'A5', 'A6'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.bagMonsters().every(monster => ['A4', 'A5', 'A6'].find(id => id === monster.id))).toEqual(true);
                 expect(service.bagMonsters().length).toEqual(3);
             });
 
@@ -535,12 +535,12 @@ describe('MonsterTokensService', () => {
 
                 expect(monsterEncounter?.type).toEqual(MonsterType.ADULT);
 
-                expect(service.availableMonsters().every((monster) => ['A1', 'A2', 'A3'].find((id) => id === monster.id))).toEqual(true);
+                expect(service.availableMonsters().every(monster => ['A1', 'A2', 'A3'].find(id => id === monster.id))).toEqual(true);
                 expect(service.availableMonsters().length).toEqual(3);
-                expect(service.activeMonsters().filter((monster) => monster.type === MonsterType.CREEPER).length).toEqual(3);
-                expect(service.activeMonsters().filter((monster) => monster.type === MonsterType.ADULT).length).toEqual(1);
+                expect(service.activeMonsters().filter(monster => monster.type === MonsterType.CREEPER).length).toEqual(3);
+                expect(service.activeMonsters().filter(monster => monster.type === MonsterType.ADULT).length).toEqual(1);
                 expect(service.activeMonsters().length).toEqual(4);
-                expect(service.bagMonsters().filter((monster) => monster.type === MonsterType.ADULT).length).toEqual(2);
+                expect(service.bagMonsters().filter(monster => monster.type === MonsterType.ADULT).length).toEqual(2);
                 expect(service.bagMonsters().length).toEqual(2);
             });
         });
@@ -572,14 +572,14 @@ describe('MonsterTokensService', () => {
                 success: true,
             });
 
-            expect(service.availableMonsters().filter((monster) => monster.type === MonsterType.ADULT).length).toEqual(2);
+            expect(service.availableMonsters().filter(monster => monster.type === MonsterType.ADULT).length).toEqual(2);
             expect(service.availableMonsters().length).toEqual(2);
 
-            expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
             expect(service.activeMonsters().length).toEqual(3);
 
-            expect(service.bagMonsters().filter((monster) => monster.type === MonsterType.ADULT).length).toEqual(1);
-            expect(service.bagMonsters().filter((monster) => monster.type === MonsterType.BLANK).length).toEqual(1);
+            expect(service.bagMonsters().filter(monster => monster.type === MonsterType.ADULT).length).toEqual(1);
+            expect(service.bagMonsters().filter(monster => monster.type === MonsterType.BLANK).length).toEqual(1);
             expect(service.bagMonsters().length).toEqual(2);
         });
 
@@ -608,12 +608,12 @@ describe('MonsterTokensService', () => {
                 success: false,
             });
 
-            expect(service.availableMonsters().filter((monster) => monster.type === MonsterType.LARVA).length).toEqual(3);
+            expect(service.availableMonsters().filter(monster => monster.type === MonsterType.LARVA).length).toEqual(3);
             expect(service.availableMonsters().length).toEqual(3);
-            expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
             expect(service.activeMonsters().length).toEqual(3);
 
-            expect(service.bagMonsters().every((monster) => monster.type === MonsterType.BLANK)).toEqual(true);
+            expect(service.bagMonsters().every(monster => monster.type === MonsterType.BLANK)).toEqual(true);
             expect(service.bagMonsters().length).toEqual(1);
         });
 
@@ -642,13 +642,13 @@ describe('MonsterTokensService', () => {
                 success: true,
             });
 
-            expect(service.availableMonsters().filter((monster) => monster.type === MonsterType.ADULT).length).toEqual(2);
-            expect(service.availableMonsters().filter((monster) => monster.type === MonsterType.LARVA).length).toEqual(1);
+            expect(service.availableMonsters().filter(monster => monster.type === MonsterType.ADULT).length).toEqual(2);
+            expect(service.availableMonsters().filter(monster => monster.type === MonsterType.LARVA).length).toEqual(1);
             expect(service.availableMonsters().length).toEqual(3);
-            expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
             expect(service.activeMonsters().length).toEqual(3);
 
-            expect(service.bagMonsters().every((monster) => monster.type === MonsterType.ADULT)).toEqual(true);
+            expect(service.bagMonsters().every(monster => monster.type === MonsterType.ADULT)).toEqual(true);
             expect(service.bagMonsters().length).toEqual(1);
         });
 
@@ -677,13 +677,13 @@ describe('MonsterTokensService', () => {
                 success: false,
             });
 
-            expect(service.availableMonsters().filter((monster) => monster.type === MonsterType.ADULT).length).toEqual(0);
-            expect(service.availableMonsters().filter((monster) => monster.type === MonsterType.LARVA).length).toEqual(3);
+            expect(service.availableMonsters().filter(monster => monster.type === MonsterType.ADULT).length).toEqual(0);
+            expect(service.availableMonsters().filter(monster => monster.type === MonsterType.LARVA).length).toEqual(3);
             expect(service.availableMonsters().length).toEqual(3);
-            expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
             expect(service.activeMonsters().length).toEqual(3);
 
-            expect(service.bagMonsters().every((monster) => monster.type === MonsterType.LARVA)).toEqual(true);
+            expect(service.bagMonsters().every(monster => monster.type === MonsterType.LARVA)).toEqual(true);
             expect(service.bagMonsters().length).toEqual(1);
         });
 
@@ -712,13 +712,13 @@ describe('MonsterTokensService', () => {
                 success: true,
             });
 
-            expect(service.availableMonsters().filter((monster) => monster.type === MonsterType.BREEDER).length).toEqual(2);
-            expect(service.availableMonsters().filter((monster) => monster.type === MonsterType.CREEPER).length).toEqual(1);
+            expect(service.availableMonsters().filter(monster => monster.type === MonsterType.BREEDER).length).toEqual(2);
+            expect(service.availableMonsters().filter(monster => monster.type === MonsterType.CREEPER).length).toEqual(1);
             expect(service.availableMonsters().length).toEqual(3);
-            expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
             expect(service.activeMonsters().length).toEqual(3);
 
-            expect(service.bagMonsters().every((monster) => monster.type === MonsterType.BREEDER)).toEqual(true);
+            expect(service.bagMonsters().every(monster => monster.type === MonsterType.BREEDER)).toEqual(true);
             expect(service.bagMonsters().length).toEqual(1);
         });
 
@@ -747,13 +747,13 @@ describe('MonsterTokensService', () => {
                 success: false,
             });
 
-            expect(service.availableMonsters().filter((monster) => monster.type === MonsterType.BREEDER).length).toEqual(0);
-            expect(service.availableMonsters().filter((monster) => monster.type === MonsterType.LARVA).length).toEqual(3);
+            expect(service.availableMonsters().filter(monster => monster.type === MonsterType.BREEDER).length).toEqual(0);
+            expect(service.availableMonsters().filter(monster => monster.type === MonsterType.LARVA).length).toEqual(3);
             expect(service.availableMonsters().length).toEqual(3);
-            expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
             expect(service.activeMonsters().length).toEqual(3);
 
-            expect(service.bagMonsters().every((monster) => monster.type === MonsterType.CREEPER)).toEqual(true);
+            expect(service.bagMonsters().every(monster => monster.type === MonsterType.CREEPER)).toEqual(true);
             expect(service.bagMonsters().length).toEqual(1);
         });
 
@@ -783,13 +783,13 @@ describe('MonsterTokensService', () => {
                 success: true,
             });
 
-            expect(service.availableMonsters().filter((monster) => monster.type === MonsterType.BREEDER).length).toEqual(2);
-            expect(service.availableMonsters().filter((monster) => monster.type === MonsterType.ADULT).length).toEqual(2);
+            expect(service.availableMonsters().filter(monster => monster.type === MonsterType.BREEDER).length).toEqual(2);
+            expect(service.availableMonsters().filter(monster => monster.type === MonsterType.ADULT).length).toEqual(2);
             expect(service.availableMonsters().length).toEqual(4);
-            expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
             expect(service.activeMonsters().length).toEqual(3);
 
-            expect(service.bagMonsters().every((monster) => monster.type === MonsterType.BREEDER)).toEqual(true);
+            expect(service.bagMonsters().every(monster => monster.type === MonsterType.BREEDER)).toEqual(true);
             expect(service.bagMonsters().length).toEqual(1);
         });
 
@@ -819,13 +819,13 @@ describe('MonsterTokensService', () => {
                 success: true,
             });
 
-            expect(service.availableMonsters().filter((monster) => monster.type === MonsterType.BREEDER).length).toEqual(2);
-            expect(service.availableMonsters().filter((monster) => monster.type === MonsterType.ADULT).length).toEqual(2);
+            expect(service.availableMonsters().filter(monster => monster.type === MonsterType.BREEDER).length).toEqual(2);
+            expect(service.availableMonsters().filter(monster => monster.type === MonsterType.ADULT).length).toEqual(2);
             expect(service.availableMonsters().length).toEqual(4);
-            expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
             expect(service.activeMonsters().length).toEqual(3);
 
-            expect(service.bagMonsters().every((monster) => monster.type === MonsterType.QUEEN)).toEqual(true);
+            expect(service.bagMonsters().every(monster => monster.type === MonsterType.QUEEN)).toEqual(true);
             expect(service.bagMonsters().length).toEqual(1);
         });
     });
@@ -855,12 +855,12 @@ describe('MonsterTokensService', () => {
             });
             service.killMonster('C2');
 
-            expect(service.availableMonsters().every((monster) => ['A1', 'A2', 'A3', 'C2'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.availableMonsters().every(monster => ['A1', 'A2', 'A3', 'C2'].find(id => id === monster.id))).toEqual(true);
             expect(service.availableMonsters().length).toEqual(4);
-            expect(service.activeMonsters().every((monster) => ['C1', 'C3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.activeMonsters().every(monster => ['C1', 'C3'].find(id => id === monster.id))).toEqual(true);
             expect(service.activeMonsters().length).toEqual(2);
 
-            expect(service.bagMonsters().every((monster) => ['L1', 'L2', 'Q1'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.bagMonsters().every(monster => ['L1', 'L2', 'Q1'].find(id => id === monster.id))).toEqual(true);
             expect(service.bagMonsters().length).toEqual(3);
         });
 
@@ -888,12 +888,12 @@ describe('MonsterTokensService', () => {
             });
             service.killMonster('Q1');
 
-            expect(service.availableMonsters().every((monster) => ['A1', 'A2', 'Q1'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.availableMonsters().every(monster => ['A1', 'A2', 'Q1'].find(id => id === monster.id))).toEqual(true);
             expect(service.availableMonsters().length).toEqual(3);
-            expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
             expect(service.activeMonsters().length).toEqual(3);
 
-            expect(service.bagMonsters().every((monster) => ['L1', 'L2', 'L3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.bagMonsters().every(monster => ['L1', 'L2', 'L3'].find(id => id === monster.id))).toEqual(true);
             expect(service.bagMonsters().length).toEqual(3);
         });
     });
@@ -923,12 +923,12 @@ describe('MonsterTokensService', () => {
             });
             service.putMonsterBackToBag('C2');
 
-            expect(service.availableMonsters().every((monster) => ['A1', 'A2', 'A3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.availableMonsters().every(monster => ['A1', 'A2', 'A3'].find(id => id === monster.id))).toEqual(true);
             expect(service.availableMonsters().length).toEqual(3);
-            expect(service.activeMonsters().every((monster) => ['C1', 'C3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.activeMonsters().every(monster => ['C1', 'C3'].find(id => id === monster.id))).toEqual(true);
             expect(service.activeMonsters().length).toEqual(2);
 
-            expect(service.bagMonsters().every((monster) => ['L1', 'L2', 'Q1', 'C2'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.bagMonsters().every(monster => ['L1', 'L2', 'Q1', 'C2'].find(id => id === monster.id))).toEqual(true);
             expect(service.bagMonsters().length).toEqual(4);
         });
 
@@ -956,12 +956,12 @@ describe('MonsterTokensService', () => {
             });
             service.putMonsterBackToBag('Q1');
 
-            expect(service.availableMonsters().every((monster) => ['A1', 'A2', 'Q1'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.availableMonsters().every(monster => ['A1', 'A2', 'Q1'].find(id => id === monster.id))).toEqual(true);
             expect(service.availableMonsters().length).toEqual(3);
-            expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
             expect(service.activeMonsters().length).toEqual(3);
 
-            expect(service.bagMonsters().every((monster) => ['L1', 'L2', 'L3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.bagMonsters().every(monster => ['L1', 'L2', 'L3'].find(id => id === monster.id))).toEqual(true);
             expect(service.bagMonsters().length).toEqual(3);
         });
     });
@@ -991,12 +991,12 @@ describe('MonsterTokensService', () => {
             });
             service.summonQueenInNest();
 
-            expect(service.availableMonsters().every((monster) => ['A1', 'A2', 'A3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.availableMonsters().every(monster => ['A1', 'A2', 'A3'].find(id => id === monster.id))).toEqual(true);
             expect(service.availableMonsters().length).toEqual(3);
-            expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3', 'Q1'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3', 'Q1'].find(id => id === monster.id))).toEqual(true);
             expect(service.activeMonsters().length).toEqual(4);
 
-            expect(service.bagMonsters().every((monster) => ['L1', 'L2'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.bagMonsters().every(monster => ['L1', 'L2'].find(id => id === monster.id))).toEqual(true);
             expect(service.bagMonsters().length).toEqual(2);
         });
 
@@ -1024,12 +1024,12 @@ describe('MonsterTokensService', () => {
             });
             service.summonQueenInNest();
 
-            expect(service.availableMonsters().every((monster) => ['A1', 'A2', 'Q1'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.availableMonsters().every(monster => ['A1', 'A2', 'Q1'].find(id => id === monster.id))).toEqual(true);
             expect(service.availableMonsters().length).toEqual(3);
-            expect(service.activeMonsters().every((monster) => ['C1', 'C2', 'C3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.activeMonsters().every(monster => ['C1', 'C2', 'C3'].find(id => id === monster.id))).toEqual(true);
             expect(service.activeMonsters().length).toEqual(3);
 
-            expect(service.bagMonsters().every((monster) => ['L1', 'L2', 'L3'].find((id) => id === monster.id))).toEqual(true);
+            expect(service.bagMonsters().every(monster => ['L1', 'L2', 'L3'].find(id => id === monster.id))).toEqual(true);
             expect(service.bagMonsters().length).toEqual(3);
         });
     });

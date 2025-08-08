@@ -33,7 +33,7 @@ export class PlayersSectionComponent implements OnInit, OnDestroy {
     private readonly subSink: Subscription = new Subscription();
 
     public ngOnInit(): void {
-        this.playersData.set(this.players.map((player) => ({ ...player })));
+        this.playersData.set(this.players.map(player => ({ ...player })));
         if (this.timerEnabled) {
             this.registerKeyboardListener();
         }
@@ -49,7 +49,7 @@ export class PlayersSectionComponent implements OnInit, OnDestroy {
             return;
         }
 
-        const playerData: Player | undefined = this.playersData().find((data) => data.num === playerNum);
+        const playerData: Player | undefined = this.playersData().find(data => data.num === playerNum);
         if (playerData) {
             const timer: Timer = this.timer();
             if (timer.intervalRef) {
@@ -71,7 +71,7 @@ export class PlayersSectionComponent implements OnInit, OnDestroy {
             intervalRef: setInterval(() => {
                 if (!this.modalService.anyDialogOpened$$.value) {
                     player.timeUsedMs = player.timeUsedMs + timerIntervalMs;
-                    this.playersData.update((data) => [...data]);
+                    this.playersData.update(data => [...data]);
                     this.playerTimeChanged.emit(this.playersData());
                 }
             }, timerIntervalMs),
@@ -84,9 +84,9 @@ export class PlayersSectionComponent implements OnInit, OnDestroy {
     }
 
     private registerKeyboardListener(): void {
-        const keyboardKeys: string[] = this.timerEnabled ? this.players.map((player) => `${player.num}`) : [];
+        const keyboardKeys: string[] = this.timerEnabled ? this.players.map(player => `${player.num}`) : [];
         this.subSink.add(
-            KeyboardUtil.getKeyboardEvent(keyboardKeys).subscribe((keyboardEvent) => {
+            KeyboardUtil.getKeyboardEvent(keyboardKeys).subscribe(keyboardEvent => {
                 this.togglePlayerTimer(Number.parseInt(keyboardEvent.key, 10));
             }),
         );

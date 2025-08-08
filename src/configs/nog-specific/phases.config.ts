@@ -66,4 +66,4 @@ const phasesConfig: PhaseConfig<Stage>[] = [
     },
 ];
 
-export const getPhasesConfig: () => PhaseConfig<Stage>[] = () => phasesConfig.map((config) => ({ ...config }));
+export const getPhasesConfig: () => PhaseConfig<Stage>[] = () => phasesConfig.map(config => ({ ...config }));

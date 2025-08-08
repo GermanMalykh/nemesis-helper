@@ -8,6 +8,6 @@ import { MonsterTokenBase } from '@common/interfaces/monster-token-base.interfac
 })
 export class MonsterAttainablePipe implements PipeTransform {
     public transform(monsters: MonsterTokenBase[], type: MonsterType): boolean {
-        return monsters.some((monster) => type === monster.type);
+        return monsters.some(monster => type === monster.type);
     }
 }

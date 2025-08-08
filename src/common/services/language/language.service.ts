@@ -54,7 +54,7 @@ export class LanguageService {
                 StorageManager.saveConfig({ language: languageCode });
                 this.globalLoader.isLoading.set(false);
             }),
-            catchError((err) => {
+            catchError(err => {
                 this.globalLoader.isLoading.set(false);
                 return throwError(() => err);
             }),
@@ -66,11 +66,11 @@ export class LanguageService {
         return isLanguageLoaded
             ? of(undefined)
             : this.httpClient.get<Translations>(`assets/i18n/${languageCode}.json`).pipe(
-                  tap((translations) => {
-                      this.translateService.setTranslation(languageCode, translations);
-                      this.loadedLanguages[languageCode] = true;
-                  }),
-                  map(() => undefined),
-              );
+                tap(translations => {
+                    this.translateService.setTranslation(languageCode, translations);
+                    this.loadedLanguages[languageCode] = true;
+                }),
+                map(() => undefined),
+            );
     }
 }
