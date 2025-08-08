@@ -30,3 +30,28 @@
         }
     }
 }
+
+/* Адаптив: мобильные экраны */
+@media (max-width: 600px) {
+    .select-game-container {
+        gap: var(--sizing-20);
+        padding: var(--sizing-20);
+
+        .game-tiles {
+            gap: var(--sizing-20);
+            margin-bottom: var(--sizing-40);
+        }
+
+        .buttons-container {
+            flex-direction: column;
+            align-items: stretch;
+            gap: var(--sizing-20);
+
+            button {
+                width: 100%;
+                min-width: 0;
+                max-width: 420px;
+            }
+        }
+    }
+}

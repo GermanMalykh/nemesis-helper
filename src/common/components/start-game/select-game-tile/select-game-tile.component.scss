@@ -95,3 +95,23 @@ mat-card.game-tile {
         }
     }
 }
+
+/* Адаптив: мобильные экраны */
+@media (max-width: 600px) {
+    .game-tile {
+        max-width: 140px;
+        width: 140px;
+
+        &.selected {
+            transform: scale(1.08);
+        }
+    }
+
+    .game-save-info {
+        max-width: 140px;
+        width: 140px;
+        min-height: 110px;
+        height: 110px;
+        max-height: 110px;
+    }
+}
