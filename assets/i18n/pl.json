@@ -348,6 +348,7 @@
 
     "tk.about-modal.title": "O aplikacji (v{{appVer}})",
     "tk.about-modal.label.developer": "Deweloper aplikacji",
+    "tk.about-modal.label.maintainer": "Wspomagający deweloper",
     "tk.about-modal.label.repository": "Oficjalne repozytorium",
     "tk.about-modal.label.contact": "Zgłoś błąd, poproś o funkcjonalność lub skontaktuj sie z deweloperem",
     "tk.about-modal.label.here": "Kliknij tutaj",

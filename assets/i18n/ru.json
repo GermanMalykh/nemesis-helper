@@ -318,6 +318,7 @@
     "tk.reload-modal.label.cannot-revert": "This action cannot be reverted!",
     "tk.about-modal.title": "О приложении (v{{appVer}})",
     "tk.about-modal.label.developer": "Разработчик приложения",
+    "tk.about-modal.label.maintainer": "Сопровождающий разработчик",
     "tk.about-modal.label.repository": "Репозиторий",
     "tk.about-modal.label.contact": "Сообщить об ошибке / предложить идею / связаться с разработчиком",
     "tk.about-modal.label.here": "Написать",

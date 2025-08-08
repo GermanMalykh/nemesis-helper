@@ -348,6 +348,7 @@
 
     "tk.about-modal.title": "About application (v{{appVer}})",
     "tk.about-modal.label.developer": "Application developer",
+    "tk.about-modal.label.maintainer": "Application maintainer",
     "tk.about-modal.label.repository": "Official repository",
     "tk.about-modal.label.contact": "Report bug, request feature or contact developer",
     "tk.about-modal.label.here": "Click here",
