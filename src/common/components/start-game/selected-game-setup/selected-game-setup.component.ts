@@ -95,11 +95,12 @@ export class SelectedGameSetupComponent implements OnInit, OnDestroy {
     }
 
     private generatePlayersData(playerNames: string[], randomize: boolean): Player[] {
-        const shuffledPlayerNums: number[] = randomize ? Shuffler.shuffle([1, 2, 3, 4, 5]) : [1, 2, 3, 4, 5];
+        const baseNumbers: number[] = Array.from({ length: playerNames.length }, (_, i) => i + 1);
+        const assignedNumbers: number[] = randomize ? Shuffler.shuffle(baseNumbers) : baseNumbers;
 
         return playerNames.map((name, index) => ({
             name,
-            num: shuffledPlayerNums[index],
+            num: assignedNumbers[index],
             timeUsedMs: 0,
         }));
     }

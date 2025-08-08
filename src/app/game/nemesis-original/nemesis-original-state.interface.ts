@@ -15,4 +15,5 @@ export interface NemesisOriginalState {
     bagMonsters: MonsterTokenConfig[];
     autodestruction?: Autodestruction;
     monsterEncounterHappenedRoundNum?: number;
+    escapePodsUnlocked?: boolean;
 }

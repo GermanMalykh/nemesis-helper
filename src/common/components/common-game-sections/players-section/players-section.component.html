@@ -4,10 +4,41 @@
         color="primary"
         [class.timer-active]="timer().player?.num === player.num"
         [class.timer-enabled]="timerEnabled"
-        (click)="togglePlayerTimer(player.num)">
-        <div>({{ player.num }}) {{ player.name }}</div>
+        [class.player-dead]="player.dead"
+        [matMenuTriggerFor]="playerMenu"
+        (click)="setSelectedPlayer(player)">
+        <div class="player-line">
+            <span class="player-num">({{ player.num }})</span>
+            <span
+                class="player-name"
+                [class.strike]="player.dead"
+                >{{ player.name }}</span
+            >
+            @if (player.dead) {
+                <mat-icon
+                    svgIcon="skull"
+                    class="medium-icon dead-icon"
+                    aria-label="dead"></mat-icon>
+            }
+        </div>
         @if (timerEnabled) {
             <div>{{ player.timeUsedMs | msToDuration }}</div>
         }
     </button>
 }
+
+<mat-menu #playerMenu="matMenu">
+    @if (timerEnabled) {
+        <button
+            mat-menu-item
+            (click)="onToggleTimerFromMenu()">
+            {{ getTimerActionLabel(selectedPlayer()!) }}
+        </button>
+    }
+    <button
+        mat-menu-item
+        (click)="onMarkDeadFromMenu()"
+        [disabled]="!!selectedPlayer()?.dead">
+        Отметить персонажа погибшим
+    </button>
+</mat-menu>

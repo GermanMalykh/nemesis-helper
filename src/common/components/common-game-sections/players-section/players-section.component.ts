@@ -1,10 +1,13 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output, signal, WritableSignal } from '@angular/core';
 import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { Player } from '@common/interfaces/player.interface';
 import { MsToDurationPipe } from '@common/pipes/ms-to-duration/ms-to-duration.pipe';
-import { ModalService } from '@common/services/modal/modal.service';
+import { ModalService, optionalActionModalConfig } from '@common/services/modal/modal.service';
 import { KeyboardUtil } from '@common/utils/keyboard.util';
 import { Subscription } from 'rxjs';
+import { PlayerActionModalComponent } from './player-action-modal.component';
 
 interface Timer {
     player?: Player;
@@ -16,7 +19,7 @@ const timerIntervalMs: number = 1000;
 @Component({
     selector: 'app-players-section',
     standalone: true,
-    imports: [MatButton, MsToDurationPipe],
+    imports: [MatButton, MatIcon, MatMenu, MatMenuItem, MatMenuTrigger, MsToDurationPipe],
     templateUrl: './players-section.component.html',
     styleUrl: './players-section.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,9 +29,11 @@ export class PlayersSectionComponent implements OnInit, OnDestroy {
     @Input({ required: false }) public timerEnabled: boolean = false;
 
     @Output() public playerTimeChanged: EventEmitter<Player[]> = new EventEmitter<Player[]>();
+    @Output() public playerDeath: EventEmitter<Player> = new EventEmitter<Player>();
 
     protected playersData: WritableSignal<Player[]> = signal([]);
     protected timer: WritableSignal<Timer> = signal({});
+    protected selectedPlayer: WritableSignal<Player | undefined> = signal(undefined);
     private readonly modalService: ModalService = new ModalService();
     private readonly subSink: Subscription = new Subscription();
 
@@ -63,6 +68,31 @@ export class PlayersSectionComponent implements OnInit, OnDestroy {
                 this.startTimer(playerData);
             }
         }
+    }
+
+    protected setSelectedPlayer(player: Player): void {
+        this.selectedPlayer.set(player);
+    }
+
+    protected onToggleTimerFromMenu(): void {
+        const player = this.selectedPlayer();
+        if (player) {
+            this.togglePlayerTimer(player.num);
+        }
+    }
+
+    protected onMarkDeadFromMenu(): void {
+        const player = this.selectedPlayer();
+        if (player && !player.dead) {
+            player.dead = true;
+            this.playersData.update(list => list.map(p => (p.num === player.num ? { ...p, dead: true } : p)));
+            this.playerDeath.emit(player);
+        }
+    }
+
+    protected getTimerActionLabel(player: Player): string {
+        const active = this.timer().intervalRef && this.timer().player?.num === player.num;
+        return active ? 'Остановить таймер' : 'Запустить таймер';
     }
 
     private startTimer(player: Player): void {

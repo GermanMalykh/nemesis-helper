@@ -19,7 +19,8 @@
                 <app-players-section
                     [players]="gameSetupData?.players || []"
                     [timerEnabled]="!!gameSetupData?.timerEnabled"
-                    (playerTimeChanged)="onPlayerTimeChange($event)"></app-players-section>
+                    (playerTimeChanged)="onPlayerTimeChange($event)"
+                    (playerDeath)="onPlayerDeath($event)"></app-players-section>
             </app-section-wrapper>
             <app-section-wrapper
                 label="tk.nog.game-section.label.round-tracker"

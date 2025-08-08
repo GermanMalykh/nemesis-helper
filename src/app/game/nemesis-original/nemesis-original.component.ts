@@ -75,6 +75,7 @@ export class NemesisOriginalComponent {
     protected readonly bagMonsters: Signal<MonsterTokenConfig[]> = this.monsterBagService.bagMonsters;
     protected readonly autodestruction: WritableSignal<Autodestruction | undefined> = signal(this.stateData?.autodestruction || undefined);
     protected readonly monsterEncounterHappenedRoundNum: WritableSignal<number | undefined> = signal(this.stateData?.monsterEncounterHappenedRoundNum);
+    protected readonly escapePodsUnlocked: WritableSignal<boolean> = signal(!!this.stateData?.escapePodsUnlocked);
     protected readonly summaryData: Signal<ContentItem> = computed(() => stagesSummaryConfig[this.activeStage()]);
 
     public constructor() {
@@ -110,6 +111,15 @@ export class NemesisOriginalComponent {
                 players,
             });
         }
+    }
+
+    protected onPlayerDeath(player: Player): void {
+        if (this.escapePodsUnlocked()) {
+            return;
+        }
+        this.escapePodsUnlocked.set(true);
+        this.saveGameState();
+        this.nemesisOriginalModalService.openHibernationChambersOpeningWarning();
     }
 
     protected onStageChange(stage: PhaseStage<Stage>['stageId']): void {
@@ -249,8 +259,10 @@ export class NemesisOriginalComponent {
         if (nextRoundNum === autodestruction?.roundNum && autodestruction?.state === 'yellow') {
             this.triggerInevitableAutodestruction();
         }
-        if (nextRoundNum === this.hibernationChambersOpeningRoundNum) {
+        if (nextRoundNum === this.hibernationChambersOpeningRoundNum && !this.escapePodsUnlocked()) {
             this.showHibernationChambersOpeningModal();
+            this.escapePodsUnlocked.set(true);
+            this.saveGameState();
         }
 
         this.activeRoundNum.set(nextRoundNum);
@@ -313,6 +325,7 @@ export class NemesisOriginalComponent {
             bagMonsters: this.bagMonsters(),
             autodestruction: this.autodestruction(),
             monsterEncounterHappenedRoundNum: this.monsterEncounterHappenedRoundNum(),
+            escapePodsUnlocked: this.escapePodsUnlocked(),
         });
         this.nemesisOriginalLoggerService.logSaveGameState();
     }

@@ -1,3 +1,14 @@
+.strike {
+    text-decoration: line-through;
+}
+
+.dead-icon {
+    margin-left: 6px;
+}
+
+.player-dead {
+    opacity: 0.75;
+}
 $button-width: 140px;
 $button-padding: var(--sizing-5);
 
@@ -22,11 +33,18 @@ $button-padding: var(--sizing-5);
             background: var(--players-timer-active);
         }
 
-        div {
+        .player-line {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             max-width: calc($button-width - 2 * $button-padding);
+        }
+
+        .player-name {
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            max-width: 100%;
         }
     }
 }

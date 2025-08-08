@@ -1,6 +1,7 @@
 import { TranslationGroup } from '@common/interfaces/translation-group.interface';
 
-const faqConfig: number[] = [25, 16, 9, 10, 16, 6, 8];
+// Groups kept: 1) Правила, 2) Действия, 3) Отсеки, 4) Предметы
+const faqConfig: number[] = [25, 16, 9, 10];
 export const getFaqConfig: () => TranslationGroup[] = () =>
     faqConfig.map((config, configIndex) => ({
         name: `tk.nog.faq-modal.group${configIndex + 1}.name`,
