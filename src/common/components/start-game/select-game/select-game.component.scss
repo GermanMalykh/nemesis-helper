@@ -13,6 +13,11 @@
         gap: var(--sizing-40);
     }
 
+    /* Дополнительный отступ, чтобы учесть визуальное увеличение выбранной плитки */
+    .game-tiles {
+        margin-bottom: var(--sizing-80);
+    }
+
     .buttons-container {
         display: flex;
         justify-content: center;

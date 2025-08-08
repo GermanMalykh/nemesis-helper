@@ -102,7 +102,7 @@
     "tk.game.name.nemesis-original": "Nemesis",
     "tk.game.label.disabled": "COMING LATER",
 
-    "tk.select-game.label.select-game": "Select game",
+    "tk.select-game.label.select-game": "Start game",
     "tk.select-game.button.start-new-game": "Setup new game",
     "tk.select-game.button.load-game": "Load previous game",
     "tk.select-game.label.save-info-title.not-available": "No save found",

@@ -1,7 +1,6 @@
 import { DatePipe, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { MatCard, MatCardImage } from '@angular/material/card';
-import { backgroundColorAnimation } from '@common/animations/background-color.animation';
 import { GameData } from '@common/components/start-game/select-game/select-game.component';
 import { GameModeTkPipe } from '@common/pipes/game-mode-tk/game-mode-tk.pipe';
 import { LanguageService } from '@common/services/language/language.service';
@@ -14,7 +13,6 @@ import { TranslateModule } from '@ngx-translate/core';
     templateUrl: './select-game-tile.component.html',
     styleUrl: './select-game-tile.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [backgroundColorAnimation('selectedTile', '300ms', 'rgba(var(--select-game-tile-overlay-color), 0.5)', 'var(--transparent)')],
 })
 export class SelectGameTileComponent {
     @Input({ required: true }) public gameData: GameData | undefined;

@@ -8,16 +8,14 @@
             <img
                 mat-card-image
                 [ngSrc]="gameData.config.imageUrl"
-                width="200"
-                height="200"
+                width="150"
+                height="150"
                 priority="1" />
-            <div
-                class="game-tile-overlay"
-                [@selectedTile]="isSelected">
-                @if (gameData.config.disabled) {
+            @if (gameData.config.disabled) {
+                <div class="game-tile-overlay">
                     <span class="font-24-600">{{ 'tk.game.label.disabled' | translate }}</span>
-                }
-            </div>
+                </div>
+            }
         </mat-card>
         <div class="game-save-info">
             @if (gameData.saveState; as saveState) {

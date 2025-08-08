@@ -2,49 +2,76 @@
     display: flex;
     flex-direction: column;
     gap: var(--sizing-20);
+    /* небольшой нижний отступ, чтобы учесть масштабирование выбранной плитки */
+    margin-bottom: var(--sizing-20);
 }
 
 .game-tile {
     cursor: pointer;
     transition: all 300ms;
+    background-color: transparent !important;
+    max-width: 150px;
+    width: 150px;
 
     &.selected {
         transform: scale(1.15);
-
-        .game-tile-overlay {
-            background: var(--transparent);
-        }
+        background-color: transparent !important;
     }
 
     &.disabled {
         cursor: not-allowed;
 
         .game-tile-overlay {
-            background: rgba(var(--select-game-tile-overlay-color), 0.8) !important;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            background: rgba(128, 128, 128, 0.8);
+
+            span {
+                padding: var(--sizing-10);
+                margin-bottom: var(--sizing-20);
+                line-height: 30px;
+                text-align: center;
+            }
         }
     }
 
-    .game-tile-overlay {
-        position: absolute;
+    img[mat-card-image] {
+        display: block;
         width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: end;
-
-        span {
-            padding: var(--sizing-10);
-            margin-bottom: var(--sizing-20);
-            line-height: 30px;
-            text-align: center;
-        }
+        height: auto;
+        object-fit: cover;
     }
 }
 
+// Стили для темной темы
+.dark-mode .game-tile {
+    background-color: transparent !important;
+
+    &.selected {
+        background-color: transparent !important;
+    }
+}
+
+// Стили для mat-card в темной теме
+.dark-mode mat-card.game-tile {
+    background-color: transparent !important;
+}
+
+// Стили для mat-card в светлой теме
+mat-card.game-tile {
+    background-color: transparent !important;
+}
+
 .game-save-info {
-    min-height: 180px;
-    height: 180px;
-    max-height: 180px;
+    min-height: 120px;
+    height: 120px;
+    max-height: 120px;
+    max-width: 150px;
+    width: 150px;
 
     .save-title {
         font-weight: 700;
@@ -60,7 +87,7 @@
 
             div {
                 margin-left: var(--sizing-20);
-                max-width: 140px;
+                max-width: 100px;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;

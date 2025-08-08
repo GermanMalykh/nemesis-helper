@@ -20,12 +20,17 @@ import { filter } from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StartGameComponent {
-    protected readonly selectedGame: WritableSignal<GameData | undefined> = signal(undefined);
-    protected readonly showNewGameForm: WritableSignal<boolean> = signal(false);
     protected readonly games: GameData[] = Object.values(gameConfigs).map((config: GameConfig) => ({
         config,
         saveState: StorageManager.loadGameSetupData(config.id),
     }));
+    
+    // Pre-select Nemesis Original game by default
+    protected readonly selectedGame: WritableSignal<GameData | undefined> = signal(
+        this.games.find(game => game.config.id === 'nemesisOriginal')
+    );
+    
+    protected readonly showNewGameForm: WritableSignal<boolean> = signal(false);
     private readonly router: Router = inject(Router);
     private readonly matDialog: MatDialog = inject(MatDialog);
 
