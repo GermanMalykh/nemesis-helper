@@ -50,48 +50,6 @@ export class SelectedGameSetupComponent implements OnInit, OnDestroy {
         monstersDisabled: new FormControl<boolean>(false, { nonNullable: true }),
     });
     private readonly subSink: Subscription = new Subscription();
-    private readonly gameSetupData: WritableSignal<GameSetupData | null> = signal(null);
-    private readonly players: WritableSignal<Player[]> = signal([]);
-    private readonly gameId: WritableSignal<string> = signal('nemesisOriginal');
-
-    constructor() {
-        this.form = new FormGroup({
-            players: new FormArray([]),
-            gameId: new FormControl('nemesisOriginal', [Validators.required]),
-        });
-
-        this.form.valueChanges.subscribe((value) => {
-            if (value?.players) {
-                this.players.set(value.players);
-            }
-        });
-    }
-
-    @Input() set data(value: GameData) {
-        if (value) {
-            this.gameSetupData.set(value.gameSetupData);
-            this.players.set(value.players);
-            this.gameId.set(value.gameId);
-
-            // Reset form with new data
-            const playersArray = this.form.get('players') as FormArray;
-            playersArray.clear();
-
-            value.players.forEach((player) => {
-                playersArray.push(
-                    new FormGroup({
-                        name: new FormControl(player.name, [Validators.required]),
-                        num: new FormControl(player.num, [Validators.required]),
-                    })
-                );
-            });
-
-            this.form.patchValue({
-                gameId: value.gameId,
-                players: value.players,
-            });
-        }
-    }
 
     public ngOnInit(): void {
         this.subSink.add(
@@ -106,12 +64,11 @@ export class SelectedGameSetupComponent implements OnInit, OnDestroy {
     }
 
     protected onStartGameClick(): void {
-        const formValue: FormValuer<GameSetupForm> = this.form.getRawValue();
-        const players: string[] = formValue.players.filter(player => !!player);
-        const isEnoughPlayers: boolean = players.length > 0;
-
-        if (isEnoughPlayers) {
-            this.startGame.emit(this.generateGameSetupData(formValue, players));
+        if (this.form.valid && this.selectedGame) {
+            const formValue: FormValuer<GameSetupForm> = this.form.getRawValue();
+            const players: string[] = formValue.players.filter((player) => player.trim() !== '');
+            const gameSetupData: GameSetupData = this.generateGameSetupData(formValue, players);
+            this.startGame.emit(gameSetupData);
         } else {
             this.showError.set(true);
         }
@@ -122,6 +79,7 @@ export class SelectedGameSetupComponent implements OnInit, OnDestroy {
     }
 
     private generateGameSetupData(formValue: FormValuer<GameSetupForm>, players: string[]): GameSetupData {
+        const gameId: GameKey = (this.selectedGame as GameData).config.id;
         const baseSetupData: Omit<GameSetupData, 'gameId'> = {
             players: this.generatePlayersData(players, formValue.randomizePlayerNum),
             gameMode: formValue.gameMode,
@@ -131,24 +89,18 @@ export class SelectedGameSetupComponent implements OnInit, OnDestroy {
         };
 
         return {
-            gameId: 'nemesisOriginal',
             ...baseSetupData,
+            gameId,
         };
     }
 
     private generatePlayersData(playerNames: string[], randomize: boolean): Player[] {
-        if (randomize) {
-            const playerNumbers: number[] = Shuffler.shuffle(Array.from({ length: playerNames.length }, (_, i) => i + 1));
-            return playerNames.map((name, index) => ({
-                name,
-                timeUsedMs: 0,
-                num: playerNumbers[index],
-            }));
-        }
+        const shuffledPlayerNums: number[] = randomize ? Shuffler.shuffle([1, 2, 3, 4, 5]) : [1, 2, 3, 4, 5];
+
         return playerNames.map((name, index) => ({
             name,
+            num: shuffledPlayerNums[index],
             timeUsedMs: 0,
-            num: index + 1,
         }));
     }
 }
