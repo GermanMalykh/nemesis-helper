@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1754653397069,
+  "timestamp": 1754654487553,
   "index": "/nemesis-helper/index.html",
   "assetGroups": [
     {
@@ -13,14 +13,14 @@
       "urls": [
         "/nemesis-helper/chunk-24WXQJQE.js",
         "/nemesis-helper/chunk-2GAP2OKK.js",
-        "/nemesis-helper/chunk-6U3SAVIU.js",
         "/nemesis-helper/chunk-LO42GJAF.js",
         "/nemesis-helper/chunk-MVXMPEVG.js",
+        "/nemesis-helper/chunk-NIQG5PYI.js",
         "/nemesis-helper/chunk-QYIWWXKS.js",
-        "/nemesis-helper/chunk-SGNWS36J.js",
+        "/nemesis-helper/chunk-WALGZJ57.js",
         "/nemesis-helper/favicon.ico",
         "/nemesis-helper/index.html",
-        "/nemesis-helper/main-WEJDUCJY.js",
+        "/nemesis-helper/main-OZYJ5QEK.js",
         "/nemesis-helper/manifest.webmanifest",
         "/nemesis-helper/polyfills-RT5I6R6G.js",
         "/nemesis-helper/styles-UWMLEOND.css"
@@ -73,7 +73,7 @@
   "hashTable": {
     "/nemesis-helper/assets/i18n/en.json": "300b19ec2338e7a087c2ed97bebdf9179e367123",
     "/nemesis-helper/assets/i18n/pl.json": "e37d84613df095be9208b675f8d455fcd7890aa6",
-    "/nemesis-helper/assets/i18n/ru.json": "7ec270c77445cb2fddb9d38053873a4c0392e894",
+    "/nemesis-helper/assets/i18n/ru.json": "bebcc28e69a2e52be5da32696aa81b25425df27b",
     "/nemesis-helper/assets/icons/assignment_late.svg": "842455081d8891cbb1995f2360d2699b93c913a2",
     "/nemesis-helper/assets/icons/bag.svg": "6b3f187f6884c536387f1d15d0e5b712218e0eac",
     "/nemesis-helper/assets/icons/dark_mode.svg": "dcf910ab513c5d16b75e9f5b45ab049460f1d3e1",
@@ -103,14 +103,14 @@
     "/nemesis-helper/assets/images/tileNrl.jpg": "33fb91dfb09683fc838cdbb5ad7f4b82e53ce121",
     "/nemesis-helper/chunk-24WXQJQE.js": "f727174c9e93fcc1ba371d5ad2938e5e5cf0d4f0",
     "/nemesis-helper/chunk-2GAP2OKK.js": "73cea784cf5c4ca2fe9490a65c171355d3bfebb6",
-    "/nemesis-helper/chunk-6U3SAVIU.js": "b8ab8bfb5d0e2fb92e939238294b78d835878b6c",
     "/nemesis-helper/chunk-LO42GJAF.js": "4d3bf621f247f4ee4fd28450d5ef63a19d04dfa8",
     "/nemesis-helper/chunk-MVXMPEVG.js": "e4c1e9ac7a0d10683fd505833a323be41b2a6d0c",
+    "/nemesis-helper/chunk-NIQG5PYI.js": "9bdf036db0afd745aaf12e4584c207ff8b197665",
     "/nemesis-helper/chunk-QYIWWXKS.js": "132dedb399fcf4f556236f0de80e5552e6ebf5bc",
-    "/nemesis-helper/chunk-SGNWS36J.js": "b3e3c63687a57894e3f166ab1db7f89492f42160",
+    "/nemesis-helper/chunk-WALGZJ57.js": "54d6628725e74e7cbc4f4ba5a1f4a4578eafa097",
     "/nemesis-helper/favicon.ico": "d75ad576ab3755e8156475c7cfc892697f06954c",
-    "/nemesis-helper/index.html": "3d63c2ba6a9c2b676413eeebe5f66d6dc9a67ac8",
-    "/nemesis-helper/main-WEJDUCJY.js": "b3d928b7fe6c107777a17dda5a95843416e9038a",
+    "/nemesis-helper/index.html": "dd382b89e0b2a92b8f363798026db4af963a026d",
+    "/nemesis-helper/main-OZYJ5QEK.js": "58a180c4462f89d8a7da996ba04975099301e745",
     "/nemesis-helper/manifest.webmanifest": "5b4e4e9df06dc5bb6d6db0294d24335e15c94146",
     "/nemesis-helper/polyfills-RT5I6R6G.js": "fe9f024576f21ff6314cf8f8332cde58b9a12416",
     "/nemesis-helper/styles-UWMLEOND.css": "110ab8ee5cfc66f3f93270d68397e564dfb29864"
