@@ -1,0 +1,1 @@
+var e=Object.freeze({nemesisOriginal:Object.freeze({id:"nemesisOriginal",idShort:"nog",path:"nemesis",nameKey:"tk.game.name.nemesis-original",imageUrl:"assets/images/tileNog.jpg",disabled:!1})});export{e as a};
