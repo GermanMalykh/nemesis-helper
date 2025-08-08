@@ -18,31 +18,40 @@ export class NemesisOriginalLoggerService {
     }
 
     public logMonsterDevelopment(developmentResult: MonsterDevelopmentResult<MonsterTokenBase>): void {
-        this.logger.addRecord(`Monster development with ${developmentResult.success ? 'success' : 'failure'} (${developmentResult.token.id})`, 'monster');
+        this.logger.addRecord(
+            `Развитие монстра: ${developmentResult.success ? 'успех' : 'неудача'} (${developmentResult.token.id})`,
+            'monster',
+        );
     }
 
     public logMonsterEncounter(monster: MonsterTokenBase): void {
-        this.logger.addRecord(`Monster encounter (${monster.id})`, 'monster');
+        this.logger.addRecord(`Встреча с монстром (${monster.id})`, 'monster');
     }
 
     public logMonsterAdd(monster: MonsterTokenBase): void {
-        this.logger.addRecord(`Monster add (${monster.id})`, 'monster');
+        this.logger.addRecord(`Появление монстра (${monster.id})`, 'monster');
     }
 
     public logMonsterKill(monster: MonsterTokenBase): void {
-        this.logger.addRecord(`Monster kill (${monster.id})`, 'monster');
+        this.logger.addRecord(`Монстр уничтожен (${monster.id})`, 'monster');
     }
 
     public logMonsterRetreat(monster: MonsterTokenBase): void {
-        this.logger.addRecord(`Monster retreat (${monster.id})`, 'monster');
+        this.logger.addRecord(`Монстр отступил (${monster.id})`, 'monster');
     }
 
-    public logAutodestructionStateChange(stateFrom: Autodestruction['state'] | undefined, stateTo: Autodestruction['state'] | undefined): void {
-        this.logger.addRecord(`Autodestruction state change (${stateFrom || 'inactive'} => ${stateTo || 'inactive'})`, 'tracker');
+    public logAutodestructionStateChange(
+        stateFrom: Autodestruction['state'] | undefined,
+        stateTo: Autodestruction['state'] | undefined,
+    ): void {
+        this.logger.addRecord(
+            `Самоуничтожение: смена состояния (${stateFrom || 'выключено'} => ${stateTo || 'выключено'})`,
+            'tracker',
+        );
     }
 
     public logRoundChange(nextRoundNum: number): void {
-        this.logger.addRecord(`Round change (${this.logger.getRoundNum()} => ${nextRoundNum})`, 'event');
+        this.logger.addRecord(`Смена раунда (${this.logger.getRoundNum()} => ${nextRoundNum})`, 'event');
     }
 
     public logSaveGameState(): void {
@@ -50,6 +59,6 @@ export class NemesisOriginalLoggerService {
     }
 
     public logAutodestructionStateInevitable(): void {
-        this.logger.addRecord('Autodestruction state change to INEVITABLE!', 'event');
+        this.logger.addRecord('Самоуничтожение: стадия НЕИЗБЕЖНА!', 'event');
     }
 }

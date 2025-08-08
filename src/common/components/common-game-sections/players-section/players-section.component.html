@@ -31,7 +31,8 @@
     @if (timerEnabled) {
         <button
             mat-menu-item
-            (click)="onToggleTimerFromMenu()">
+            (click)="onToggleTimerFromMenu()"
+            [disabled]="!!selectedPlayer()?.dead">
             {{ getTimerActionLabel(selectedPlayer()!) }}
         </button>
     }

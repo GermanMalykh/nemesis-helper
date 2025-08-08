@@ -55,6 +55,9 @@ export class PlayersSectionComponent implements OnInit, OnDestroy {
 
         const playerData: Player | undefined = this.playersData().find(data => data.num === playerNum);
         if (playerData) {
+            if (playerData.dead) {
+                return;
+            }
             const timer: Timer = this.timer();
             if (timer.intervalRef) {
                 if (playerData.num !== timer.player?.num) {
@@ -85,6 +88,10 @@ export class PlayersSectionComponent implements OnInit, OnDestroy {
         if (player && !player.dead) {
             player.dead = true;
             this.playersData.update(list => list.map(p => (p.num === player.num ? { ...p, dead: true } : p)));
+            // Остановить таймер, если был запущен на этом игроке
+            if (this.timer().player?.num === player.num && this.timer().intervalRef) {
+                this.stopTimer();
+            }
             this.playerDeath.emit(player);
         }
     }
