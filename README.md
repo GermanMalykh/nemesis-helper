@@ -1,10 +1,10 @@
 # Nemesis Helper
 
-Helper Application for Nemesis boardgames published by Awaken realms.
+Helper Application for Nemesis boardgame published by Awaken realms.
 
 Full list of features can be found at [BGG App post](https://boardgamegeek.com/thread/3271434/helper-application-nemesis-games).
 
-Application hosted on [nemesis-helper-bg](https://nemesis-helper-bg.web.app/).
+Application hosted on [GitHub Pages](https://your-username.github.io/nemesis-helper/).
 
 This is PWA App, which means you can install it once and have it on your device (including desktop) as an Application with shortcut. This will allow using this App without access to the internet.
 
@@ -13,12 +13,8 @@ This is PWA App, which means you can install it once and have it on your device 
 Available games in the App:
 
 1. Nemesis
-2. Nemesis Lockdown
 
--   Nemesis Retaliation (probably will add some time after its release)
--   Expansions maybe in the future
-
-#### App Features ([L] means it is only Nemesis Lockdown feature):
+#### App Features:
 
 **Players section:**
 
@@ -29,62 +25,99 @@ Available games in the App:
 
 -   round number
 -   self-destruct / autodestruction indicator and end game reminded
--   [L] alert procedure indicator (showing when game ends)
--   [L] CSS indicators
--   [L] power state
--   end game summary (victory checks, game duration)
+-   end game summary (victory check)
 
-**Steps section:**
+**Monsters section:**
 
--   step names divided into 2 phases
--   indication of current step
--   "Time track" step will move round tracker, and may trigger reminders in form of modals (e.g. hibernation chambers / isolation room opening)
--   [L] "Launch CSS" may animate CSS launch as a reminder
--   "Intruder bag development" automatically adds intruder tokens when needed, shows info what to do
+-   monster tokens (adult, larvae, eggs, queen)
+-   monster development
+-   monster summary
 
-**Step description section:**
+**Phases section:**
 
--   current step description (what to do in this step)
+-   current phase indicator
+-   phase timers (when enabled)
 
-**Intruders section:**
+**Summary section:**
 
--   this section pretty much replaces intruders bag (available and bag pools are shuffled every time when changed)
--   can trigger encounter with intruder symbol and description what to do (may trigger first Intruder encounter)
--   option to add monster manually (in case some event tells to add intruder to bag)
--   preview to check which intruders are present in which pool (available, bag, active)
--   rotate token: possibility to show back of the token (surprise attack numbers)
--   kill token: possibility to "kill" chosen intruder which moves it back to the available pool
--   retreat token: possibility to "retreat" chosen intruder which moves it back to bag pool
+-   game statistics
+-   game logs
 
-**Drawer:**
+### Development
 
--   3 languages: Russian, English, Polish (logs only available in english)
--   light and dark mode
--   search room modal (room descriptions with search by name)
--   FAQ with answers (with search)
--   critical gameplay moments
--   game logs (purely to see what has happened before for reminding or debugging purposes)
--   about application with useful usage information
+#### Prerequisites
 
-Most of the texts are based on official guidebook.
+-   Node.js (v20.12.1 or higher)
+-   npm (v10.5.0 or higher)
 
-Game state is saved every start of player phase (refreshing page can restart round).
+#### Installation
 
-Game saves are stored locally in the Browser, application do not use any server to store data.
+```bash
+npm install
+```
 
-#### Supported resolutions
+#### Development server
 
--   Only landscape mode is supported!
--   IPad mini is the smallest device app was designed for.
+```bash
+npm start
+```
 
-Tablet and bigger in landscape mode (right now I did not really support phone resolutions because I think it is not App which is useful on small devices such as phone).
+Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-#### Supported languages
+#### Build
 
--   Russian
--   English
--   Polish
+```bash
+npm run build
+```
 
-### For Developers who want to help develop this App
+#### Build for GitHub Pages
 
-Check [Development Guide](DEVELOPMENT-GUIDE.md).
+```bash
+npm run build:github-pages
+```
+
+#### Deploy to GitHub Pages
+
+```bash
+npm run deploy:github-pages
+```
+
+#### Running unit tests
+
+```bash
+npm test
+```
+
+#### Running end-to-end tests
+
+```bash
+npm run e2e
+```
+
+### Deployment
+
+The application is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
+
+To deploy manually:
+
+1. Build the application for GitHub Pages:
+   ```bash
+   npm run build:github-pages
+   ```
+
+2. Deploy to GitHub Pages:
+   ```bash
+   npm run deploy:github-pages
+   ```
+
+### Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

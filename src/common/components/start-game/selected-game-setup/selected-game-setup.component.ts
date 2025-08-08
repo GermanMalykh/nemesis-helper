@@ -6,7 +6,6 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
 import { InfoTooltipComponent } from '@common/components/general/info-tooltip/info-tooltip.component';
-import { NldPowerSupplyData } from '@common/components/nld-specific/nld-power-supply/nld-power-supply-item.interface';
 import { GameData } from '@common/components/start-game/select-game/select-game.component';
 import { NonFocusableDirective } from '@common/directives/non-focusable.directive';
 import { GameMode } from '@common/enums/game-mode.enum';
@@ -14,7 +13,6 @@ import { Player } from '@common/interfaces/player.interface';
 import { FormValuer } from '@common/types/form-valuer.type';
 import { Shuffler } from '@common/utils/shuffler.util';
 import { GameKey, GameSetupData } from '@configs/games.config';
-import { getPowerSupplyStatesConfig, powerSupplySections, PowerSupplyStateConfig } from '@configs/nld-specific/power-supply.config';
 import { TranslateModule } from '@ngx-translate/core';
 import { filter, Subscription } from 'rxjs';
 
@@ -90,29 +88,11 @@ export class SelectedGameSetupComponent implements OnInit, OnDestroy {
             monstersDisabled: formValue.monstersDisabled,
             createdDate: new Date().toISOString(),
         };
-        switch (gameId) {
-            case 'nemesisOriginal':
-                return {
-                    gameId: 'nemesisOriginal',
-                    ...baseSetupData,
-                };
-            case 'nemesisLockdown':
-                return {
-                    gameId: 'nemesisLockdown',
-                    powerSupplyData: this.generateSupplyOrder(),
-                    ...baseSetupData,
-                };
-            case 'nemesisRetaliation':
-                return {
-                    gameId: 'nemesisRetaliation',
-                    ...baseSetupData,
-                };
-            default:
-                return {
-                    gameId,
-                    ...baseSetupData,
-                };
-        }
+        
+        return {
+            gameId: 'nemesisOriginal',
+            ...baseSetupData,
+        };
     }
 
     private generatePlayersData(playerNames: string[], randomize: boolean): Player[] {
@@ -129,18 +109,5 @@ export class SelectedGameSetupComponent implements OnInit, OnDestroy {
             timeUsedMs: 0,
             num: index + 1,
         }));
-    }
-
-    private generateSupplyOrder(): NldPowerSupplyData {
-        const randomizedPowerSupplies: PowerSupplyStateConfig[] = Shuffler.shuffle(getPowerSupplyStatesConfig());
-        return Object.keys(powerSupplySections).reduce(
-            (sections, key, index) => ({
-                ...sections,
-                [key]: {
-                    ...randomizedPowerSupplies[index],
-                },
-            }),
-            {} as NldPowerSupplyData,
-        );
     }
 }

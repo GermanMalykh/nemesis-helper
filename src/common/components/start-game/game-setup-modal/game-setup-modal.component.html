@@ -12,26 +12,6 @@
                 }
             </ul>
         </div>
-        @if (data.gameId === 'nemesisLockdown' && data.powerSupplyData; as powerSupplyData) {
-            <div class="supply-sections">
-                <div>
-                    <app-nld-power-supply
-                        [powerSupplyTranslationKey]="powerSupplySections.Elv.key"
-                        [powerSupplyStateConfig]="powerSupplyData.Elv"></app-nld-power-supply>
-                </div>
-                <div>
-                    <app-nld-power-supply
-                        [powerSupplyTranslationKey]="powerSupplySections.S01.key"
-                        [powerSupplyStateConfig]="powerSupplyData.S01"></app-nld-power-supply>
-                    <app-nld-power-supply
-                        [powerSupplyTranslationKey]="powerSupplySections.S02.key"
-                        [powerSupplyStateConfig]="powerSupplyData.S02"></app-nld-power-supply>
-                    <app-nld-power-supply
-                        [powerSupplyTranslationKey]="powerSupplySections.S03.key"
-                        [powerSupplyStateConfig]="powerSupplyData.S03"></app-nld-power-supply>
-                </div>
-            </div>
-        }
     </div>
     <div class="modal-actions">
         <button

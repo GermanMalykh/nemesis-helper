@@ -7,12 +7,13 @@
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
+        "build:github-pages": "ng build --configuration github-pages",
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
         "test:ci": "ng test --browsers ChromeHeadless --watch false",
         "lint": "ng lint",
         "prepare": "husky",
-        "deploy": "firebase deploy --only hosting:nemesis-helper-bg"
+        "deploy:github-pages": "npm run build:github-pages && npx angular-cli-ghpages --dir=dist/nemesis/browser"
     },
     "dependencies": {
         "@angular/animations": "^17.3.4",
@@ -27,7 +28,6 @@
         "@angular/router": "^17.3.4",
         "@angular/service-worker": "^17.3.4",
         "@ngx-translate/core": "^15.0.0",
-        "firebase": "^10.11.0",
         "rxjs": "~7.8.1",
         "tslib": "^2.3.0",
         "zone.js": "~0.14.2"
@@ -45,11 +45,11 @@
         "@types/jasmine": "~5.1.0",
         "@typescript-eslint/eslint-plugin": "^7.2.0",
         "@typescript-eslint/parser": "^7.2.0",
+        "angular-cli-ghpages": "^2.0.3",
         "eslint": "^8.57.0",
         "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-prefer-arrow": "^1.2.3",
         "eslint-plugin-unicorn": "^52.0.0",
-        "firebase-tools": "^13.7.2",
         "husky": "^9.0.11",
         "jasmine-core": "~5.1.0",
         "karma": "~6.4.0",

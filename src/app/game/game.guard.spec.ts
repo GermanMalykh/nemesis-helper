@@ -33,10 +33,10 @@ describe('gameGuard', () => {
         const createUrlTreeSpy: jasmine.Spy = spyOn(routerMock, 'createUrlTree').and.returnValue('/urlTree' as unknown as UrlTree);
         const loadGameSetupDataSpy: jasmine.Spy = spyOn(StorageManager, 'loadGameSetupData').and.returnValue({} as GameSetupData);
 
-        const result: MaybeAsync<GuardResult> = TestBed.runInInjectionContext(() => gameGuard({ url: [{ path: 'nemesis-lockdown' }] } as unknown as ActivatedRouteSnapshot, { url: 'someUrl2' } as unknown as RouterStateSnapshot));
+        const result: MaybeAsync<GuardResult> = TestBed.runInInjectionContext(() => gameGuard({ url: [{ path: 'nemesis' }] } as unknown as ActivatedRouteSnapshot, { url: 'someUrl2' } as unknown as RouterStateSnapshot));
 
         expect(createUrlTreeSpy).not.toHaveBeenCalled();
-        expect(loadGameSetupDataSpy).toHaveBeenCalledWith('nemesisLockdown');
+        expect(loadGameSetupDataSpy).toHaveBeenCalledWith('nemesisOriginal');
         expect(result).toEqual(true);
     });
 
@@ -44,10 +44,10 @@ describe('gameGuard', () => {
         const createUrlTreeSpy: jasmine.Spy = spyOn(routerMock, 'createUrlTree').and.returnValue('/urlTree' as unknown as UrlTree);
         const loadGameSetupDataSpy: jasmine.Spy = spyOn(StorageManager, 'loadGameSetupData').and.returnValue(undefined);
 
-        const result: string = TestBed.runInInjectionContext(() => gameGuard({ url: [{ path: 'nemesis-lockdown' }] } as unknown as ActivatedRouteSnapshot, { url: 'someUrl2' } as unknown as RouterStateSnapshot)) as unknown as string;
+        const result: string = TestBed.runInInjectionContext(() => gameGuard({ url: [{ path: 'nemesis' }] } as unknown as ActivatedRouteSnapshot, { url: 'someUrl2' } as unknown as RouterStateSnapshot)) as unknown as string;
 
         expect(createUrlTreeSpy).toHaveBeenCalledWith(['/']);
-        expect(loadGameSetupDataSpy).toHaveBeenCalledWith('nemesisLockdown');
+        expect(loadGameSetupDataSpy).toHaveBeenCalledWith('nemesisOriginal');
         expect(result).toEqual('/urlTree');
     });
 });

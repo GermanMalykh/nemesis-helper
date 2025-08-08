@@ -1,6 +1,6 @@
 import { MonsterType } from '@common/enums/monster-types.enum';
 import { MonsterTokenBase } from '@common/interfaces/monster-token-base.interface';
-import { MonsterTokenConfig } from '@configs/nld-specific/monster-token.config';
+import { MonsterTokenConfig } from '@configs/nog-specific/monster-token.config';
 import { MonsterCountPipe } from './monster-count.pipe';
 
 describe('MonsterCountPipe', () => {
