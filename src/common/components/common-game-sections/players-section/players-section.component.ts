@@ -4,10 +4,9 @@ import { MatIcon } from '@angular/material/icon';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { Player } from '@common/interfaces/player.interface';
 import { MsToDurationPipe } from '@common/pipes/ms-to-duration/ms-to-duration.pipe';
-import { ModalService, optionalActionModalConfig } from '@common/services/modal/modal.service';
+import { ModalService } from '@common/services/modal/modal.service';
 import { KeyboardUtil } from '@common/utils/keyboard.util';
 import { Subscription } from 'rxjs';
-import { PlayerActionModalComponent } from './player-action-modal.component';
 
 interface Timer {
     player?: Player;
@@ -75,14 +74,14 @@ export class PlayersSectionComponent implements OnInit, OnDestroy {
     }
 
     protected onToggleTimerFromMenu(): void {
-        const player = this.selectedPlayer();
+        const player: Player | undefined = this.selectedPlayer();
         if (player) {
             this.togglePlayerTimer(player.num);
         }
     }
 
     protected onMarkDeadFromMenu(): void {
-        const player = this.selectedPlayer();
+        const player: Player | undefined = this.selectedPlayer();
         if (player && !player.dead) {
             player.dead = true;
             this.playersData.update(list => list.map(p => (p.num === player.num ? { ...p, dead: true } : p)));
@@ -91,7 +90,7 @@ export class PlayersSectionComponent implements OnInit, OnDestroy {
     }
 
     protected getTimerActionLabel(player: Player): string {
-        const active = this.timer().intervalRef && this.timer().player?.num === player.num;
+        const active: boolean = Boolean(this.timer().intervalRef && this.timer().player?.num === player.num);
         return active ? 'Остановить таймер' : 'Запустить таймер';
     }
 
