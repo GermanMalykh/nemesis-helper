@@ -19,3 +19,45 @@
         color: var(--important-color);
     }
 }
+
+/* Стили для кнопок в модальном окне */
+.modal-actions {
+    display: flex;
+    gap: var(--sizing-20);
+    justify-content: center;
+    flex-wrap: wrap;
+
+    button {
+        min-width: 200px;
+        max-width: 300px;
+        white-space: normal;
+        line-height: 1.2;
+        padding: var(--sizing-10) var(--sizing-15);
+
+        .mdc-button__label {
+            white-space: normal;
+            line-height: 1.2;
+            text-align: center;
+        }
+    }
+}
+
+/* Мобильные стили для кнопок */
+@media (max-width: 600px) {
+    .modal-actions {
+        flex-direction: column;
+        align-items: stretch;
+
+        button {
+            width: 100%;
+            min-width: 0;
+            max-width: none;
+            margin-bottom: var(--sizing-10);
+
+            .mdc-button__label {
+                font-size: 14px;
+                padding: var(--sizing-5) var(--sizing-10);
+            }
+        }
+    }
+}

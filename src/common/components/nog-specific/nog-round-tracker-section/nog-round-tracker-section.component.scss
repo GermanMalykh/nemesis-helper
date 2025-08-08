@@ -20,9 +20,73 @@ $round-item-size: 40px;
         button {
             max-height: $button-size;
             height: $button-size;
-            min-width: $button-size;
+            min-width: 0;
             min-height: $button-size;
             margin-left: var(--sizing-20);
+            box-sizing: border-box;
+
+            .mdc-button__label {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+                overflow: hidden;
+            }
+            .mdc-button__label > span {
+                max-width: 100%;
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+
+        /* Специфичные стили для кнопки "Действия" */
+        .actions-button {
+            min-width: 120px !important;
+            max-width: 200px;
+
+            .mdc-button__label {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                overflow: hidden !important;
+            }
+
+            .mdc-button__label > span {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                white-space: nowrap !important;
+                display: block !important;
+            }
+        }
+
+        /* Еще более специфичные селекторы для Angular Material */
+        button.mat-mdc-menu-trigger.actions-button {
+            min-width: 120px !important;
+            max-width: 200px !important;
+
+            .mdc-button__label {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                overflow: hidden !important;
+            }
+
+            .mdc-button__label > span {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                white-space: nowrap !important;
+                display: block !important;
+            }
         }
     }
 
@@ -43,7 +107,6 @@ $round-item-size: 40px;
             align-items: center;
             gap: var(--sizing-20);
             padding: var(--sizing-20);
-            /* Дополнительный отступ сверху, чтобы не перекрывало заголовок */
             margin-top: var(--sizing-10);
         }
         .mobile-round {
@@ -71,6 +134,70 @@ $round-item-size: 40px;
         button[mat-flat-button] {
             width: 100%;
             max-width: 420px;
+            box-sizing: border-box;
+
+            .mdc-button__label {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+                overflow: hidden;
+            }
+            .mdc-button__label > span {
+                max-width: 100%;
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+
+        /* Специфичные стили для мобильной кнопки "Действия" */
+        .actions-button {
+            width: 100% !important;
+            max-width: 420px !important;
+
+            .mdc-button__label {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                overflow: hidden !important;
+            }
+
+            .mdc-button__label > span {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                white-space: nowrap !important;
+                display: block !important;
+            }
+        }
+
+        /* Еще более специфичные селекторы для мобильной кнопки */
+        button.mat-mdc-menu-trigger.actions-button {
+            width: 100% !important;
+            max-width: 420px !important;
+
+            .mdc-button__label {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                overflow: hidden !important;
+            }
+
+            .mdc-button__label > span {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                white-space: nowrap !important;
+                display: block !important;
+            }
         }
     }
 }

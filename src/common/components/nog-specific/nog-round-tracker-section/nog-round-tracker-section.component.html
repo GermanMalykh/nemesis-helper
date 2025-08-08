@@ -11,7 +11,9 @@
     <button
         mat-flat-button
         color="primary"
-        [matMenuTriggerFor]="tokenMenu">
+        class="actions-button"
+        [matMenuTriggerFor]="tokenMenu"
+        style="min-width: 140px; width: auto; max-width: none">
         <span>{{ 'tk.round.button.actions' | translate }}</span>
     </button>
     <mat-menu #tokenMenu="matMenu">
@@ -55,7 +57,9 @@
     <button
         mat-flat-button
         color="primary"
-        [matMenuTriggerFor]="tokenMenuMobile">
+        class="actions-button"
+        [matMenuTriggerFor]="tokenMenuMobile"
+        style="min-width: 160px; width: 100%; max-width: 300px">
         <span>{{ 'tk.round.button.actions' | translate }}</span>
     </button>
     <mat-menu #tokenMenuMobile="matMenu">

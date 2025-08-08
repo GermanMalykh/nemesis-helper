@@ -12,14 +12,16 @@
                     mat-stroked-button
                     color="primary"
                     appNonFocusable
-                    (click)="onClick(true)">
+                    (click)="onClick(true)"
+                    style="min-width: 200px; max-width: 300px; white-space: normal; line-height: 1.2">
                     {{ 'tk.monster-development.button.queen.player-in-nest' | translate }}
                 </button>
                 <button
                     mat-flat-button
                     color="primary"
                     appNonFocusable
-                    (click)="onClick(false)">
+                    (click)="onClick(false)"
+                    style="min-width: 200px; max-width: 300px; white-space: normal; line-height: 1.2">
                     {{ 'tk.monster-development.button.queen.player-not-in-nest' | translate }}
                 </button>
             } @else {

@@ -1,0 +1,252 @@
+/* Global styles */
+@import 'variables';
+@import 'mixins';
+@import 'animations';
+@import 'icons';
+@import 'drawer';
+@import 'guidebook';
+
+/* Принудительное ограничение текста в кнопках Angular Material */
+button.mat-mdc-menu-trigger.actions-button .mdc-button__label > span,
+button.details-button .mdc-button__label .icon-with-label > span {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+/* Дополнительные стили для мобильных устройств */
+@media (max-width: 600px) {
+    button.mat-mdc-menu-trigger.actions-button .mdc-button__label > span,
+    button.details-button .mdc-button__label .icon-with-label > span {
+        max-width: 100% !important;
+        min-width: 0 !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        display: block !important;
+        width: 100% !important;
+    }
+}
+
+/* Агрессивные стили для всех кнопок с проблемным текстом */
+.mdc-button__label > span {
+    max-width: 150px !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    display: block !important;
+}
+
+/* Специфично для кнопки "Действия" */
+.actions-button .mdc-button__label > span {
+    max-width: 120px !important;
+}
+
+/* Специфично для кнопки "Предпросмотр пришельцев" */
+.details-button .mdc-button__label .icon-with-label > span {
+    max-width: 140px !important;
+}
+
+/* Мобильные стили */
+@media (max-width: 600px) {
+    .mdc-button__label > span {
+        max-width: 200px !important;
+    }
+
+    .actions-button .mdc-button__label > span {
+        max-width: 180px !important;
+    }
+
+    .details-button .mdc-button__label .icon-with-label > span {
+        max-width: 160px !important;
+    }
+}
+
+/* МАКСИМАЛЬНО АГРЕССИВНЫЕ СТИЛИ */
+/* Принудительное ограничение для всех span в кнопках */
+.mdc-button__label > span {
+    max-width: 80px !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    display: block !important;
+    width: 80px !important;
+}
+
+/* Еще более специфичные селекторы */
+button.mat-mdc-menu-trigger.actions-button .mdc-button__label > span {
+    max-width: 70px !important;
+    width: 70px !important;
+}
+
+button.details-button .mdc-button__label .icon-with-label > span {
+    max-width: 90px !important;
+    width: 90px !important;
+}
+
+/* Мобильные стили с очень маленькими значениями */
+@media (max-width: 600px) {
+    .mdc-button__label > span {
+        max-width: 120px !important;
+        width: 120px !important;
+    }
+
+    button.mat-mdc-menu-trigger.actions-button .mdc-button__label > span {
+        max-width: 100px !important;
+        width: 100px !important;
+    }
+
+    button.details-button .mdc-button__label .icon-with-label > span {
+        max-width: 110px !important;
+        width: 110px !important;
+    }
+}
+
+/* НОВЫЙ ПОДХОД: УМЕНЬШЕНИЕ ШРИФТА И СЖАТИЕ ТЕКСТА */
+/* Уменьшаем размер шрифта для кнопок с русским текстом */
+.mdc-button__label > span {
+    font-size: 12px !important;
+    letter-spacing: -0.5px !important;
+    font-weight: 500 !important;
+}
+
+/* Специфично для кнопки "Действия" */
+button.mat-mdc-menu-trigger.actions-button .mdc-button__label > span {
+    font-size: 11px !important;
+    letter-spacing: -0.8px !important;
+    max-width: 100px !important;
+    width: 100px !important;
+}
+
+/* Специфично для кнопки "Предпросмотр пришельцев" */
+button.details-button .mdc-button__label .icon-with-label > span {
+    font-size: 10px !important;
+    letter-spacing: -1px !important;
+    max-width: 120px !important;
+    width: 120px !important;
+}
+
+/* Мобильные стили с еще меньшим шрифтом */
+@media (max-width: 600px) {
+    .mdc-button__label > span {
+        font-size: 11px !important;
+        letter-spacing: -0.3px !important;
+    }
+
+    button.mat-mdc-menu-trigger.actions-button .mdc-button__label > span {
+        font-size: 10px !important;
+        letter-spacing: -0.5px !important;
+        max-width: 150px !important;
+        width: 150px !important;
+    }
+
+    button.details-button .mdc-button__label .icon-with-label > span {
+        font-size: 9px !important;
+        letter-spacing: -0.8px !important;
+        max-width: 180px !important;
+        width: 180px !important;
+    }
+}
+
+/* ФИНАЛЬНЫЙ ПОДХОД: СЖАТИЕ ТЕКСТА С ПОМОЩЬЮ TRANSFORM */
+/* Сжимаем текст с помощью transform scale */
+.mdc-button__label > span {
+    transform: scaleX(0.8) !important;
+    transform-origin: center !important;
+    font-size: 14px !important;
+    letter-spacing: -1px !important;
+    font-weight: 600 !important;
+    max-width: 120px !important;
+    width: 120px !important;
+}
+
+/* Специфично для кнопки "Действия" */
+button.mat-mdc-menu-trigger.actions-button .mdc-button__label > span {
+    transform: scaleX(0.7) !important;
+    transform-origin: center !important;
+    font-size: 13px !important;
+    letter-spacing: -1.5px !important;
+    max-width: 100px !important;
+    width: 100px !important;
+}
+
+/* Специфично для кнопки "Предпросмотр пришельцев" */
+button.details-button .mdc-button__label .icon-with-label > span {
+    transform: scaleX(0.6) !important;
+    transform-origin: center !important;
+    font-size: 12px !important;
+    letter-spacing: -2px !important;
+    max-width: 140px !important;
+    width: 140px !important;
+}
+
+/* Мобильные стили с меньшим сжатием */
+@media (max-width: 600px) {
+    .mdc-button__label > span {
+        transform: scaleX(0.9) !important;
+        max-width: 180px !important;
+        width: 180px !important;
+    }
+
+    button.mat-mdc-menu-trigger.actions-button .mdc-button__label > span {
+        transform: scaleX(0.8) !important;
+        max-width: 160px !important;
+        width: 160px !important;
+    }
+
+    button.details-button .mdc-button__label .icon-with-label > span {
+        transform: scaleX(0.7) !important;
+        max-width: 200px !important;
+        width: 200px !important;
+    }
+}
+
+/* НОВЫЙ ПОДХОД: УВЕЛИЧЕНИЕ ШИРИНЫ КНОПОК */
+/* Убираем все ограничения и увеличиваем ширину кнопок */
+.mdc-button__label > span {
+    max-width: none !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+    display: inline-block !important;
+    width: auto !important;
+    transform: none !important;
+    font-size: 14px !important;
+    letter-spacing: normal !important;
+    font-weight: normal !important;
+}
+
+/* Увеличиваем ширину кнопок */
+button.mat-mdc-menu-trigger.actions-button {
+    min-width: 140px !important;
+    max-width: none !important;
+    width: auto !important;
+}
+
+button.details-button {
+    min-width: 180px !important;
+    max-width: none !important;
+    width: auto !important;
+}
+
+/* Мобильные стили с увеличенной шириной */
+@media (max-width: 600px) {
+    button.mat-mdc-menu-trigger.actions-button {
+        min-width: 160px !important;
+        width: 100% !important;
+        max-width: 300px !important;
+    }
+
+    button.details-button {
+        min-width: 200px !important;
+        width: 100% !important;
+        max-width: 350px !important;
+    }
+}

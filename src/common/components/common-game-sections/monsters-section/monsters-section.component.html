@@ -59,7 +59,9 @@
         mat-flat-button
         color="primary"
         appNonFocusable
-        (click)="details.emit()">
+        class="details-button"
+        (click)="details.emit()"
+        style="min-width: 180px; width: auto; max-width: none">
         <div class="icon-with-label">
             <span>{{ 'tk.monsters.button.details' | translate }}</span>
             <mat-icon
